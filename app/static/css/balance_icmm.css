@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.bi-titulo-pagina{
+
+    font-size: calc(18 * 0.052vw);
+    font-weight: 600;
+    line-height: calc(21.94 * 0.052vw);
+    text-align: left;
+    margin-bottom: calc(5 * 0.052vw);
+    margin-top: calc(45 * 0.052vw);
+
+}
+
+.bi-separador-linea{
+
+
+    width: calc(1800 * 0.052vw);
+    height: calc(0 * 0.052vw);
+    top: calc(146 * 0.052vw);
+    left: calc(80 * 0.052vw);
+    gap: calc(0 * 0.052vw);
+    border: calc(1 * 0.052vw) calc(0 * 0.052vw) calc(0 * 0.052vw) calc(0 * 0.052vw);
+    opacity: calc(0 * 0.052vw);
+    border: calc(1 * 0.052vw) solid #5BC7C7
+    
+}
+
+.bi-filtros-contenedor {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: start; /* Alinea horizontalmente los elementos al inicio */
+    gap: calc(20 * 0.052vw); /* Espaciado entre los filtros */
+    margin-top: calc(10 * 0.052vw);
+    margin-left: calc(660 * 0.052vw);
+}
+
+.bi-filtro-mes {
+    width: calc(182 * 0.052vw);
+    border-radius: calc(6 * 0.052vw);
+    font-size: calc(14 * 0.052vw);
+    border: calc(1 * 0.052vw) solid #5BC7C7;
+}
+
+.bi-filtro-mes select {
+    font-size: calc(15 * 0.052vw);
+    border: none;
+}
+
+.bi-filtro-anio {
+    width: calc(113 * 0.052vw);
+    border-radius: calc(6 * 0.052vw);
+    font-size: calc(14 * 0.052vw);
+    border: calc(1 * 0.052vw) solid #5BC7C7;
+}
+
+.bi-filtro-anio select {
+    font-size: calc(15 * 0.052vw);
+    border: none;
+}
+
+.bi-contenido-pagina{
+
+    width: calc(1800 * 0.052vw);
+    display: flex;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr auto;
+
+
+}
+
+.bi-contenido-pagina .bi-titulo-principal-pagina{
+
+    margin-top: calc(0 * 0.052vw);
+
+}
+
+.bi-titulo-principal-pagina{
+
+    /* display: flex; */
+    margin-top: calc(30 * 0.052vw);
+    margin-left: calc(20 * 0.052vw);
+    /* height: 100%; */
+    flex-direction: column;
+    width: calc(1800 * 0.052vw);
+
+
+}
+
+.bi-tabla-icmm-general{
+    height: calc(1396 * 0.052vw);
+    margin-top: calc(50 * 0.052vw);
+    margin-left: calc(20 * 0.052vw);
+}
+
+.bi-tabla-icmm{
+    width: calc(1600 * 0.052vw);
+    margin: 0 auto; 
+    border: calc(1 * 0.052vw) solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.bi-columnas-titulo-tabla{
+    border: calc(1 * 0.052vw) solid black; 
+    padding: calc(8 * 0.052vw);
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: calc(16 * 0.052vw);
+}
+
+.bi-columnas-titulo-tabla-delta{
+    border: calc(1 * 0.052vw) solid black; 
+    padding: calc(8 * 0.052vw);
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: calc(16 * 0.052vw);
+    background-color: #ebebeb;
+}
+
+/* .bi-filtro-mtd-ytd{
+    margin-right: calc(10 * 0.052vw);
+    margin-left: calc(10 * 0.052vw);
+} */
+
+.bi-filtro-mtd_ytd {
+    display: flex; /* Flexbox para alinear elementos horizontalmente */
+    align-items: center; /* Centra verticalmente los elementos */
+    gap: calc(10 * 0.052vw); /* Espacio entre MTD, switch, y YTD */
+    margin-right: calc(10 * 0.052vw);
+    margin-left: calc(10 * 0.052vw);
+}
+
+.form-check-label {
+    display: flex; /* Flexbox para los elementos internos del label */
+    align-items: center; /* Asegura alineación vertical */
+    gap: calc(5 * 0.052vw); /* Espaciado interno */
+    margin: 0; /* Evita márgenes adicionales */
+}
+
+.mtd-text {
+    font-size: calc(15 * 0.052vw); /* Tamaño del texto */
+    font-weight: normal;
+    color: #000; /* Ajusta el color si es necesario */
+
+    font-family: Montserrat;
+    /* position: relative;
+    right: calc(26 * 0.052vw); */
+}
+
+.ytd-text {
+    font-size: calc(15 * 0.052vw); /* Tamaño del texto */
+    font-weight: normal;
+    color: #000; /* Ajusta el color si es necesario */
+
+    font-family: Montserrat;
+    /* position: relative;
+    left: calc(1 * 0.052vw); */
+}
+
+.form-check-input {
+    margin: 0; /* Remueve márgenes predeterminados */
+    width: calc(20 * 0.052vw); /* Ajusta el tamaño del switch */
+    height: calc(10 * 0.052vw);
+}
+
+.btn-zoom-tabla-icmm
+{
+    height: calc(30 * 0.052vw);
+    align-items: center;
+    background-color: transparent;
+    max-width: calc(90 * 0.052vw);
+    border: none;
+    margin-top: calc(20 * 0.052vw);
+    font-family: Montserrat;
+    font-size: calc(17 * 0.052vw);
+    font-weight: bold;
+}
+
+.zoom-icmm {
+    transform: scale(0.54);
+    margin-top: calc(-270 * 0.052vw);
+}
+
+.bi-tabla-icmm-general.zoom-icmm {
+    transform: scale(0.54); /* Ajusta este valor para aumentar el tamaño */
+}
+
+.btn-desc-arch-icmm
+{
+    /* display: flex; */
+    height: calc(30 * 0.052vw);
+    align-items: center;
+    background-color: transparent;
+    max-width: calc(170 * 0.052vw);
+    border: none;
+    margin-top: calc(20 * 0.052vw);
+    font-family: Montserrat;
+    font-size: calc(17 * 0.052vw);
+    font-weight: bold;
+}
+
+.ddl-descarga-icmm
+{
+    width: calc(195 * 0.052vw);
+    margin-left: calc(14* 0.052vw);
+    /* margin-top: calc(10* 0.052vw); */
+    font-family: Montserrat;
+    font-size: calc(16 * 0.052vw);
+    font-weight: 550;
+ 
+    display: flex;
+    column-gap: calc(20 * 0.052vw);
+    justify-items: start;
+    
+}
+
+.ddl-descarga-icmm .Select-placeholder {
+    color: black !important; /* Color del placeholder en negro */
+    font-weight: bold; /* Letra más gruesa */
+}
+
+.ddl-descarga-icmm .Select-value-label {
+    color: black !important; /* Color del texto en negro */
+    font-weight: bold; /* Letra más gruesa */
+}
+
+body {
+    background-color: #f8f9fa !important; /* Cambia este color por el que prefieras */
+    margin: 0;
+    padding: 0;
+}

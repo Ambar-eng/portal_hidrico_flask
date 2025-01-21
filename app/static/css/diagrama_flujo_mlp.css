@@ -1,0 +1,2342 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* .diag-flujo-mlp{
+    position: relative;
+    height: calc(2333 * 0.052vw); 
+    margin-top: calc(55 * 0.052vw);
+    margin-left: calc(15 * 0.052vw);
+} */
+
+.diag-flujo-mlp {
+    position: relative;
+    height: calc(1500 * 0.052vw);
+    margin-top: calc(55 * 0.052vw);
+    margin-left: calc(15 * 0.052vw);
+    max-width: 100vw; 
+    max-height: 100vh;
+    overflow-x: auto; 
+    overflow-y: auto;
+}
+
+.content-wrapper {
+    transform: translateX(calc(-105 * 0.052vw)); /* Ajuste visual sin alterar el scroll */
+}
+
+.zoom-diag-mlp {
+    
+    transform: scale(0.6);
+    margin-top: calc(-25 * 0.052vw);
+    margin-right: calc(737 * 0.052vw);
+}
+
+.diag-titulo-flujo-mlp{
+    font-size: calc(12 * 0.052vw);
+    font-weight: 600;
+    text-align: center;
+}
+
+.diag-val-cons-mlp{
+    font-size: calc(10 * 0.052vw);
+    font-weight: 600;
+    text-align: left;
+    color : #858585;
+}
+
+.ddl-mlp-div-captacion-superf{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(136* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-mlp-div-captacion-subt{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(362* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-mlp-div-agua-mineral{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(590* 0.052vw); 
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-mlp-div-fracc-agua-fresca{
+    width: calc(183 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(815* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-mlp-div-aguas-mina{
+    width: calc(183 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(1052* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-mlp-div-precip-escorrentia{
+    width: calc(200 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(1287* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-mlp-div-aguas-valle{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(1537* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-mlp-div-aguas-mar{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(1752* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-mlp-div-manejo-aguas-nat-m{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(1964* 0.052vw);
+    border: calc(3 * 0.052vw) solid #EDAD33;
+}
+
+.ddl-mlp-div-canalon-tunel-desvio{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(2173* 0.052vw);
+    border: calc(3 * 0.052vw) solid #EDAD33;
+}
+
+.ddl-mlp-div-pozos-scr{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(2381* 0.052vw);
+    border: calc(3 * 0.052vw) solid #EDAD33;
+}
+
+.ddl-mlp-div-proc-mineral{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(622* 0.052vw);
+    left: calc(345* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-mlp-div-control-polvo{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(614* 0.052vw);
+    left: calc(696* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-mlp-div-consumo-humano{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(598* 0.052vw);
+    left: calc(935* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-mlp-div-ptas{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(611* 0.052vw);
+    left: calc(1196* 0.052vw);
+    border: calc(3 * 0.052vw) solid #913088;
+}
+
+.ddl-mlp-div-pta-desaladora{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(385* 0.052vw);
+    left: calc(1648* 0.052vw);
+    border: calc(3 * 0.052vw) solid #913088;
+}
+
+.ddl-mlp-div-reserv-r1{
+    width: calc(236 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(632* 0.052vw);
+    left: calc(1619* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(32, 144, 163);
+}
+
+.ddl-mlp-div-tranque-quillayes{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(956* 0.052vw);
+    left: calc(191* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-mlp-div-tranque-mauro{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(957* 0.052vw);
+    left: calc(498* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-mlp-div-agua-conc-embarc{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1315* 0.052vw); /*1248*/
+    left: calc(242* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+}
+
+.ddl-mlp-div-pisc-reserv-chacay{
+    width: calc(236 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(323* 0.052vw);
+    left: calc(345* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(32, 144, 163);
+}
+
+.ddl-mlp-div-evaporacion-evotransp{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1315* 0.052vw); /*1248*/
+    left: calc(477* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+}
+
+.ddl-mlp-div-agua-retenida{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1315* 0.052vw); /*1248*/
+    left: calc(714* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+}
+
+.ddl-mlp-div-agua-perdida-tareas{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1315* 0.052vw); /*1248*/
+    left: calc(952* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+}
+
+.ddl-mlp-div-descarga-mar{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1315* 0.052vw); /*1248*/
+    left: calc(1179* 0.052vw);
+    border: calc(3 * 0.052vw) solid #db7560;
+}
+
+.ddl-mlp-div-descarga-aguas-subt{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1315* 0.052vw); /*1248*/
+    left: calc(1410* 0.052vw);
+    border: calc(3 * 0.052vw) solid #db7560;
+}
+
+.ddl-mlp-div-descarga-terceros{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1315* 0.052vw); /*1248*/
+    left: calc(1640* 0.052vw);
+    border: calc(3 * 0.052vw) solid #db7560;
+}
+
+.ddl-mlp-div-evaporacion{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1248* 0.052vw);
+    left: calc(1863* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+}
+
+.ddl-mlp-div-estero-pupio{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1248* 0.052vw);
+    left: calc(2087* 0.052vw);
+    border: calc(3 * 0.052vw) solid #db7560;
+}
+
+.ddl-mlp-div-rio-cuncumen{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1248* 0.052vw);
+    left: calc(2313* 0.052vw);
+    border: calc(3 * 0.052vw) solid #db7560;
+}
+
+.ddl-mlp-div-rio-choapa-1{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(1248* 0.052vw);
+    left: calc(2543* 0.052vw);
+    border: calc(3 * 0.052vw) solid #db7560;
+}
+
+.ddl-mlp-div-rio-choapa-2{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(2584* 0.052vw);
+    border: calc(3 * 0.052vw) solid #EDAD33;
+}
+
+/* .diag-tabla-flujo-mlp{
+    position: relative;
+    bottom: calc(664 * 0.052vw);
+    margin-left: calc(115 * 0.052vw);
+    width: calc(1750 * 0.052vw); 
+    font-family: Montserrat;
+    font-size: calc(13* 0.052vw);
+    background-color : white;
+    border-bottom: 1px solid #33333399;
+} */
+
+.diag-tabla-desde-hasta-flujo-mlp{
+    font-weight: 600;
+    border: 1px solid #33333399;
+    position: relative;
+    /* left: calc(10 * 0.052vw); */
+}
+
+
+
+
+
+
+
+
+
+
+.mlp-linea-flecha-a1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(625 * 0.052vw);
+    top: calc(217 * 0.052vw);
+    left: calc(207 * 0.052vw);
+}
+
+.mlp-linea-flecha-a2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(170 * 0.052vw);
+    top: calc(257* 0.052vw);
+    left: calc(207* 0.052vw);
+}
+
+.mlp-linea-flecha-a3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(63 * 0.052vw);
+    top: calc(257 * 0.052vw);
+    left: calc(375 * 0.052vw);
+}
+
+.mlp-linea-flecha-a3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(62 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-a4-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(809 * 0.052vw);
+    top: calc(840* 0.052vw);
+    left: calc(207* 0.052vw);
+}
+
+.mlp-linea-flecha-a5-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(41 * 0.052vw);
+    top: calc(801 * 0.052vw);
+    left: calc(781 * 0.052vw);
+}
+
+.mlp-linea-flecha-a5-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(-6 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent #6CA036 transparent;
+}
+
+.mlp-linea-flecha-a6-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(40 * 0.052vw);
+    top: calc(802 * 0.052vw);
+    left: calc(1014 * 0.052vw);
+}
+
+.mlp-linea-flecha-a6-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(-6 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent #6CA036 transparent;
+}
+
+.mlp-linea-flecha-b-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(104 * 0.052vw);
+    top: calc(217 * 0.052vw);
+    left: calc(408 * 0.052vw);
+}
+
+.mlp-linea-flecha-b-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(102 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-c1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(342 * 0.052vw);
+    top: calc(200 * 0.052vw);
+    left: calc(675 * 0.052vw);
+}
+
+.mlp-linea-flecha-c2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(80 * 0.052vw);
+    top: calc(541 * 0.052vw);
+    left: calc(430 * 0.052vw);
+}
+
+.mlp-linea-flecha-c2-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(77 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-c3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(246 * 0.052vw);
+    top: calc(540* 0.052vw);
+    left: calc(430* 0.052vw);
+}
+
+.mlp-linea-flecha-d1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(57 * 0.052vw);
+    top: calc(265 * 0.052vw);
+    left: calc(505 * 0.052vw);
+}
+
+.mlp-linea-flecha-d1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(54 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-d2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(404 * 0.052vw);
+    top: calc(265* 0.052vw);
+    left: calc(505* 0.052vw);
+}
+
+.mlp-linea-flecha-d3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(773 * 0.052vw);
+    top: calc(217 * 0.052vw);
+    left: calc(907 * 0.052vw);
+}
+
+.mlp-linea-flecha-d4-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(239 * 0.052vw);
+    top: calc(989* 0.052vw);
+    left: calc(670* 0.052vw);
+}
+
+.mlp-linea-flecha-d4-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent #6CA036 transparent transparent;
+}
+
+.mlp-linea-flecha-e1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(38 * 0.052vw);
+    top: calc(283 * 0.052vw);
+    left: calc(545 * 0.052vw);
+}
+
+.mlp-linea-flecha-e1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(36 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-e2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(578 * 0.052vw);
+    top: calc(283* 0.052vw);
+    left: calc(545* 0.052vw);
+}
+
+.mlp-linea-flecha-e3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(843 * 0.052vw);
+    top: calc(201 * 0.052vw);
+    left: calc(1122 * 0.052vw);
+}
+
+.mlp-linea-flecha-e4-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(134 * 0.052vw);
+    top: calc(477 * 0.052vw);
+    left: calc(775 * 0.052vw);
+}
+
+.mlp-linea-flecha-e4-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(133 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-e5-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(349 * 0.052vw);
+    top: calc(477* 0.052vw);
+    left: calc(775* 0.052vw);
+}
+
+.mlp-linea-flecha-e6-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(454 * 0.052vw);
+    top: calc(1044* 0.052vw);
+    left: calc(670* 0.052vw);
+}
+
+.mlp-linea-flecha-e6-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent #6CA036 transparent transparent;
+}
+
+.mlp-linea-flecha-f1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(49 * 0.052vw);
+    top: calc(572 * 0.052vw);
+    left: calc(480 * 0.052vw);
+}
+
+.mlp-linea-flecha-f1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(46 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-f2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(911 * 0.052vw);
+    top: calc(571* 0.052vw);
+    left: calc(480* 0.052vw);
+}
+
+.mlp-linea-flecha-f3-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(721 * 0.052vw);
+    top: calc(1099* 0.052vw);
+    left: calc(670* 0.052vw);
+}
+
+.mlp-linea-flecha-f3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent #6CA036 transparent transparent;
+}
+
+.mlp-linea-flecha-f4-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(994 * 0.052vw);
+    top: calc(217 * 0.052vw);
+    left: calc(1389 * 0.052vw);
+}
+
+.mlp-linea-flecha-f5-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(50 * 0.052vw);
+    top: calc(1160 * 0.052vw);
+    left: calc(275 * 0.052vw);
+}
+
+.mlp-linea-flecha-f5-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(-6 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent #6CA036 transparent;
+}
+
+.mlp-linea-flecha-f6-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(1116 * 0.052vw);
+    top: calc(1210* 0.052vw);
+    left: calc(275* 0.052vw);
+}
+
+.mlp-linea-flecha-g1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(278 * 0.052vw);
+    top: calc(319 * 0.052vw);
+    left: calc(1017 * 0.052vw);
+}
+
+.mlp-linea-flecha-g1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(275 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-g2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(605 * 0.052vw);
+    top: calc(318* 0.052vw);
+    left: calc(1017* 0.052vw);
+}
+
+.mlp-linea-flecha-g3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(120 * 0.052vw);
+    top: calc(199 * 0.052vw);
+    left: calc(1620 * 0.052vw);
+}
+
+.mlp-linea-flecha-h1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(65 * 0.052vw);
+    top: calc(317 * 0.052vw);
+    left: calc(1733 * 0.052vw);
+}
+
+.mlp-linea-flecha-h1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(64 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-h2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(108 * 0.052vw);
+    top: calc(317* 0.052vw);
+    left: calc(1733* 0.052vw);
+}
+
+.mlp-linea-flecha-h3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(120 * 0.052vw);
+    top: calc(199 * 0.052vw);
+    left: calc(1839 * 0.052vw);
+}
+
+
+
+
+/* .mlp-linea-flecha-iw1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #EDAD33;
+    height: calc(845 * 0.052vw);
+    top: calc(235 * 0.052vw);
+    left: calc(2051 * 0.052vw);
+}
+
+.mlp-linea-flecha-iw2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #EDAD33;
+    width: calc(212 * 0.052vw);
+    top: calc(1078* 0.052vw);
+    left: calc(1946* 0.052vw);
+}
+
+.mlp-linea-flecha-iw3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #EDAD33;
+    height: calc(149 * 0.052vw);
+    top: calc(1079 * 0.052vw);
+    left: calc(1946 * 0.052vw);
+}
+
+.mlp-linea-flecha-iw3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(146 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #EDAD33 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-ip-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #EDAD33;
+    height: calc(149 * 0.052vw);
+    top: calc(1079 * 0.052vw);
+    left: calc(2156 * 0.052vw);
+}
+
+.mlp-linea-flecha-ip-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(146 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #EDAD33 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-jq1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #EDAD33;
+    height: calc(863 * 0.052vw);
+    top: calc(217 * 0.052vw);
+    left: calc(2253 * 0.052vw);
+}
+
+.mlp-linea-flecha-jq2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #EDAD33;
+    width: calc(130 * 0.052vw);
+    top: calc(1078* 0.052vw);
+    left: calc(2254* 0.052vw);
+}
+
+.mlp-linea-flecha-jq3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #EDAD33;
+    height: calc(149 * 0.052vw);
+    top: calc(1079 * 0.052vw);
+    left: calc(2382 * 0.052vw);
+}
+
+.mlp-linea-flecha-jq3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(146 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #EDAD33 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-kr1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #EDAD33;
+    height: calc(880 * 0.052vw);
+    top: calc(200 * 0.052vw);
+    left: calc(2461 * 0.052vw);
+}
+
+.mlp-linea-flecha-kr2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #EDAD33;
+    width: calc(119 * 0.052vw);
+    top: calc(1078* 0.052vw);
+    left: calc(2462* 0.052vw);
+}
+
+.mlp-linea-flecha-kr3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #EDAD33;
+    height: calc(149 * 0.052vw);
+    top: calc(1079 * 0.052vw);
+    left: calc(2579 * 0.052vw);
+}
+
+.mlp-linea-flecha-kr3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(146 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #EDAD33 transparent transparent transparent;
+} */
+
+.mlp-linea-flecha-m1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(66 * 0.052vw);
+    top: calc(1248 * 0.052vw);
+    left: calc(1257 * 0.052vw);
+}
+
+.mlp-linea-flecha-m1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(63 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #DC2C35 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-m2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(190 * 0.052vw);
+    top: calc(1248* 0.052vw);
+    left: calc(1258* 0.052vw);
+}
+
+.mlp-linea-flecha-m3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(790 * 0.052vw);
+    top: calc(460 * 0.052vw);
+    left: calc(1447 * 0.052vw);
+}
+
+.mlp-linea-flecha-m4-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(202 * 0.052vw);
+    top: calc(460* 0.052vw);
+    left: calc(1447* 0.052vw);
+}
+
+.mlp-linea-flecha-n1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(138 * 0.052vw);
+    top: calc(1173 * 0.052vw);
+    left: calc(1491 * 0.052vw);
+}
+
+.mlp-linea-flecha-n1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(138 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #DC2C35 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-n2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(903 * 0.052vw);
+    top: calc(1172* 0.052vw);
+    left: calc(590* 0.052vw);
+}
+
+.mlp-linea-flecha-o1-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(203 * 0.052vw);
+    top: calc(802 * 0.052vw);
+    left: calc(988 * 0.052vw);
+}
+
+.mlp-linea-flecha-o2-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(734 * 0.052vw);
+    top: calc(1003* 0.052vw);
+    left: calc(989* 0.052vw);
+}
+
+.mlp-linea-flecha-o3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(312 * 0.052vw);
+    top: calc(1003 * 0.052vw);
+    left: calc(1721 * 0.052vw);
+}
+
+.mlp-linea-flecha-o3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(308 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #DC2C35 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-i1-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(445 * 0.052vw);
+    top: calc(824 * 0.052vw);
+    left: calc(446 * 0.052vw);
+}
+
+.mlp-linea-flecha-i2-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(236 * 0.052vw);
+    top: calc(1268* 0.052vw);
+    left: calc(325* 0.052vw);
+}
+
+.mlp-linea-flecha-i3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(47 * 0.052vw);
+    top: calc(1268 * 0.052vw);
+    left: calc(325 * 0.052vw);
+}
+
+.mlp-linea-flecha-i3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(43 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #DC2C35 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-j1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(116 * 0.052vw);
+    top: calc(1197 * 0.052vw);
+    left: calc(559 * 0.052vw);
+}
+
+.mlp-linea-flecha-j1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(114 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #DC2C35 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-j2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(133 * 0.052vw);
+    top: calc(1158 * 0.052vw);
+    left: calc(590 * 0.052vw);
+}
+
+.mlp-linea-flecha-j3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(194 * 0.052vw);
+    top: calc(1289* 0.052vw);
+    left: calc(559* 0.052vw);
+}
+
+.mlp-linea-flecha-j4-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(493 * 0.052vw);
+    top: calc(799 * 0.052vw);
+    left: calc(752 * 0.052vw);
+}
+
+.mlp-linea-flecha-k1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(39 * 0.052vw);
+    top: calc(1159 * 0.052vw);
+    left: calc(306 * 0.052vw);
+}
+
+.mlp-linea-flecha-k2-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(481 * 0.052vw);
+    top: calc(1197* 0.052vw);
+    left: calc(306* 0.052vw);
+}
+
+.mlp-linea-flecha-k3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(116 * 0.052vw);
+    top: calc(1197 * 0.052vw);
+    left: calc(786 * 0.052vw);
+}
+
+.mlp-linea-flecha-k3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(114 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #DC2C35 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-l1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(114 * 0.052vw);
+    top: calc(1198 * 0.052vw);
+    left: calc(1035 * 0.052vw);
+}
+
+.mlp-linea-flecha-l1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(114 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #DC2C35 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-l2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(249 * 0.052vw);
+    top: calc(1197* 0.052vw);
+    left: calc(1035* 0.052vw);
+}
+
+.mlp-linea-flecha-l3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(432 * 0.052vw);
+    top: calc(766 * 0.052vw);
+    left: calc(1282 * 0.052vw);
+}
+
+/* .mlp-linea-flecha-xl-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #EDAD33;
+    height: calc(1028 * 0.052vw);
+    top: calc(199 * 0.052vw);
+    left: calc(2666 * 0.052vw);
+}
+
+.mlp-linea-flecha-xl-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(1027 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #EDAD33 transparent transparent transparent;
+} */
+
+
+
+
+
+.mlp-linea-flecha-a-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(93 * 0.052vw);
+    top: calc(526 * 0.052vw);
+    left: calc(392 * 0.052vw);
+}
+
+.mlp-linea-flecha-a-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(92 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: rgb(144 158 161) transparent transparent transparent;
+}
+
+.mlp-linea-flecha-b1-min {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(85 * 0.052vw);
+    top: calc(824 * 0.052vw);
+    left: calc(427 * 0.052vw);
+}
+
+.mlp-linea-flecha-b2-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(304 * 0.052vw);
+    top: calc(908* 0.052vw);
+    left: calc(277* 0.052vw);
+}
+
+.mlp-linea-flecha-b3-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(47 * 0.052vw);
+    top: calc(909 * 0.052vw);
+    left: calc(277 * 0.052vw);
+}
+
+.mlp-linea-flecha-b3-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(43 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: rgb(144 158 161) transparent transparent transparent;
+}
+
+.mlp-linea-flecha-c1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(104 * 0.052vw);
+    top: calc(353* 0.052vw);
+    left: calc(237* 0.052vw);
+}
+
+.mlp-linea-flecha-c1-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(144 158 161);
+}
+
+.mlp-linea-flecha-c2-min {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(604 * 0.052vw);
+    top: calc(353 * 0.052vw);
+    left: calc(237 * 0.052vw);
+}
+
+.mlp-linea-flecha-d-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(47 * 0.052vw);
+    top: calc(910 * 0.052vw);
+    left: calc(579 * 0.052vw);
+}
+
+.mlp-linea-flecha-d-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(43 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: rgb(144 158 161) transparent transparent transparent;
+}
+
+.mlp-linea-flecha-e1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(1078 * 0.052vw);
+    top: calc(1129* 0.052vw);
+    left: calc(665* 0.052vw);
+}
+
+.mlp-linea-flecha-e2-min {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(312 * 0.052vw);
+    top: calc(819 * 0.052vw);
+    left: calc(1741 * 0.052vw);
+}
+
+.mlp-linea-flecha-e2-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(-6 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent rgb(144 158 161) transparent;
+}
+
+.mlp-linea-flecha-f1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(906 * 0.052vw);
+    top: calc(439* 0.052vw);
+    left: calc(585* 0.052vw);
+}
+
+.mlp-linea-flecha-f1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent rgb(144 158 161) transparent transparent;
+}
+
+.mlp-linea-flecha-f2-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(283 * 0.052vw);
+    top: calc(442 * 0.052vw);
+    left: calc(1489 * 0.052vw);
+}
+
+.mlp-linea-flecha-f3-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(132 * 0.052vw);
+    top: calc(723* 0.052vw);
+    left: calc(1489* 0.052vw);
+}
+
+.mlp-linea-flecha-g1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(75 * 0.052vw);
+    top: calc(443* 0.052vw);
+    left: calc(266* 0.052vw);
+}
+
+.mlp-linea-flecha-g1-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(144 158 161);
+}
+
+.mlp-linea-flecha-g2-min {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(266 * 0.052vw);
+    top: calc(443 * 0.052vw);
+    left: calc(265 * 0.052vw);
+}
+
+.mlp-linea-flecha-g3-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(80 * 0.052vw);
+    top: calc(707* 0.052vw);
+    left: calc(266* 0.052vw);
+}
+
+.mlp-linea-flecha-h1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(673 * 0.052vw);
+    top: calc(370* 0.052vw);
+    left: calc(585* 0.052vw);
+}
+
+.mlp-linea-flecha-h1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent rgb(144 158 161) transparent transparent;
+}
+
+.mlp-linea-flecha-h2-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(241 * 0.052vw);
+    top: calc(370 * 0.052vw);
+    left: calc(1256 * 0.052vw);
+}
+
+.mlp-linea-flecha-i-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(88 * 0.052vw);
+    top: calc(540 * 0.052vw);
+    left: calc(1733 * 0.052vw);
+}
+
+.mlp-linea-flecha-i-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(88 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #6CA036 transparent transparent transparent;
+}
+
+.mlp-linea-flecha-j-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(91 * 0.052vw);
+    top: calc(700* 0.052vw);
+    left: calc(1101* 0.052vw);
+}
+
+.mlp-linea-flecha-j-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(144 158 161);
+}
+
+.ddl-mlp-val-a1-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(265* 0.052vw);
+    left: calc(301* 0.052vw);
+}
+
+.ddl-mlp-val-a2-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(802* 0.052vw);
+    left: calc(789* 0.052vw);
+}
+
+.ddl-mlp-val-a3-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(802* 0.052vw);
+    left: calc(1021* 0.052vw);
+}
+
+.ddl-mlp-val-b-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(265* 0.052vw);
+    left: calc(417* 0.052vw);
+}
+
+.ddl-mlp-val-c-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(505* 0.052vw);
+    left: calc(611* 0.052vw);
+}
+
+.ddl-mlp-val-d1-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(226* 0.052vw);
+    left: calc(525* 0.052vw);
+}
+
+.ddl-mlp-val-d2-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(952* 0.052vw);
+    left: calc(674* 0.052vw);
+}
+
+.ddl-mlp-val-e1-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(289* 0.052vw);
+    left: calc(559* 0.052vw);
+}
+
+.ddl-mlp-val-e2-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(577* 0.052vw);
+    left: calc(785* 0.052vw);
+}
+
+.ddl-mlp-val-e3-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1007* 0.052vw);
+    left: calc(674* 0.052vw);
+}
+
+.ddl-mlp-val-f1-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(577* 0.052vw);
+    left: calc(520* 0.052vw);
+}
+
+.ddl-mlp-val-f2-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1062* 0.052vw);
+    left: calc(674* 0.052vw);
+}
+
+.ddl-mlp-val-f3-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1163* 0.052vw);
+    left: calc(205* 0.052vw);
+}
+
+.ddl-mlp-val-g-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(506* 0.052vw);
+    left: calc(1023* 0.052vw);
+}
+
+.ddl-mlp-val-h-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(348* 0.052vw);
+    left: calc(1666* 0.052vw);
+}
+
+
+.ddl-mlp-val-a-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(529* 0.052vw);
+    left: calc(336* 0.052vw);
+}
+
+.ddl-mlp-val-b-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(920* 0.052vw);
+    left: calc(286* 0.052vw);
+}
+
+.ddl-mlp-val-c-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(360* 0.052vw);
+    left: calc(278* 0.052vw);
+}
+
+.ddl-mlp-val-d-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(920* 0.052vw);
+    left: calc(524* 0.052vw);
+}
+
+.ddl-mlp-val-e-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(821* 0.052vw);
+    left: calc(1672* 0.052vw);
+}
+
+.ddl-mlp-val-f-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(443* 0.052vw);
+    left: calc(704* 0.052vw);
+}
+
+.ddl-mlp-val-g-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(448* 0.052vw);
+    left: calc(278* 0.052vw);
+}
+
+.ddl-mlp-val-h-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(333* 0.052vw);
+    left: calc(704* 0.052vw);
+}
+
+.ddl-mlp-val-i-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(572* 0.052vw);
+    left: calc(1666* 0.052vw);
+}
+
+.ddl-mlp-val-j-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(662* 0.052vw);
+    left: calc(1129* 0.052vw);
+}
+
+
+
+
+
+.ddl-mlp-letra-a-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(226* 0.052vw);
+    left: calc(219* 0.052vw);
+}
+
+.ddl-mlp-letra-b-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(226* 0.052vw);
+    left: calc(394* 0.052vw);
+}
+
+.ddl-mlp-letra-c-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(204* 0.052vw);
+    left: calc(683* 0.052vw);
+}
+
+.ddl-mlp-letra-d-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(221* 0.052vw);
+    left: calc(914* 0.052vw);
+}
+
+.ddl-mlp-letra-e-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(204* 0.052vw);
+    left: calc(1131* 0.052vw);
+}
+
+.ddl-mlp-letra-f-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(223* 0.052vw);
+    left: calc(1399* 0.052vw);
+}
+
+.ddl-mlp-letra-g-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(204* 0.052vw);
+    left: calc(1628* 0.052vw);
+}
+
+.ddl-mlp-letra-h-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(204* 0.052vw);
+    left: calc(1847* 0.052vw);
+}
+
+.ddl-mlp-letra-i-may{
+    /* width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(240* 0.052vw);
+    left: calc(2061* 0.052vw); */
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1290* 0.052vw);
+    left: calc(334* 0.052vw);
+}
+
+.ddl-mlp-letra-j-may{
+    /* width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(223* 0.052vw);
+    left: calc(2261* 0.052vw); */
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1290* 0.052vw);
+    left: calc(548* 0.052vw);
+}
+
+.ddl-mlp-letra-k-may{
+    /* width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(204* 0.052vw);
+    left: calc(2469* 0.052vw); */
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1290* 0.052vw);
+    left: calc(794* 0.052vw);
+}
+
+.ddl-mlp-letra-l-may{
+    /* width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1213* 0.052vw);
+    left: calc(2677* 0.052vw); */
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1290* 0.052vw);
+    left: calc(1043* 0.052vw);
+}
+
+.ddl-mlp-letra-m-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1290* 0.052vw);
+    left: calc(1266* 0.052vw);
+}
+
+.ddl-mlp-letra-n-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1290* 0.052vw);
+    left: calc(1499* 0.052vw);
+}
+
+.ddl-mlp-letra-o-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1290* 0.052vw);
+    left: calc(1728* 0.052vw);
+}
+
+.ddl-mlp-letra-p-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1213* 0.052vw);
+    left: calc(2166* 0.052vw);
+}
+
+.ddl-mlp-letra-q-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1213* 0.052vw);
+    left: calc(2390* 0.052vw);
+}
+
+.ddl-mlp-letra-r-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1213* 0.052vw);
+    left: calc(2589* 0.052vw);
+}
+
+.ddl-mlp-letra-s-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1224* 0.052vw);
+    left: calc(334* 0.052vw);
+}
+
+.ddl-mlp-letra-t-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1224* 0.052vw);
+    left: calc(568* 0.052vw);
+}
+
+.ddl-mlp-letra-u-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1224* 0.052vw);
+    left: calc(794* 0.052vw);
+}
+
+.ddl-mlp-letra-v-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1224* 0.052vw);
+    left: calc(1043* 0.052vw);
+}
+
+.ddl-mlp-letra-w-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1213* 0.052vw);
+    left: calc(1955* 0.052vw);
+}
+
+.ddl-mlp-letra-x-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(204* 0.052vw);
+    left: calc(2674* 0.052vw);
+}
+
+.ddl-mlp-letra-a-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(540* 0.052vw);
+    left: calc(402* 0.052vw);
+}
+
+.ddl-mlp-letra-b-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(929* 0.052vw);
+    left: calc(265* 0.052vw);
+}
+
+.ddl-mlp-letra-c-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(335* 0.052vw);
+    left: calc(303* 0.052vw);
+}
+
+.ddl-mlp-letra-d-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(929 * 0.052vw);
+    left: calc(586* 0.052vw);
+}
+
+.ddl-mlp-letra-e-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(831* 0.052vw);
+    left: calc(1749* 0.052vw);
+}
+
+
+.ddl-mlp-letra-f-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(422* 0.052vw);
+    left: calc(722* 0.052vw);
+}
+
+.ddl-mlp-letra-g-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(423* 0.052vw);
+    left: calc(303* 0.052vw);
+}
+
+.ddl-mlp-letra-h-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(376* 0.052vw);
+    left: calc(722* 0.052vw);
+}
+
+.ddl-mlp-letra-i-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(584* 0.052vw);
+    left: calc(1742* 0.052vw);
+}
+
+.ddl-mlp-letra-j-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(706* 0.052vw);
+    left: calc(1154* 0.052vw);
+}
+
+.ddl-mlp-letra-invisible-vert{
+    width: calc(60 * 0.052vw);
+    color: transparent;
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1517* 0.052vw); /*1440*/
+    left: calc(334* 0.052vw);
+}
+
+.ddl-mlp-letra-invisible-hori{
+    width: calc(60 * 0.052vw);
+    color: transparent;
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(204* 0.052vw);
+    left: calc(1915* 0.052vw);
+}
+
+.modal-mlp {
+    position: absolute; /* Posición fija en la ventana del navegador */
+    z-index: 1000; /* Para que se superponga a cualquier contenido */
+    left: calc(984 * 0.052vw); 
+    top: calc(719 * 0.052vw);
+    transform: translate(-50%, -50%); /* Centra el modal */
+    width: calc(1742 * 0.052vw); 
+    height: calc(952 * 0.052vw);
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+.modal-content-mlp {
+    background-color: #fefefe;
+    padding: calc(113 * 0.052vw);
+    border: calc(1 * 0.052vw) solid #888;
+    height: calc(941 * 0.052vw);
+    z-index: 1001;  /* Se asegura de que el contenido interno tenga un z-index adecuado */
+    position: relative;
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+.modal-image-mlp {
+    position: relative;
+    width: calc(1465 * 0.052vw);
+    height: calc(800 * 0.052vw);
+    left: calc(27 * 0.052vw); 
+    bottom: calc(51 * 0.052vw);
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+.close-mlp {
+    position: absolute;
+    top: calc(10 * 0.052vw);
+    right: calc(15 * 0.052vw);
+    color: #aaa;
+    font-size: calc(28 * 0.052vw);
+    font-weight: bold;
+    cursor: pointer;
+}

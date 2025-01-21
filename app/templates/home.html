@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal</title>
+    <link rel="stylesheet" href="/static/css/portada.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="no-scroll">
+    <div class="pt-bg-grid-menu-principal-pe">
+        <div class="pt-cont-principal-reportes">
+            <div class="pt-texto-bienvenida-menu">
+                <p class="fs-5 text">{{ saludo }}</p>
+                <p class="fs-4 text fw-bold" style="margin-bottom: calc(5 * 0.052vw);">Plataforma de Gestión Hídrica</p>
+                <p class="fs-5 text" style="margin-bottom: calc(30 * 0.052vw);">Grupo AMSA</p>
+                <p>Selecciona Compañía</p>
+
+                <!-- Formulario para seleccionar la compañía -->
+                <form method="POST" action="/">
+                    <div class="pt-menu-compania">
+                        <img src="/static/img/logos/filtrocompania.png" class="pt-logo-reporte">
+                        <select name="persisted-compania" onchange="this.form.submit()">
+                            <!-- Opción vacía para iniciar sin selección -->
+                            <!-- <option value="" selected disabled>Seleccione</option> -->
+                            {% for compania in companias %}
+                                <option value="{{ compania }}" {% if compania == selected_company %}selected{% endif %}>{{ compania }}</option>
+                                <!-- <option value="{{ compania }}" {% if compania == request.form.get('persisted-compania') %}selected{% endif %}>{{ compania }}</option> -->
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="pt-botones-seleccion-menu">
+                <a class="pt-texto-botones-principal" style="color: grey; font-weight: 600;">
+                    <img src="/static/img/logos/principal_menu.png" class="pt-logo-reporte"> Resumen Ejecutivo
+                    <div class="tag-proximamente-resumen">
+                        <span>Pronto</span>
+                        <img src="/static/img/logos/cohete.png">
+                    </div>
+                </a>
+                
+                <a class="pt-texto-botones-principal" style="color: grey; font-weight: 600;">
+                    <img src="/static/img/logos/dashboards_menu.png" class="pt-logo-reporte"> Dashboards
+                    <div class="tag-proximamente-dash">
+                        <span>Pronto</span>
+                        <img src="/static/img/logos/cohete.png">
+                    </div>
+                </a>
+
+                <!-- Enlace con href dinámico -->
+                <a href="{{ href }}" class="pt-texto-botones-principal">
+                    <img src="/static/img/logos/diagrama_flujo_menu.png" class="pt-logo-reporte"> Balance de Agua
+                    <div class="tag-desarr-bal">
+                        <span>En Construcción</span>
+                        <img src="/static/img/logos/martillo.png">
+                    </div>
+                </a>
+                
+                <a href="/balanceicmm" class="pt-texto-botones-principal">
+                    <img src="/static/img/logos/balance_menu.png" class="pt-logo-reporte"> Balance ICMM
+                    <div class="tag-desarr-icmm">
+                        <span>En Construcción</span>
+                        <img src="/static/img/logos/martillo.png">
+                    </div>
+                </a>
+
+                <a class="pt-texto-botones-principal" style="color: grey; font-weight: 600;">
+                    <img src="/static/img/logos/estandar_gestion_menu.png" class="pt-logo-reporte"> Est. de G. Hídrica
+                    <div class="tag-proximamente-gest">
+                        <span>Pronto</span>
+                        <img src="/static/img/logos/cohete.png">
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="pt-resumen-menu-principal">
+                <div>
+                    <p style="display: inline-block; vertical-align: top; margin-left: calc(20 * 0.052vw)" class="pt-texto-resumen-bold">Auditoría interna</p>
+                </div>
+                <div>
+                    <p style="display: inline-block; vertical-align: top; margin-left: calc(20 * 0.052vw)" class="pt-texto-resumen fw-bold">Fecha: {{ current_date }}</p>
+                </div>
+            
+                <!-- Lista de bullets 1 -->
+                <div style="display: inline-block; vertical-align: top; margin-left: calc(20 * 0.052vw); margin-top: calc(12 * 0.052vw);">
+                    <ul class="pt-texto-resumen fw-bold" style="display: inline-block; margin: 0;">
+                        <li>Revisión del Consumo:</li>
+                    </ul>
+                    <span style="font-size: calc(16 * 0.052vw);"> Análisis detallado del uso actual de agua en todas las áreas operativas. Se ha documentado el consumo por departamentos y equipos principales.</span>
+                </div>
+            
+                <!-- Lista de bullets 2 -->
+                <div style="display: inline-block; vertical-align: top; margin-left: calc(20 * 0.052vw); margin-top: calc(10 * 0.052vw);">
+                    <ul class="pt-texto-resumen fw-bold" style="display: inline-block; margin: 0;">
+                        <li>Identificación de Áreas de Mejora:</li>
+                    </ul>
+                    <span style="font-size: calc(16 * 0.052vw);"> Hemos identificado varios puntos críticos donde la eficiencia hídrica puede ser mejorada significativamente. Esto incluye la actualización de maquinaria y la optimización de sistemas de climatización.</span>
+                </div>
+            
+                <!-- Lista de bullets 3 -->
+                <div style="display: inline-block; vertical-align: top; margin-left: calc(20 * 0.052vw); margin-top: calc(10 * 0.052vw);">
+                    <ul class="pt-texto-resumen fw-bold" style="display: inline-block; margin: 0;">
+                        <li>Recomendaciones:</li>
+                    </ul>
+                    <span style="font-size: calc(16 * 0.052vw);"> Propuestas de acciones concretas para reducir el consumo de agua y los costos asociados. Se recomienda la implementación de tecnologías de bajo consumo y la revisión de protocolos operativos.</span>
+                </div>
+            
+                <!-- Lista de bullets 4 -->
+                <div style="display: inline-block; vertical-align: top; margin-left: calc(10 * 0.052vw); margin-top: calc(10 * 0.052vw);">
+                    <ul class="pt-texto-resumen fw-bold" style="display: inline-block; margin-top: calc(30 * 0.052vw);">
+                        <li>Para más detalles,</li>
+                    </ul>
+                    <span style="font-size: calc(16 * 0.052vw);"> ver el informe completo </span>
+                    <a href="" style="font-size: calc(16 * 0.052vw); color: black; text-decoration: underline;">Aquí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

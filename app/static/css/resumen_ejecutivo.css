@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.rej-titulo-pagina{
+    font-size: calc(18 * 0.052vw);
+    font-weight: 600;
+    line-height: calc(21.94 * 0.052vw);
+    text-align: left;
+    margin-bottom: calc(5 * 0.052vw);
+    margin-top: calc(45 * 0.052vw);
+}
+
+.rej-separador-linea{
+    width: calc(1800 * 0.052vw);
+    height: calc(0 * 0.052vw);
+    top: calc(146 * 0.052vw);
+    left: calc(80 * 0.052vw);
+    gap: calc(0 * 0.052vw);
+    border: calc(1 * 0.052vw) calc(0 * 0.052vw) calc(0 * 0.052vw) calc(0 * 0.052vw);
+    opacity: calc(0 * 0.052vw);
+    border: calc(1 * 0.052vw) solid #5BC7C7
+}
+
+.rej-separador-linea-2{
+    border: calc(1 * 0.052vw) solid #5BC7C7;
+    margin-top: calc(10 * 0.052vw);
+}
+
+.rej-separador-linea-3{
+    border: 0;
+    height: calc(5 * 0.052vw);
+    background: linear-gradient(to right, #DC2C35 25%, #EDAD33 25%, #EDAD33 50%, #00768A 50%, #00768A 75%, #5BC7C7 75%);
+    opacity: 60%;
+}
+
+.rej-separador-linea-amsa{
+    border: calc(1 * 0.052vw) solid #5BC7C7;
+    margin-top: calc(32 * 0.052vw);
+    opacity: 60%;
+}
+
+.rej-grid-consumo-hidrico{
+    background-color: #F9F9F9;
+    row-gap: calc(10 * 0.052vw);
+    grid-template-columns: 3.229vw 96.771vw;
+}
+
+.rej-contenido-pagina{
+    width: calc(1800 * 0.052vw);
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr auto;
+}
+
+.rej-contenido-pagina .rej-titulo-principal-pagina{
+    margin-top: calc(0 * 0.052vw);
+}
+
+.rej-titulo-principal-pagina{
+    display: flex;
+    margin-top: calc(30 * 0.052vw);
+    margin-left: calc(20 * 0.052vw);
+    height: 100%;
+    flex-direction: column;
+    width: calc(1800 * 0.052vw);
+}
+
+.rej-texto-filtro-periodo{
+    margin-top: calc(10 * 0.052vw);
+    margin-left: calc(70 * 0.052vw);
+    font-family: Montserrat;
+    font-size: calc(17 * 0.052vw);
+    font-weight: 600;
+}
+
+.rej-filtro-periodo{
+    width: calc(145 * 0.052vw);
+    margin-top: calc(10 * 0.052vw);
+    margin-left: calc(8 * 0.052vw);
+    border-radius: calc(6 * 0.052vw); 
+    display: flex;
+    column-gap: calc(20 * 0.052vw);
+    justify-items: start;
+    font-size: calc(14 * 0.052vw);
+    border: calc(1 * 0.052vw) solid #5BC7C7;
+}
+
+.rej-filtro-periodo .dash-dropdown{
+    width: calc(180 * 0.052vw);
+    height: calc(70 * 0.052vw); 
+    margin: calc(5 * 0.052vw) calc(0 * 0.052vw);
+    font-size: calc(15 * 0.052vw);
+    border: none;
+    align-items: center;
+    align-content: center;
+}
+
+.rej-filtro-periodo .Select-value-label{
+    border-color: #878787;
+}
+
+.rej-filtro-mtd_ytd{
+    margin-right: calc(10 * 0.052vw);
+    margin-left: calc(10 * 0.052vw);
+}
+
+.rej-valor-uso-opr{
+    width: calc(126 * 0.052vw);
+    height: calc(39 * 0.052vw);
+    margin-top: calc(11 * 0.052vw);
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: calc(32 * 0.052vw);
+    color: #00768A;
+}
+
+.rej-txt-vol-agua{
+    font-size: calc(13 * 0.052vw);
+}
+
+.rej-icon-vol-agua{
+    height: calc(27 * 0.052vw);
+    margin-left: auto;
+}
+
+.rej-companias {
+    height: calc(470 * 0.052vw);
+    display: flex;
+    /* flex-wrap: wrap; */
+    margin-top: calc(-80 * 0.052vw);
+    gap: calc(20 * 0.052vw);
+    /* flex-direction: row;  */
+    /* justify-content: space-between; */
+}
+
+.consumo-row {
+    display: flex;
+    flex-direction: row; 
+}
+
+.rej-int-cons-div-mlp {
+    width: calc(435 * 0.052vw);
+    height: calc(310 * 0.052vw);
+    border-radius: calc(12 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat;
+    margin-left: calc(20* 0.052vw);
+    margin-top: calc(100* 0.052vw);
+    /* position: relative;
+    left: calc(23 * 0.052vw); 
+    top: calc(0 * 0.052vw);  */
+}
+
+.rej-int-cons-div-cen {
+    width: calc(435 * 0.052vw);
+    height: calc(310 * 0.052vw);
+    border-radius: calc(12 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    margin-top: calc(100* 0.052vw);
+    /* position: relative;
+    left: calc(43* 0.052vw);
+    top: calc(0* 0.052vw); */
+}
+
+.rej-int-cons-div-amsa {
+    width: calc(1779 * 0.052vw);
+    height: calc(370 * 0.052vw);
+    border-radius: calc(12 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    margin-top: calc(10* 0.052vw);
+    margin-left: calc(20* 0.052vw);
+    /* position: relative;
+    left: calc(23 * 0.052vw);
+    top: calc(20 * 0.052vw); */
+}
+
+.rej-int-cons-div-ant {
+    width: calc(435 * 0.052vw);
+    height: calc(310 * 0.052vw);
+    border-radius: calc(12 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    margin-top: calc(100* 0.052vw);
+    /* position: relative;
+    left: calc(65 * 0.052vw);
+    top: calc(57 * 0.052vw); */
+}
+
+.rej-int-cons-div-cmz {
+    width: calc(435 * 0.052vw);
+    height: calc(310 * 0.052vw);
+    border-radius: calc(12 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    margin-top: calc(100* 0.052vw);
+    /* position: relative;
+    left: calc(44 * 0.052vw);
+    top: calc(198 * 0.052vw); */
+}
+
+.rej-txt-titulo-compania{
+    font-weight: bold;
+    font-size: calc(17 * 0.052vw);
+    color: #00768A;
+}
+
+.rej-txt-titulo-amsa{
+    font-size: calc(38 * 0.052vw);
+    color: #00768A;
+    font-weight: 600;
+    margin-left: calc(15 * 0.052vw);
+}
+
+.rej-percent-compania{
+    font-weight: 600;
+    font-size: calc(24 * 0.052vw);
+    color: #00768A;
+}
+
+.rej-inline-values {
+    display: flex;
+    gap: calc(35* 0.052vw);
+    justify-content: center; 
+    align-items: center;  
+    background-color: #6CC3C426;   
+    margin-top: calc(6 * 0.052vw);
+}
+
+.rej-percent-amsa{
+    background-color: #6CC3C426;
+    font-weight: 700;
+    font-size: calc(40 * 0.052vw);
+    color: #D22630;
+    text-align: center;
+}
+
+.rej-valor-uso-opr-compania{
+    height: calc(22 * 0.052vw);
+    margin-top: calc(6 * 0.052vw);
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: calc(18 * 0.052vw);
+    color: #00768A;
+    text-align: center;
+}
+
+.rej-valor-uso-opr-amsa{
+    height: calc(22 * 0.052vw);
+    margin-top: calc(10 * 0.052vw);
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: calc(30 * 0.052vw);
+    color: #00768A;
+    text-align: center;
+}
+
+.rej-titulos-agua-prod-comp{
+    font-size: calc(10 * 0.052vw);
+    color:#1F2937;
+    text-align: center;
+    font-weight: 600;
+    width: calc(130 * 0.052vw);
+    margin-bottom: calc(3 * 0.052vw);
+}
+
+.rej-titulos-agua-prod-amsa{
+    font-size: calc(15 * 0.052vw);
+    text-align: center;
+    font-weight: 500;
+}
+.rej-titulos-mtd-ytd{
+    font-size: calc(9 * 0.052vw);
+    font-weight: 500;
+    text-align: right;
+}
+
+.rej-titulos-valores{
+    font-size: calc(18 * 0.052vw);
+    color: #00768A;
+    font-weight: 700;
+}
+
+.rej-titulos-percent{
+    font-size: calc(18 * 0.052vw);
+    color:#1B9D56;
+    font-weight: 700;
+    text-align: right;
+    margin-left: calc(30 * 0.052vw);
+}
+
+.rej-titulos-div{
+    display: flex;
+    /* grid-template-columns: 2fr 2fr; */
+    gap: calc(20 * 0.052vw);
+    margin-top: calc(10 * 0.052vw);
+}
+
+.ref-int-info{
+    font-family: Montserrat;
+    color: #00768A;
+    font-size: calc(14 * 0.052vw);
+    display: flex;
+    gap: calc(10 * 0.052vw);
+    margin-top: calc(20 * 0.052vw);
+    margin-left: calc(20* 0.052vw);
+    font-weight: 500;
+    /* position: relative;
+    left: calc(1228 * 0.052vw);
+    top: calc(167 * 0.052vw); */
+}
+
+.rej-alineacion-general{
+    display: flex;
+    align-items: center;
+}
+
+.rej-letras-mtd-ytd{
+    font-family: Montserrat;
+    font-size: calc(17 * 0.052vw);
+    font-weight: 600;
+}
+
+.rej-format-mtd-ytd{
+    display: flex;
+    align-items: center;
+    margin-left: calc(1200 * 0.052vw);
+    margin-top : calc(10 * 0.052vw);
+}
+
+.rej-txt-cons-unit-comp{
+    font-size: calc(10 * 0.052vw);
+    margin-left: auto;
+    color: #00768A;
+    width: calc(152 * 0.052vw);
+    text-align: center;
+}
+
+.rej-txt-cons-unit-amsa{
+    font-size: calc(13 * 0.052vw);
+    margin-left: auto;
+    margin-right: calc(15 * 0.052vw);
+    color: #00768A;
+}
+
+.rej-txt-volum-comp{
+    font-size: calc(9 * 0.052vw);
+    text-align: center;
+    font-weight: 600;
+}
+
+.rej-txt-volum-amsa{
+    font-size: calc(16 * 0.052vw);
+    text-align: center;
+    font-weight: 500;
+    width: calc(290 * 0.052vw);
+}
+
+.rej-alineacion-vol-comp{
+    display: flex;
+    margin-top: calc(10 * 0.052vw);
+    gap: calc(19 * 0.052vw);
+}
+
+.rej-alineacion-vol-amsa{
+    display: flex;
+    margin-top: calc(15 * 0.052vw);
+    margin-left: calc(78 * 0.052vw);
+    gap: calc(377* 0.052vw);
+}

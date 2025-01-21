@@ -1,0 +1,7 @@
+{
+    "SOFTWARE_VERSION":"1.0.1 alpha - Jul 18 2024",
+
+    "APPLICATION_NAME":"Demo AppService",
+    "NAV_LINKS": [{"label": "Page One", "url": "/home/page-one"},{"label": "Page Two", "url": "/home/page-two"}],
+    "APP_TIME_ZONE": "America/Santiago"
+}

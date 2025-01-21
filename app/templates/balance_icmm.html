@@ -1,0 +1,377 @@
+<title>Balance ICMM</title>
+<link rel="stylesheet" href="/static/css/balance_icmm.css">
+<link rel="stylesheet" href="/static/css/general_page.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+{% extends "barra_lateral.html" %}
+
+{% block content %}
+<div style="margin-left: calc(70 * 0.052vw);">
+    <div class="bi-titulo-principal-pagina">
+        <p class="bi-titulo-pagina">TABLA ICMM - {{ selected_company }}</p>
+        <div class="diag-actualizacion-container">
+            <img src="/static/img/svg/calendar.svg" class="gp-cabecera-actualizacion-calendar"></img>
+            <span class="gp-cabecera-actualizacion">{{ mensaje_fecha }}</span>
+        </div>
+        <div class="bi-separador-linea"></div>
+    </div>
+
+    <div class="bi-contenido-pagina">
+        <form method="POST" id="filter-form">
+            <!--Se agrega un campo oculto para garantizar que persisted-compania se envíe en todas las solicitudes POST-->
+            <input type="hidden" name="persisted-compania" id="persisted-compania-hidden" value="{{ selected_company }}">
+
+            <div class="bi-filtros-contenedor">
+                <!-- Dropdown Mes -->
+                <div class="bi-filtro-mes">
+                    <select name="filtro_mes" class="form-select" onchange="document.getElementById('filter-form').submit();">
+                        <option value="">Mes</option>
+                        {% for mes in meses %}
+                            <option value="{{ mes }}" {% if mes == request.form.get('filtro_mes') %}selected{% endif %}>
+                                {{ mes }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>            
+
+                <!-- Dropdown Año -->
+                <div class="bi-filtro-anio">
+                    <select name="filtro_anio" class="form-select" onchange="document.getElementById('filter-form').submit();">
+                        <option value="">Año</option>
+                        {% for anio in anios %}
+                            <option value="{{ anio }}" {% if anio == request.form.get('filtro_anio') %}selected{% endif %}>
+                                {{ anio }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- ToggleSwitch -->
+                <div class="form-check form-switch bi-filtro-mtd_ytd" style="display: flex; align-items: center; gap: 8px; margin-left: calc(-17 * 0.052vw);">
+                    <span class="mtd-text">MTD</span>
+                    <label style="margin: calc(-4 * 0.052vw); margin-bottom: calc(1 * 0.052vw);">
+                        <input class="form-check-input" type="checkbox" name="filtro_temp" id="filtroSwitch" style="margin-left: calc(0 * 0.052vw); height: calc(23 * 0.052vw); width: calc(43 * 0.052vw);"
+                               onchange="document.getElementById('filter-form').submit();" 
+                               {% if request.form.get('filtro_temp') == "on" %}checked{% endif %}>
+                    </label>
+                    <span class="ytd-text">YTD</span>
+                </div>
+                <script>
+                    const filtroSwitch = document.getElementById("filtroSwitch");
+                
+                    filtroSwitch.addEventListener("change", function () {
+                        console.log(filtroSwitch.checked ? "YTD" : "MTD");
+                    });
+                </script>
+
+                    <!-- Zoom Button -->
+                    <div style="margin-left: calc(174 * 0.052vw);">
+                        <button type="button" class="btn-zoom-tabla-icmm" id="zoom_button">
+                            <img src="/static/img/svg/zoom_min.svg" alt="Zoom" style="height: calc(15 * 0.052vw); margin-right: calc(8 * 0.052vw);">
+                            Zoom
+                        </button>
+                    </div>
+
+                    <!-- Dropdown para Descargar -->
+                    <div class="dwnl-archivo" style="display: flex; align-items: center; margin-left: calc(45 * 0.052vw); margin-top: calc(15 * 0.052vw);">
+                        <!-- Imagen al lado izquierdo -->
+                        <img src="/static/img/svg/dwnl_tabla_icmm.svg" style="height: calc(20 * 0.052vw); margin-right: calc(-13 * 0.052vw);" alt="Icono de descarga">
+                        
+                        <!-- Lista desplegable -->
+                        <select id="dropdown-options" class="ddl-descarga-icmm" style="border: none; background-color: transparent; color: black; font-weight: 700;">
+                            <option value="" disabled selected hidden>Descargar archivo</option>
+                            <option value="png">Png</option>
+                            <option value="excel">Excel</option>
+                        </select>
+                        
+                        <!-- Enlace oculto para disparar la descarga -->
+                        <a id="download-link" style="display: none;"></a>
+                    </div>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+        </form>
+    </div>
+
+    <div class='bi-tabla-icmm-general'>
+        <table id="table-container" class="bi-tabla-icmm" style="background-color: #FFFFFF;">
+            <tr>
+                <th class="bi-columnas-titulo-tabla" style="font-weight: bold;">Tipo de Agua</th>
+                <th class="bi-columnas-titulo-tabla" style="font-weight: bold;">Métrica</th>
+                <th class="bi-columnas-titulo-tabla" style="font-weight: bold;">Fuente / Destino</th>
+                <th class="bi-columnas-titulo-tabla" style="font-weight: bold;">Calidad del Agua Alta (ML)</th>
+                <th class="bi-columnas-titulo-tabla" style="font-weight: bold;">Calidad del Agua Baja (ML)</th>
+                <th class="bi-columnas-titulo-tabla" style="font-weight: bold;">Total (ML)</th>
+            </tr>
+    
+            <tr>
+                <td rowspan="18" class="bi-columnas-titulo-tabla" style="background-color: #EA8086; text-align: center; font-weight: bold;">Agua Operacional</td>
+                <td rowspan="4" class="bi-columnas-titulo-tabla" style="background-color: #DDEBB9;">Extracción/Captación</td>
+                <td class="bi-columnas-titulo-tabla">Agua Superficial</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_asup_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_asup_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_asup_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua Subterránea</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_asub_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_asub_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_asub_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua de Mar</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_amar_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_amar_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_amar_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua de Terceros</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_ater_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_ater_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_ext_ater_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #DDEBB9; font-weight: bold;">Total</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #DDEBB9; font-weight: bold;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #DDEBB9; font-weight: bold;">{{ datos['ao_ext_subtotal_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #DDEBB9; font-weight: bold;">{{ datos['ao_ext_subtotal_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #DDEBB9; font-weight: bold;">{{ datos['ao_ext_subtotal_total'] }}</td>
+            </tr>
+            <tr>
+                <td rowspan="4" class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8;">Descarga</td>
+                <td class="bi-columnas-titulo-tabla">Agua Superficial</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_asup_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_asup_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_asup_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua Subterránea</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_asub_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_asub_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_asub_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua de Mar</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_amar_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_amar_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_amar_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua de Terceros</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_ater_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_ater_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_desc_ater_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;">Total</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;">{{ datos['ao_desc_subtotal_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;">{{ datos['ao_desc_subtotal_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;">{{ datos['ao_desc_subtotal_total'] }}</td>
+            </tr>
+            <tr>
+                <td rowspan="4" class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9;">Consumo</td>
+                <td class="bi-columnas-titulo-tabla">Evaporación</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_evap_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_evap_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_evap_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Retención</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_ret_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_ret_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_ret_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Evaporación control de polvo</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_evcp_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_evcp_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_evcp_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Otras Pérdidas</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_otpe_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_otpe_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['ao_cons_otpe_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;">Total</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;">{{ datos['ao_cons_subtotal_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;">{{ datos['ao_cons_subtotal_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;">{{ datos['ao_cons_subtotal_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; border-right: none;">Cambio de Almacenamiento</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb;">{{ datos['ao_cambio_almac_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #d9d9d9; border-right: none;">Reutilización y reciclaje</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #d9d9d9; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #d9d9d9; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #d9d9d9; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #d9d9d9;">{{ datos['ao_reut_recic_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #c2c2c2; border-right: none;">Uso de Agua Operacional</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #c2c2c2; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #c2c2c2; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #c2c2c2; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #c2c2c2;">{{ datos['ao_uso_aoper_total'] }}</td>
+            </tr>
+            <tr>
+                <td rowspan="14" class="bi-columnas-titulo-tabla" style="background-color: #ECC880; text-align: center; font-weight: bold;">Otra Agua Gestionada</td>
+                <td rowspan="4" class="bi-columnas-titulo-tabla" style="background-color: #E5EDCA;">Extracción/Captación</td>
+                <td class="bi-columnas-titulo-tabla">Agua Superficial</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_asup_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_asup_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_asup_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua Subterránea</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_asub_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_asub_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_asub_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua de Mar</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_amar_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_amar_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_amar_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua de Terceros</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_ater_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_ater_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_ext_ater_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #E5EDCA; font-weight: bold;">Total</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #E5EDCA; font-weight: bold;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #E5EDCA; font-weight: bold;">{{ datos['oag_ext_subtotal_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #E5EDCA; font-weight: bold;">{{ datos['oag_ext_subtotal_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #E5EDCA; font-weight: bold;">{{ datos['oag_ext_subtotal_total'] }}</td>
+            </tr>
+            <tr>
+                <td rowspan="4" class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8;">Descarga</td>
+                <td class="bi-columnas-titulo-tabla">Agua Superficial</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_asup_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_asup_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_asup_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua Subterránea</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_asub_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_asub_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_asub_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua de Mar</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_amar_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_amar_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_amar_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Agua de Terceros</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_ater_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_ater_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_desc_ater_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;">Total</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;">{{ datos['oag_desc_subtotal_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;">{{ datos['oag_desc_subtotal_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F5DBB8; font-weight: bold;">{{ datos['oag_desc_subtotal_total'] }}</td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9;">Consumo</td>
+                <td class="bi-columnas-titulo-tabla">Evaporación</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_cons_evap_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_cons_evap_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_cons_evap_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla">Otras Pérdidas</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_cons_otpe_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_cons_otpe_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla">{{ datos['oag_cons_otpe_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;">Total</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;">{{ datos['oag_cons_subtotal_alta'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;">{{ datos['oag_cons_subtotal_baja'] }}</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #F1BDB9; font-weight: bold;">{{ datos['oag_cons_subtotal_total'] }}</td>
+            </tr>
+            <tr>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; border-right: none;">Cambio de Almacenamiento</td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; border-left: none; border-right: none;"></td>
+                <td class="bi-columnas-titulo-tabla" style="background-color: #ebebeb;">{{ datos['oag_cambio_almac_total'] }}</td>
+            </tr>
+            <tr>
+                <td rowspan="1" class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; text-align: center; font-weight: bold; border-left: none; border-right: none;"></td>
+                <td colspan="3" class="bi-columnas-titulo-tabla" style="background-color: #ebebeb; font-weight: bold; border-left: none; border-right: none;">Delta Balance</td>
+                <td class="bi-columnas-titulo-tabla-delta" style="{{ style_delta }}">{{ db_delta_balance_baja }}</td>
+                <td class="bi-columnas-titulo-tabla-delta">{{ datos['db_delta_balance_total'] }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('dropdown-options').addEventListener('change', async function(event) {
+            const selectedValue = event.target.value;
+    
+            if (selectedValue === 'png') {
+                const tableContainer = document.getElementById('table-container');
+    
+                try {
+                    // Capturar el contenedor de la tabla con html2canvas
+                    const canvas = await html2canvas(tableContainer, {
+                        backgroundColor: '#FFFFFF', // Fondo blanco
+                        scale: 2, // Mayor resolución
+                    });
+    
+                    // Convertir el canvas a datos PNG
+                    const imgData = canvas.toDataURL('image/png');
+    
+                    // Crear un enlace temporal para la descarga
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = imgData;
+                    downloadLink.download = 'tablaicmm.png';
+                    downloadLink.click();
+                } catch (error) {
+                    console.error('Error al generar el PNG:', error);
+                    alert('Ocurrió un error al intentar descargar la tabla en PNG.');
+                }
+            } else if (selectedValue === 'excel') {
+                // Redirigir para descargar el archivo Excel (ruta del servidor Flask)
+                window.location.href = '/download/excel';
+            }
+        });
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const zoomButton = document.getElementById('zoom_button');
+            const tableDiv = document.querySelector('.bi-tabla-icmm-general');
+            const zoomImage = zoomButton.querySelector('img');
+    
+            zoomButton.addEventListener('click', () => {
+                // Alternar la clase del div
+                if (tableDiv.classList.contains('zoom-icmm')) {
+                    tableDiv.classList.remove('zoom-icmm');
+                    zoomImage.src = '/static/img/svg/zoom_min.svg'; // Cambiar la imagen a zoom mínimo
+                } else {
+                    tableDiv.classList.add('zoom-icmm');
+                    zoomImage.src = '/static/img/svg/zoom_max.svg'; // Cambiar la imagen a zoom máximo
+                }
+            });
+        });
+    </script>
+</div>
+{% endblock %}

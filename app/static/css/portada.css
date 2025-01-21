@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    margin: 0;
+    background-image: url('/static/backgrounds/fondo_hidrico.png'); /* Cambia el nombre al de tu imagen */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen mientras haces scroll */
+    background-position: center; /* Centra la imagen en la página */
+}
+
+.pt-texto-bienvenida-menu{
+
+    grid-area: texto_bienvenida;
+    margin: calc(0 * 0.052vw) calc(50 * 0.052vw);
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.pt-menu-compania{
+    display: flex;
+    background-color: #FFFFFF;
+    opacity: calc(0 * 0.052vw);
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    gap: calc(0 * 0.052vw);
+    border-radius: calc(4 * 0.052vw);
+    border-color: #FFFFFF;
+    width: calc(270 * 0.052vw);
+    max-width: calc(270 * 0.052vw);
+    height: calc(70 * 0.052vw); /*Alto de la caja del filtro compañia*/
+    margin-top: calc(5 * 0.052vw);
+    box-shadow: calc(2 * 0.052vw) calc(4 * 0.052vw) calc(8 * 0.052vw) rgba(0, 0, 0, 0.2);
+}
+
+.pt-menu-compania select{
+    width: calc(250 * 0.052vw);
+    max-width: calc(250 * 0.052vw);
+    height: calc(70 * 0.052vw);
+    margin: calc(5 * 0.052vw) calc(0 * 0.052vw);
+    border-color: #FFFFFF;
+    font-size: calc(15 * 0.052vw);
+    border: none;
+    align-items: center;
+    align-content: center;
+    border-radius: calc(4 * 0.052vw);
+}
+
+.pt-botones-seleccion-menu{
+    grid-area: botones_seccion_menu;
+    gap: calc(0* 0.052vw);
+    opacity: calc(0* 0.052vw);
+    border-radius: 100%;
+    display: grid;
+    row-gap: calc(10* 0.052vw);
+    padding: calc(10* 0.052vw);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    margin: calc(0* 0.052vw) calc(40* 0.052vw);
+}
+
+.pt-logo-reporte{
+
+    width: calc(30 * 0.052vw);
+    height: calc(30 * 0.052vw);
+    margin: calc(10 * 0.052vw);
+    align-self: center;
+}
+
+.pt-texto-botones-principal{
+
+    font-size: calc(16 * 0.052vw);
+    font-weight: calc(500 * 0.052vw);
+    line-height: calc(20 * 0.052vw);
+    text-align: left;
+    color: black;
+    gap: calc(0 * 0.052vw);
+    display: flex;
+    row-gap: calc(10 * 0.052vw);
+    padding: calc(10 * 0.052vw);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    /* margin: calc(0 * 0.052vw) calc(40 * 0.052vw); */
+    background-color: #FFFFFF;
+    width: calc(335 * 0.052vw);
+    max-width: calc(335 * 0.052vw);
+    height: calc(104 * 0.052vw); 
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    border-radius: calc(4 * 0.052vw); 
+    box-shadow: calc(2 * 0.052vw) calc(4 * 0.052vw) calc(8 * 0.052vw) rgba(0, 0, 0, 0.4);
+    border-color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+.pt-resumen-menu-principal{
+
+    grid-area: resumen_menu_principal;
+    margin-left: calc(100 * 0.052vw);
+    margin-right: calc(30 * 0.052vw);
+
+}
+
+.pt-resumen-menu-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start; /* Cambié `left` por `flex-start` */
+    background-color: #FFFFFF;
+    border-radius: calc(5 * 0.052vw);
+    opacity: 0.75;
+    padding: 1rem; /* Añadir padding para separar el texto de los bordes */
+    box-sizing: border-box; /* Incluir padding y border en el tamaño total del elemento */
+    max-width: 36vw; /* Establecer un tamaño máximo de ancho si es necesario */
+}
+
+.pt-descargar-documento{
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+
+}
+
+
+.pt-descargar-documento P{
+
+    margin: 0;
+
+}
+
+.pt-cont-principal-reportes{
+
+    background-color: #838383;
+    background-image: url("../backgrounds/fondo_hidrico.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    gap: calc(0 * 0.052vw);
+    opacity: calc(0 * 0.052vw);
+        /* border-radius: calc(10 * 0.052vw); */
+    display: grid;
+    row-gap: calc(10 * 0.052vw);
+    padding: calc(10 * 0.052vw);
+    /* width: 100%;
+    height: 100%; */
+
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: 1fr 3fr 6fr 1fr; 
+    grid-template-areas: 
+    ". . . ."
+    "texto_bienvenida texto_bienvenida . ."
+    "botones_seccion_menu botones_seccion_menu resumen_menu_principal resumen_menu_principal"
+    ". . . .";
+
+}
+
+
+.Select-control{
+
+    border-color: white;
+}
+
+.pt-menu-compania .Select-value-label{
+
+    font-size: calc(14 * 0.052vw);
+    font-weight: calc(14 * 0.052vw);
+    line-height: calc(21 * 0.052vw);
+    text-align: right;
+}
+
+.pt-texto-resumen-bold {
+    font-size: calc(20 * 0.052vw); /* Ajusta el tamaño de fuente */
+    font-weight: bold; /* Asegura que el texto sea negrita */
+    color: #000; /* Cambia el color del texto según sea necesario */
+    flex: 1;
+    margin-bottom: 0.5rem; /* Espacio inferior entre los textos */
+    padding-top: 0%;
+}
+
+
+.pt-texto-resumen {
+    font-size: calc(16 * 0.052vw);
+    font-weight: normal;
+    color: #000; 
+    flex: 1;
+} 
+
+
+
+
+
+
+
+/* Diseño base para las etiquetas */
+.tag-nuevo, .tag-proximamente-resumen, .tag-proximamente-dash, .tag-proximamente-gest, .tag-desarr-bal, .tag-desarr-icmm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2em 0.5em;
+    font-size: calc(12 * 0.052vw);
+    font-weight: 600;
+    border-radius: calc(6 * 0.052vw);
+    font-family: Montserrat;
+    /*margin-left: calc(8 * 0.052vw); /* Espaciado a la izquierda */
+    gap: calc(4 * 0.052vw); /* Espaciado entre texto e ícono */
+    white-space: nowrap;
+}
+
+.tag-nuevo {
+    background-color: #DFF6E0;
+    color: #36B37E;
+}
+
+.tag-nuevo::after {
+    content: '\26A1';
+    margin-left: calc(-3 * 0.052vw);
+}
+
+.tag-desarr-bal {
+    background-color: #E5EDCA;
+    color: #5B8E2E;
+    margin-left: calc(17 * 0.052vw);
+}
+
+.tag-desarr-icmm {
+    background-color: #E5EDCA;
+    color: #5B8E2E;
+    margin-left: calc(33 * 0.052vw);
+}
+
+.tag-proximamente-resumen {
+    background-color: #EBEBEB;
+    color: #858585; 
+    margin-left: calc(57 * 0.052vw);
+}
+
+.tag-proximamente-dash {
+    background-color: #EBEBEB; 
+    color: #858585; 
+    margin-left: calc(107 * 0.052vw);
+}
+
+.tag-proximamente-gest {
+    background-color: #EBEBEB; 
+    color: #858585; 
+    margin-left: calc(70 * 0.052vw);
+}
+
+
+
+

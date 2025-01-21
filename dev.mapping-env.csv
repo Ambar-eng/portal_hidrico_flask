@@ -1,0 +1,17 @@
+envName, secretReference, explicitValue
+COSMOSDB_URI,secret-cosmos-endpoint,
+COSMOSDB_KEY,secret-cosmos-primary-key,
+DATABASE_NAME,secret-cosmos-sql-database-name,
+PH_CMZ,,portal_hidrico_cmz
+PH_MLP,,portal_hidrico_mlp
+PH_ANT,,portal_hidrico_ant
+TIME_INTERVAL,,3600
+CLIENT_ID,microsoft-provider-authentication-client-id,
+CLIENT_SECRET,microsoft-provider-authentication-secret,
+TENANT_ID,microsoft-provider-authentication-tenant-id,
+DASH_HOST,,0.0.0.0
+DASH_PORT,,8000
+DASH_DEBUG,,True
+WEBSITES_CONTAINER_START_TIME_LIMIT,,1800
+BACKEND_URL,,https://ams-dev-app-pdh.azurewebsites.net/api
+END_NO_READ,,

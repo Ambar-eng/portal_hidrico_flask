@@ -1,0 +1,1537 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.diag-flujo-censul{
+    position: relative;
+    height: calc(1225 * 0.052vw); 
+    margin-top: calc(34 * 0.052vw); /*55*/
+    margin-left: calc(15 * 0.052vw);
+}
+
+.zoom-diag-censul{
+    
+    transform: scale(0.6);
+    /* transition: transform 0.3s ease-in-out; */
+    margin-top: calc(-205 * 0.052vw);
+}
+
+.diag-titulo-flujo-censul{
+    font-size: calc(12 * 0.052vw);
+    font-weight: 600;
+    text-align: center;
+}
+
+.diag-val-cons-censul{
+    font-size: calc(10 * 0.052vw);
+    font-weight: 600;
+    text-align: left;
+    color : #858585;
+}
+
+.ddl-censul-div-agua-mar{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(60* 0.052vw);
+    left: calc(128* 0.052vw);
+    border: calc(3 * 0.052vw) solid #EDAD33;
+}
+
+.ddl-censul-div-sumin-agua-mar{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(267* 0.052vw);
+    left: calc(128* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-censul-div-aguas-halladas{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(507* 0.052vw);
+    left: calc(128* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-censul-div-agua-mineral{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(962* 0.052vw);
+    left: calc(128* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+}
+
+.ddl-censul-div-pisc-agua-nueva {
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(275* 0.052vw);
+    left: calc(406* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(32, 144, 163);
+}
+
+.ddl-censul-div-pisc-agua-mixta {
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(815* 0.052vw);
+    left: calc(378* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(32, 144, 163);
+}
+
+.ddl-censul-div-muelle{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-censul-div-construccion{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(270* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-censul-div-cont-polvo{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(491* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-censul-div-servicios{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(726* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-censul-div-pta-proceso{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(948* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-censul-div-tsf{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(948* 0.052vw);
+    left: calc(1085* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+}
+
+.ddl-censul-div-oxi-ant{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(130* 0.052vw);
+    left: calc(1460* 0.052vw);
+    border: calc(3 * 0.052vw) solid #EDAD33;
+}
+
+.ddl-censul-div-al-mar{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(318* 0.052vw);
+    left: calc(1460* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+}
+
+.ddl-censul-div-desde-almac{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(506* 0.052vw);
+    left: calc(1460* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(32, 144, 163);
+}
+
+.ddl-censul-div-evaporacion{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(759* 0.052vw);
+    left: calc(1460* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+}
+
+.ddl-censul-div-retencion{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(955* 0.052vw);
+    left: calc(1460* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+}
+
+
+
+
+
+.censul-linea-flecha-a-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(450 * 0.052vw);
+    top: calc(1091* 0.052vw);
+    left: calc(296* 0.052vw);
+}
+
+.censul-linea-flecha-a-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #6CA036;
+}
+
+.censul-linea-flecha-b-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(106 * 0.052vw);
+    top: calc(368* 0.052vw);
+    left: calc(296* 0.052vw);
+}
+
+.censul-linea-flecha-b-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #6CA036;
+}
+
+.censul-linea-flecha-c1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(414 * 0.052vw);
+    top: calc(120* 0.052vw);
+    left: calc(332* 0.052vw);
+}
+
+.censul-linea-flecha-c1-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #6CA036;
+}
+
+.censul-linea-flecha-c2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(250 * 0.052vw);
+    top: calc(120 * 0.052vw);
+    left: calc(331 * 0.052vw);
+}
+
+.censul-linea-flecha-d-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(450 * 0.052vw);
+    top: calc(632* 0.052vw);
+    left: calc(296* 0.052vw);
+}
+
+.censul-linea-flecha-d-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #6CA036;
+}
+
+.censul-linea-flecha-e1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(51 * 0.052vw);
+    top: calc(1131 * 0.052vw);
+    left: calc(858 * 0.052vw);
+}
+
+.censul-linea-flecha-e2-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(810 * 0.052vw);
+    top: calc(1180* 0.052vw);
+    left: calc(859* 0.052vw);
+}
+
+.censul-linea-flecha-e3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(331 * 0.052vw);
+    top: calc(851 * 0.052vw);
+    left: calc(1668 * 0.052vw);
+}
+
+.censul-linea-flecha-e4-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(37 * 0.052vw);
+    top: calc(851* 0.052vw);
+    left: calc(1632* 0.052vw);
+}
+
+.censul-linea-flecha-e4-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent #DC2C35 transparent transparent;
+}
+
+.censul-linea-flecha-f-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(205 * 0.052vw);
+    top: calc(1064* 0.052vw);
+    left: calc(1252* 0.052vw);
+}
+
+.censul-linea-flecha-f-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.censul-linea-flecha-g1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(250 * 0.052vw);
+    top: calc(888* 0.052vw);
+    left: calc(1207* 0.052vw);
+}
+
+.censul-linea-flecha-g1-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.censul-linea-flecha-g2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(61 * 0.052vw);
+    top: calc(888 * 0.052vw);
+    left: calc(1207 * 0.052vw);
+}
+
+.censul-linea-flecha-h-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(540 * 0.052vw);
+    top: calc(821* 0.052vw);
+    left: calc(917* 0.052vw);
+}
+
+.censul-linea-flecha-h-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.censul-linea-flecha-i1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(222 * 0.052vw);
+    top: calc(786* 0.052vw);
+    left: calc(1235* 0.052vw);
+}
+
+.censul-linea-flecha-i1-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.censul-linea-flecha-i2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(243 * 0.052vw);
+    top: calc(544 * 0.052vw);
+    left: calc(1235 * 0.052vw);
+}
+
+.censul-linea-flecha-i3-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(320 * 0.052vw);
+    top: calc(544* 0.052vw);
+    left: calc(917* 0.052vw);
+}
+
+.censul-linea-flecha-j-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    height: calc(95 * 0.052vw);
+    top: calc(662 * 0.052vw);
+    left: calc(1544 * 0.052vw);
+}
+
+.censul-linea-flecha-j-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(93 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: rgb(32, 144, 163) transparent transparent transparent;
+}
+
+.censul-linea-flecha-k1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(244 * 0.052vw);
+    top: calc(387* 0.052vw);
+    left: calc(1213* 0.052vw);
+}
+
+.censul-linea-flecha-k1-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.censul-linea-flecha-k2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(269 * 0.052vw);
+    top: calc(120 * 0.052vw);
+    left: calc(1213 * 0.052vw);
+}
+
+.censul-linea-flecha-k3-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(298 * 0.052vw);
+    top: calc(119* 0.052vw);
+    left: calc(917* 0.052vw);
+}
+
+.censul-linea-flecha-l1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(49 * 0.052vw);
+    top: calc(1025* 0.052vw);
+    left: calc(1408* 0.052vw);
+}
+
+.censul-linea-flecha-l1-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.censul-linea-flecha-l2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(940 * 0.052vw);
+    top: calc(87 * 0.052vw);
+    left: calc(1407 * 0.052vw);
+}
+
+.censul-linea-flecha-l3-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(492 * 0.052vw);
+    top: calc(87* 0.052vw);
+    left: calc(917* 0.052vw);
+}
+
+.censul-linea-flecha-m1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(181 * 0.052vw);
+    top: calc(856* 0.052vw);
+    left: calc(1276* 0.052vw);
+}
+
+.censul-linea-flecha-m1-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.censul-linea-flecha-m2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(552 * 0.052vw);
+    top: calc(306 * 0.052vw);
+    left: calc(1276 * 0.052vw);
+}
+
+.censul-linea-flecha-m3-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(361 * 0.052vw);
+    top: calc(306* 0.052vw);
+    left: calc(917* 0.052vw);
+}
+
+.censul-linea-flecha-a1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(109 * 0.052vw);
+    top: calc(926* 0.052vw);
+    left: calc(545* 0.052vw);
+}
+
+.censul-linea-flecha-a2-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(516 * 0.052vw);
+    top: calc(520 * 0.052vw);
+    left: calc(654 * 0.052vw);
+}
+
+.censul-linea-flecha-a3-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(93 * 0.052vw);
+    top: calc(1034* 0.052vw);
+    left: calc(654* 0.052vw);
+}
+
+.censul-linea-flecha-a3-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(144 158 161);
+}
+
+.censul-linea-flecha-b1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(146 * 0.052vw);
+    top: calc(766* 0.052vw);
+    left: calc(600* 0.052vw);
+}
+
+.censul-linea-flecha-b1-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(32, 144, 163);
+}
+
+.censul-linea-flecha-b2-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    height: calc(403 * 0.052vw);
+    top: calc(573 * 0.052vw);
+    left: calc(674 * 0.052vw);
+}
+
+.censul-linea-flecha-b3-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    height: calc(400 * 0.052vw);
+    top: calc(368 * 0.052vw);
+    left: calc(600 * 0.052vw);
+}
+
+.censul-linea-flecha-b4-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(28 * 0.052vw);
+    top: calc(368* 0.052vw);
+    left: calc(573* 0.052vw);
+}
+
+.censul-linea-flecha-c-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(72 * 0.052vw);
+    top: calc(573* 0.052vw);
+    left: calc(674* 0.052vw);
+}
+
+.censul-linea-flecha-c-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(32, 144, 163);
+}
+
+.censul-linea-flecha-d-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(72 * 0.052vw);
+    top: calc(974* 0.052vw);
+    left: calc(674* 0.052vw);
+}
+
+.censul-linea-flecha-d-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(32, 144, 163);
+}
+
+.censul-linea-flecha-e-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(93 * 0.052vw);
+    top: calc(519* 0.052vw);
+    left: calc(654* 0.052vw);
+}
+
+.censul-linea-flecha-e-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(144 158 161);
+}
+
+.censul-linea-flecha-f-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(165 * 0.052vw);
+    top: calc(1034* 0.052vw);
+    left: calc(916* 0.052vw);
+}
+
+.censul-linea-flecha-f-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(144 158 161);
+}
+
+.censul-linea-flecha-g1-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(179 * 0.052vw);
+    top: calc(1002 * 0.052vw);
+    left: calc(421 * 0.052vw);
+}
+
+.censul-linea-flecha-g1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(-6 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent rgb(144 158 161) transparent;
+}
+
+.censul-linea-flecha-g2-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(409 * 0.052vw);
+    top: calc(1180* 0.052vw);
+    left: calc(421* 0.052vw);
+}
+
+.censul-linea-flecha-g3-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(51 * 0.052vw);
+    top: calc(1131 * 0.052vw);
+    left: calc(828 * 0.052vw);
+}
+
+.censul-linea-flecha-h1-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(153 * 0.052vw);
+    top: calc(1002 * 0.052vw);
+    left: calc(498 * 0.052vw);
+}
+
+.censul-linea-flecha-h1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(-6 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent rgb(144 158 161) transparent;
+}
+
+.censul-linea-flecha-h2-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(677 * 0.052vw);
+    top: calc(1153* 0.052vw);
+    left: calc(499* 0.052vw);
+}
+
+.censul-linea-flecha-h3-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(24 * 0.052vw);
+    top: calc(1131 * 0.052vw);
+    left: calc(1174 * 0.052vw);
+}
+
+.censul-linea-flecha-i1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(130 * 0.052vw);
+    top: calc(176* 0.052vw);
+    left: calc(922* 0.052vw);
+}
+
+.censul-linea-flecha-i1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent rgb(144 158 161) transparent transparent;
+}
+
+.censul-linea-flecha-i2-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(796 * 0.052vw);
+    top: calc(176 * 0.052vw);
+    left: calc(1050 * 0.052vw);
+}
+
+.censul-linea-flecha-i3-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(136 * 0.052vw);
+    top: calc(970* 0.052vw);
+    left: calc(916* 0.052vw);
+}
+
+.censul-linea-flecha-j-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(49 * 0.052vw);
+    top: calc(678 * 0.052vw);
+    left: calc(830 * 0.052vw);
+}
+
+.censul-linea-flecha-j-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(-6 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent rgb(144 158 161) transparent;
+}
+
+.censul-linea-flecha-k1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(71 * 0.052vw);
+    top: calc(851* 0.052vw);
+    left: calc(550* 0.052vw);
+}
+
+.censul-linea-flecha-k1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent rgb(144 158 161) transparent transparent;
+}
+
+.censul-linea-flecha-k2-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(678 * 0.052vw);
+    top: calc(175 * 0.052vw);
+    left: calc(620 * 0.052vw);
+}
+
+.censul-linea-flecha-k3-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(130 * 0.052vw);
+    top: calc(175* 0.052vw);
+    left: calc(621* 0.052vw);
+}
+
+.censul-linea-flecha-l-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    height: calc(356 * 0.052vw);
+    top: calc(459 * 0.052vw);
+    left: calc(470 * 0.052vw);
+}
+
+.censul-linea-flecha-l-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(353 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: rgb(32, 144, 163) transparent transparent transparent;
+}
+
+.censul-linea-flecha-m1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(251 * 0.052vw);
+    top: calc(398* 0.052vw);
+    left: calc(922* 0.052vw);
+}
+
+.censul-linea-flecha-m1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent rgb(144 158 161) transparent transparent;
+}
+
+.censul-linea-flecha-m2-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(552 * 0.052vw);
+    top: calc(398 * 0.052vw);
+    left: calc(1171 * 0.052vw);
+}
+
+.censul-linea-flecha-n1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(211 * 0.052vw);
+    top: calc(632* 0.052vw);
+    left: calc(922* 0.052vw);
+}
+
+.censul-linea-flecha-n1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent rgb(144 158 161) transparent transparent;
+}
+
+.censul-linea-flecha-n2-min { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(317 * 0.052vw);
+    top: calc(632 * 0.052vw);
+    left: calc(1132 * 0.052vw);
+}
+
+.censul-linea-flecha-o-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(174 * 0.052vw);
+    top: calc(324* 0.052vw);
+    left: calc(572* 0.052vw);
+}
+
+.censul-linea-flecha-o-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(32, 144, 163);
+}
+
+.ddl-censul-val-a-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1052* 0.052vw);
+    left: calc(307* 0.052vw);
+}
+
+.ddl-censul-val-b-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(331* 0.052vw);
+    left: calc(355* 0.052vw);
+}
+
+.ddl-censul-val-c-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(80* 0.052vw);
+    left: calc(682* 0.052vw);
+}
+
+.ddl-censul-val-d-may{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(593* 0.052vw);
+    left: calc(302* 0.052vw);
+}
+
+.ddl-censul-val-a-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1039* 0.052vw);
+    left: calc(685* 0.052vw);
+}
+
+.ddl-censul-val-b-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(728* 0.052vw);
+    left: calc(685* 0.052vw);
+}
+
+.ddl-censul-val-c-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(580* 0.052vw);
+    left: calc(685* 0.052vw);
+}
+
+.ddl-censul-val-d-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(936* 0.052vw);
+    left: calc(685* 0.052vw);
+}
+
+.ddl-censul-val-e-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(478* 0.052vw);
+    left: calc(685* 0.052vw);
+}
+
+.ddl-censul-val-f-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1039* 0.052vw);
+    left: calc(970* 0.052vw);
+}
+
+.ddl-censul-val-g-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1146* 0.052vw);
+    left: calc(354* 0.052vw);
+}
+
+.ddl-censul-val-h-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1116* 0.052vw);
+    left: calc(504* 0.052vw);
+}
+
+.ddl-censul-val-i-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(139* 0.052vw);
+    left: calc(962* 0.052vw);
+}
+
+.ddl-censul-val-j-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(686* 0.052vw);
+    left: calc(840* 0.052vw);
+}
+
+.ddl-censul-val-k-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(810* 0.052vw);
+    left: calc(554* 0.052vw);
+}
+
+.ddl-censul-val-l-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(485* 0.052vw);
+    left: calc(403* 0.052vw);
+}
+
+.ddl-censul-val-m-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(361* 0.052vw);
+    left: calc(962* 0.052vw);
+}
+
+.ddl-censul-val-n-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(594* 0.052vw);
+    left: calc(962* 0.052vw);
+}
+
+.ddl-censul-val-o-min{
+    width: calc(62 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(329* 0.052vw);
+    left: calc(682* 0.052vw);
+}
+
+.ddl-censul-letra-a-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1095* 0.052vw);
+    left: calc(330* 0.052vw);
+}
+
+.ddl-censul-letra-b-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(376* 0.052vw);
+    left: calc(371* 0.052vw);
+}
+
+.ddl-censul-letra-c-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(127* 0.052vw);
+    left: calc(705* 0.052vw);
+}
+
+.ddl-censul-letra-d-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(639* 0.052vw);
+    left: calc(328* 0.052vw);
+}
+
+.ddl-censul-letra-e-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(835* 0.052vw);
+    left: calc(1643* 0.052vw);
+}
+
+.ddl-censul-letra-f-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1070* 0.052vw);
+    left: calc(1352* 0.052vw);
+}
+
+.ddl-censul-letra-g-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(894* 0.052vw);
+    left: calc(1318* 0.052vw);
+}
+
+.ddl-censul-letra-h-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(806* 0.052vw);
+    left: calc(1318* 0.052vw);
+}
+
+.ddl-censul-letra-i-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(770* 0.052vw);
+    left: calc(1318* 0.052vw);
+}
+
+.ddl-censul-letra-j-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(725* 0.052vw);
+    left: calc(1554* 0.052vw);
+}
+
+.ddl-censul-letra-k-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(371* 0.052vw);
+    left: calc(1436* 0.052vw);
+}
+
+.ddl-censul-letra-l-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1008* 0.052vw);
+    left: calc(1428* 0.052vw);
+}
+
+.ddl-censul-letra-m-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(842* 0.052vw);
+    left: calc(1318* 0.052vw);
+}
+
+.ddl-censul-letra-a-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1017* 0.052vw);
+    left: calc(712* 0.052vw);
+}
+
+.ddl-censul-letra-b-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(771* 0.052vw);
+    left: calc(712* 0.052vw);
+}
+
+.ddl-censul-letra-c-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(556* 0.052vw);
+    left: calc(712* 0.052vw);
+}
+
+.ddl-censul-letra-d-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(980* 0.052vw);
+    left: calc(712* 0.052vw);
+}
+
+.ddl-censul-letra-e-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(524* 0.052vw);
+    left: calc(712* 0.052vw);
+}
+
+.ddl-censul-letra-f-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1017* 0.052vw);
+    left: calc(992* 0.052vw);
+}
+
+.ddl-censul-letra-g-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1157* 0.052vw);
+    left: calc(428* 0.052vw);
+}
+
+.ddl-censul-letra-h-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(1126* 0.052vw);
+    left: calc(485* 0.052vw);
+}
+
+.ddl-censul-letra-i-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(183* 0.052vw);
+    left: calc(983* 0.052vw);
+}
+
+.ddl-censul-letra-j-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(694* 0.052vw);
+    left: calc(819* 0.052vw);
+}
+
+.ddl-censul-letra-k-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(857* 0.052vw);
+    left: calc(578* 0.052vw);
+}
+
+.ddl-censul-letra-l-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(499* 0.052vw);
+    left: calc(479* 0.052vw);
+}
+
+.ddl-censul-letra-m-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(402* 0.052vw);
+    left: calc(983* 0.052vw);
+}
+
+.ddl-censul-letra-n-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(638* 0.052vw);
+    left: calc(983* 0.052vw);
+}
+
+.ddl-censul-letra-o-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(308* 0.052vw);
+    left: calc(701* 0.052vw);
+}

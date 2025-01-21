@@ -1,0 +1,70 @@
+trigger:
+  branches:
+    include:
+      - develop
+
+variables:
+  companyAbbreviation: ams
+  initiativeAbbreviation: pdh
+  repositoryName: 'pdh'
+  tag: $(Build.BuildNumber)-$(Build.SourceBranchName)
+  branchName: $(Build.SourceBranchName)
+  ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+    envName: Production
+    envAbbreviation: dev
+    branch: main
+    serviceConnectionName: ams-dev-sc-gdata-platform-infra
+
+  ${{ elseif eq(variables['Build.SourceBranchName'], 'develop') }}:
+    envName: Development
+    envAbbreviation: dev
+    branch: dev
+    serviceConnectionName: ams-dev-sc-gdata-platform-infra
+  
+  ${{ else }}:
+    envName: Development
+    envAbbreviation: dev
+    branch: develop
+    serviceConnectionName: ams-dev-sc-gdata-platform-infra
+
+stages:
+  - stage: validate_and_build
+    displayName: 'Stage: Validate, build and push img'
+    lockBehavior: sequential
+    pool:
+      vmImage: 'ubuntu-latest'
+    jobs: 
+    - job: validateAndBuildEnv
+      displayName: 'job: Validate, build and Push'
+      steps:
+        - checkout: self 
+          displayName: 'Get project repository'
+
+        - checkout: git://Plataforma/pla0000-gov-auto-dataproductcontrol@buildtagpusg_fromsh_topy
+          displayName: 'Get platform utilities repository'
+
+        - bash: |
+            echo "##vso[task.setvariable variable=pathPlatformUtils]$(System.DefaultWorkingDirectory)/pla0000-gov-auto-dataproductcontrol"
+            echo "##vso[task.setvariable variable=pathProject]$(System.DefaultWorkingDirectory)/$(Build.Repository.Name)"
+          displayName: 'Set repository paths'
+
+        - task: AzureCLI@2
+          displayName: 'Build, Push Docker Image'
+          inputs:
+            azureSubscription: '$(serviceConnectionName)'
+            scriptType: 'bash'
+            scriptLocation: 'inlineScript'
+            inlineScript: |
+              echo "[INFO] Build & Push Docker Image"
+              sh $(pathPlatformUtils)/docker/create-push-docker-image.sh $(companyAbbreviation) $(envAbbreviation) $(initiativeAbbreviation) $(pathProject)/ $(repositoryName) $(Tag)
+              echo "[INFO] Image build and pushed successfully"
+              
+              echo "[INFO] Start creating package for deployment"
+              envs_file_path=$(pathProject)/$(envAbbreviation).mapping-env.csv
+              sh $(pathPlatformUtils)/app-service/create-deploy-app-from-img-registry.sh $(companyAbbreviation) $(envAbbreviation) $(initiativeAbbreviation) $(repositoryName) $(Tag) $envs_file_path $(pathPlatformUtils)/deploy
+              
+        - task: PublishPipelineArtifact@1
+          displayName: 'Publish Deploy Artifact'
+          inputs:
+            targetPath: $(pathPlatformUtils)/deploy
+            artifact: app-service-deploy

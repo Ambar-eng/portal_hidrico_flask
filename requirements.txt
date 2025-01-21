@@ -1,0 +1,28 @@
+# GENERAL --------------------------------------------------------------------------------------------------------------
+wheel
+python-dotenv
+pandas
+flask
+Flask-Session
+flask_login
+flask-Caching
+identity
+plotly
+dash_quill
+html2text
+flask-cors
+ 
+# DASH PACKAGES ---------------------------------------------------------------------------------------------
+dash
+dash-daq
+dash-svg
+dash-bootstrap-components
+ 
+# CONNECTORS -----------------------------------------------------------------------------------------------------------
+databricks-sql-connector
+azure-cosmos
+azure-identity
+azure-storage-file-datalake
+ 
+# PROD SERVER ----------------------------------------------------------------------------------------------------------
+gunicorn

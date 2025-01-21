@@ -1,0 +1,1958 @@
+<title>Diagrama Flujo Zaldívar</title>
+<link rel="stylesheet" href="/static/css/diagrama_flujo_cmz.css">
+<link rel="stylesheet" href="/static/css/general_page.css">
+<link rel="stylesheet" href="/static/css/balance_icmm.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+{% extends "barra_lateral.html" %}
+
+{% block content %}
+<div style="margin-left: calc(70 * 0.052vw);">
+    <div class="bi-titulo-principal-pagina">
+        <p class="bi-titulo-pagina">BALANCE DE AGUA - Zaldívar</p>
+        <div class="diag-actualizacion-container">
+            <img src="/static/img/svg/calendar.svg" class="gp-cabecera-actualizacion-calendar"></img>
+            <span class="gp-cabecera-actualizacion">{{ mensaje_fecha_cmz }}</span>
+        </div>
+        <div class="bi-separador-linea"></div>
+    </div>
+
+    <div class="bi-contenido-pagina">
+        <form method="POST" id="filter-form" style="margin-top: calc(4 * 0.052vw);">
+            <!--Se agrega un campo oculto para garcmzizar que persisted-compania se envíe en todas las solicitudes POST-->
+            <input type="hidden" name="persisted-compania" id="persisted-compania-hidden" value="{{ selected_company }}">
+
+            <div class="diag-contenido-titulo-pagina">
+
+                <!-- Filtro Fecha -->
+                <div style="display: flex; align-items: center;">
+                    <span class='texto-datepicker'>Fecha:</span>
+                    <!-- Input de tipo date para seleccionar la fecha -->
+                    <input type="date" id="date-picker-single-cmz" name="filtro_fecha_cmz" placeholder="Seleccione" class="custom-datepicker" 
+                           style="margin-left: 10px;" 
+                           value="{{ fecha if fecha else '' }}"
+                           onchange="document.getElementById('filter-form').submit();">
+                </div>
+
+                <!-- ToggleSwitch Temporalidad -->
+                <!-- <div class="form-check form-switch bi-filtro-mtd_ytd">
+                    <label>
+                        <span class="mtd-text">Dia</span>
+                        <input class="form-check-input" type="checkbox" name="filtro_temp_cmz" id="filtroSwitchTemp" onchange="document.getElementById('filter-form').submit();" 
+                               {% if request.form.get('filtro_temp_cmz') == "on" %}checked{% endif %}>
+                        <span class="ytd-text">Mes</span>
+                    </label>
+                </div> -->
+                <div class="form-check form-switch bi-filtro-mtd_ytd" style="display: flex; align-items: center; gap: 8px; margin-left: calc(-17 * 0.052vw);">
+                    <span class="mtd-text">Dia</span>
+                    <label style="margin: calc(-4 * 0.052vw); margin-bottom: calc(1 * 0.052vw);">
+                        <input class="form-check-input" type="checkbox" name="filtro_temp_cmz" id="filtroSwitchTemp" style="margin-left: calc(0 * 0.052vw); height: calc(23 * 0.052vw); width: calc(43 * 0.052vw);"
+                               onchange="document.getElementById('filter-form').submit();" 
+                               {% if request.form.get('filtro_temp_cmz') == "on" %}checked{% endif %}>
+                    </label>
+                    <span class="ytd-text">Mes</span>
+                </div>
+                <script>
+                    const filtroSwitchTemp = document.getElementById("filtroSwitchTemp");
+                
+                    filtroSwitchTemp.addEventListener("change", function () {
+                        console.log(filtroSwitchTemp.checked ? "Mes" : "Dia");
+                    });
+                </script>
+
+                <!-- ToggleSwitch Medida -->
+                <!-- <div class="form-check form-switch bi-filtro-mtd_ytd">
+                    <label>
+                        <span class="mtd-text">m3/h</span>
+                        <input class="form-check-input" type="checkbox" name="filtro_medida_cmz" id="filtroSwitchMed" onchange="document.getElementById('filter-form').submit();" 
+                               {% if request.form.get('filtro_medida_cmz') == "on" %}checked{% endif %}>
+                        <span class="ytd-text">l/s</span>
+                    </label>
+                </div> -->
+                <div class="form-check form-switch bi-filtro-mtd_ytd" style="display: flex; align-items: center; gap: 8px; margin-left: calc(-25 * 0.052vw);">
+                    <span class="mtd-text">m3/h</span>
+                    <label style="margin: calc(-4 * 0.052vw); margin-bottom: calc(1 * 0.052vw);">
+                        <input class="form-check-input" type="checkbox" name="filtro_medida_cmz" id="filtroSwitchMed" style="margin-left: calc(0 * 0.052vw); height: calc(23 * 0.052vw); width: calc(43 * 0.052vw);"
+                               onchange="document.getElementById('filter-form').submit();" 
+                               {% if request.form.get('filtro_medida_cmz') == "on" %}checked{% endif %}>
+                    </label>
+                    <span class="ytd-text">l/s</span>
+                </div>
+                <script>
+                    const filtroSwitchMed = document.getElementById("filtroSwitchMed");
+                
+                    filtroSwitchMed.addEventListener("change", function () {
+                        console.log(filtroSwitchMed.checked ? "l/s" : "m3/h");
+                    });
+                </script>
+
+
+                <!-- Zoom Button -->
+                <div style="margin-left: calc(235 * 0.052vw);">
+                    <button type="button" class="btn-zoom-tabla-icmm" id="zoom_button_cmz">
+                        <img src="/static/img/svg/zoom_min.svg" alt="Zoom" style="height: calc(15 * 0.052vw); margin-right: calc(8 * 0.052vw);">
+                        Zoom
+                    </button>
+                </div>
+
+                <!-- Dropdown para Descargar -->
+                <div class="dwnl-archivo" style="display: flex; align-items: center; margin-left: calc(45 * 0.052vw); margin-top: calc(15 * 0.052vw);">
+                    <!-- Imagen al lado izquierdo -->
+                    <img src="/static/img/svg/dwnl_tabla_icmm.svg" style="height: calc(20 * 0.052vw); margin-right: calc(-13 * 0.052vw);" alt="Icono de descarga">
+                    
+                    <!-- Lista desplegable -->
+                    <select id="dropdown-options-cmz" class="ddl-descarga-icmm" style="border: none; background-color: transparent; color: black; font-weight: 700;">
+                        <option value="" disabled selected hidden>Descargar archivo</option>
+                        <option value="png">Png</option>
+                        <option value="excel">Excel</option>
+                    </select>
+                    
+                    <!-- Enlace oculto para disparar la descarga -->
+                    <a id="download-link-cmz" style="display: none;"></a>
+                </div>
+                
+                <!-- <script>
+                    document.getElementById('dropdown-options').addEventListener('change', function(event) {
+                        const selectedValue = event.target.value;
+                        const downloadLink = document.getElementById('download-link');
+                
+                        if (selectedValue === 'png') {
+                            downloadLink.href = '/download/png';
+                        } else if (selectedValue === 'excel') {
+                            downloadLink.href = '/download/excel';
+                        }
+                
+                        if (selectedValue) {
+                            downloadLink.click();
+                        }
+                    });
+                </script> -->
+            </div>
+        </form>
+    </div>
+
+    <div id='component-to-save-cmz' class='diag-flujo-cmz'>
+
+        <div id='cmz-agua-nueva' class='ddl-cmz-div-agua-nueva'>
+            <p class='diag-titulo-flujo'>AGUA NUEVA</p>
+            <img src='/static/img/logos/diag_pisc_agua_mar.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+        </div>
+
+        <div id='cmz-sumin-agua-negr' class='ddl-cmz-div-sumin-agua-negr'>
+            <p class='diag-titulo-flujo'>SUMINISTRO DE AGUA (NEGRILLAR)</p>
+            <img src='/static/img/logos/diag_sumin_agua_negr.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+        </div>
+
+        <div id='cmz-aguas-halladas' class='ddl-cmz-div-aguas-halladas'>
+            <p class='diag-titulo-flujo'>AGUAS HALLADAS</p>
+            <img src='/static/img/logos/diag_aguas_halladas.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+        </div>
+
+        <div id='cmz-agua-mineral' class='ddl-cmz-div-agua-mineral'>
+            <p class='diag-titulo-flujo'>AGUA EN MINERAL</p>
+            <img src='/static/img/logos/diag_agua_en_mineral.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+        </div>
+
+        <div id='cmz-servicios' class='ddl-cmz-div-servicios'>
+            <p class='diag-titulo-flujo'>SERVICIOS</p>
+            <img src='/static/img/logos/diag_servicios.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+        </div>
+
+        <div id='cmz-cont-polvo' class='ddl-cmz-div-cont-polvo'>
+            <p class='diag-titulo-flujo'>CONTROL DE POLVO</p>
+            <img src='/static/img/logos/diag_control_polvo.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+        </div>
+
+        <div id='cmz-sx-ew' class='ddl-cmz-div-sx-ew'>
+            <p class='diag-titulo-flujo'>SX/EW</p>
+            <img src='/static/img/logos/diag_sx_ew.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+        </div>
+
+        <div id='cmz-area-seca' class='ddl-cmz-div-area-seca'>
+            <p class='diag-titulo-flujo'>ÁREA SECA/HÚMEDA</p>
+            <img src='/static/img/logos/diag_area_seca.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+        </div>
+
+        <div id='cmz-ptas' class='ddl-cmz-div-ptas'>    
+            <p class='diag-titulo-flujo'>PTAS</p>
+            <img src='/static/img/logos/diag_sx_ew.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+        </div>
+
+        <div id='cmz-tsf' class='ddl-cmz-div-tsf'>
+            <p class='diag-titulo-flujo'>TSF</p>
+            <img src='/static/img/logos/diag_tsf.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+        </div>
+
+        <div id='cmz-evaporacion' class='ddl-cmz-div-evaporacion'>
+            <p class='diag-titulo-flujo'>EVAPORACIÓN</p>
+            <img src='/static/img/logos/diag_evaporacion.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+        </div>
+
+        <div id='cmz-retencion' class='ddl-cmz-div-retencion'>
+            <p class='diag-titulo-flujo'>RETENCIÓN</p>
+            <img src='/static/img/logos/diag_agua_en_mineral.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+        </div>
+
+        <div id='cmz-infiltracion' class='ddl-cmz-div-infiltracion'>
+            <p class='diag-titulo-flujo'>INFILTRACIÓN</p>
+            <img src='/static/img/logos/diag_infiltracion.png' class='diag-imagen-flujo'></img>
+            <p class='diag-valores-flujo-1' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-valores-flujo-2' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+        </div>
+
+        <!-- Valores Flujo de Diagrama -->
+        <div class='ddl-cmz-val-a-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_agua_negrillar_a_agua_nueva_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-b-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_agua_mineral_a_area_seca_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-c-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_aguas_halladas_a_control_polvo_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-d-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_tsf_a_retencion_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-e-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_area_seca_a_retencion_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-f-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_tsf_a_evaporacion_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-g-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_area_seca_a_evaporacion_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-h-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_control_polvo_a_evaporacion_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-i-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_agua_nueva_a_evaporacion_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-j-may'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_tsf_a_infiltracion_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-a-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_agua_nueva_a_area_seca_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-b-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_agua_nueva_a_sxew_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-c-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_agua_nueva_a_control_polvo_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-d-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_agua_nueva_a_servicios_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-e-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_tsf_a_area_seca_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-f-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_area_seca_a_tsf_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-g-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_area_seca_a_sxew_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-h-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_sxew_a_area_seca_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-i-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_servicios_a_ptas_cmz'] }}</p>
+        </div>
+
+        <div class='ddl-cmz-val-j-min'>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ datos_cmz['tb_ptas_a_control_polvo_cmz'] }}</p>
+        </div>
+
+        <!-- Letras Diagrama -->
+        <div class='ddl-cmz-letra-a-may'>
+            <p>A</p>
+        </div>
+        <div class='ddl-cmz-letra-b-may'>
+            <p>B</p>
+        </div>
+        <div class='ddl-cmz-letra-c-may'>
+            <p>C</p>
+        </div>
+        <div class='ddl-cmz-letra-d-may'>
+            <p>D</p>
+        </div>
+        <div class='ddl-cmz-letra-e-may'>
+            <p>E</p>
+        </div>
+        <div class='ddl-cmz-letra-f-may'>
+            <p>F</p>
+        </div>
+        <div class='ddl-cmz-letra-g-may'>
+            <p>G</p>
+        </div>
+        <div class='ddl-cmz-letra-h-may'>
+            <p>H</p>
+        </div>
+        <div class='ddl-cmz-letra-i-may'>
+            <p>I</p>
+        </div>
+        <div class='ddl-cmz-letra-j-may'>
+            <p>J</p>
+        </div>
+        <div class='ddl-cmz-letra-a-min'>
+            <p>a</p>
+        </div>
+        <div class='ddl-cmz-letra-b-min'>
+            <p>b</p>
+        </div>
+        <div class='ddl-cmz-letra-c-min'>
+            <p>c</p>
+        </div>
+        <div class='ddl-cmz-letra-d-min'>
+            <p>d</p>
+        </div>
+        <div class='ddl-cmz-letra-e-min'>
+            <p>e</p>
+        </div>
+        <div class='ddl-cmz-letra-f-min'>
+            <p>f</p>
+        </div>
+        <div class='ddl-cmz-letra-g-min'>
+            <p>g</p>
+        </div>
+        <div class='ddl-cmz-letra-h-min'>
+            <p>h</p>
+        </div>
+        <div class='ddl-cmz-letra-i-min'>
+            <p>i</p>
+        </div>
+        <div class='ddl-cmz-letra-j-min'>
+            <p>j</p>
+        </div>
+
+        <p class='cmz-linea-flecha-a-may'></p>
+        <p class='cmz-linea-flecha-b-may'></p>
+        <p class='cmz-linea-flecha-c1-may'></p>
+        <p class='cmz-linea-flecha-c2-may'></p>
+        <p class='cmz-linea-flecha-c3-may'></p>
+        <p class='cmz-linea-flecha-d1-may'></p>
+        <p class='cmz-linea-flecha-d2-may'></p>
+        <p class='cmz-linea-flecha-e1-may'></p>
+        <p class='cmz-linea-flecha-e2-may'></p>
+        <p class='cmz-linea-flecha-e3-may'></p>
+        <p class='cmz-linea-flecha-e4-may'></p>
+        <p class='cmz-linea-flecha-f1-may'></p>
+        <p class='cmz-linea-flecha-f2-may'></p>
+        <p class='cmz-linea-flecha-f3-may'></p>
+        <p class='cmz-linea-flecha-f4-may'></p>
+        <p class='cmz-linea-flecha-g1-may'></p>
+        <p class='cmz-linea-flecha-g2-may'></p>
+        <p class='cmz-linea-flecha-h1-may'></p>
+        <p class='cmz-linea-flecha-h2-may'></p>
+        <p class='cmz-linea-flecha-h3-may'></p>
+        <p class='cmz-linea-flecha-i1-may'></p>
+        <p class='cmz-linea-flecha-i2-may'></p>
+        <p class='cmz-linea-flecha-i3-may'></p>
+        <p class='cmz-linea-flecha-j-may'></p>
+        <p class='cmz-linea-flecha-a1-min'></p>
+        <p class='cmz-linea-flecha-a2-min'></p>
+        <p class='cmz-linea-flecha-a3-min'></p>
+        <p class='cmz-linea-flecha-b-min'></p>
+        <p class='cmz-linea-flecha-c-min'></p>
+        <p class='cmz-linea-flecha-d-min'></p>
+        <p class='cmz-linea-flecha-e-min'></p>
+        <p class='cmz-linea-flecha-f-min'></p>
+        <p class='cmz-linea-flecha-g-min'></p>
+        <p class='cmz-linea-flecha-h-min'></p>
+        <p class='cmz-linea-flecha-i1-min'></p>
+        <p class='cmz-linea-flecha-i2-min'></p>
+        <p class='cmz-linea-flecha-j1-min'></p>
+        <p class='cmz-linea-flecha-j2-min'></p>
+
+        <!-- Modales -->
+        <div id='modal-cmz-agua-nueva' class='modal-cmz' style="display: none;" data-trigger="cmz-agua-nueva">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-sumin-agua-negr' class='modal-cmz' style="display: none;" data-trigger="cmz-sumin-agua-negr">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_sumin_agua_negr.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-aguas-halladas' class='modal-cmz' style="display: none;" data-trigger="cmz-aguas-halladas">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_aguas_halladas.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-agua-mineral' class='modal-cmz' style="display: none;" data-trigger="cmz-agua-mineral">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_agua_mineral.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-servicios' class='modal-cmz' style="display: none;" data-trigger="cmz-servicios">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_servicios.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-cont-polvo' class='modal-cmz' style="display: none;" data-trigger="cmz-cont-polvo">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_control_polvo.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-sx-ew' class='modal-cmz' style="display: none;" data-trigger="cmz-sx-ew">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_sx_ew.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-area-seca' class='modal-cmz' style="display: none;" data-trigger="cmz-area-seca">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_area_seca.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-ptas' class='modal-cmz' style="display: none;" data-trigger="cmz-ptas">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_ptas.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-tsf' class='modal-cmz' style="display: none;" data-trigger="cmz-tsf">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_tsf.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-evaporacion' class='modal-cmz' style="display: none;" data-trigger="cmz-evaporacion">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_evaporacion.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-retencion' class='modal-cmz' style="display: none;" data-trigger="cmz-retencion">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_retencion.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+        <div id='modal-cmz-infiltracion' class='modal-cmz' style="display: none;" data-trigger="cmz-infiltracion">
+            <div class='modal-content-cmz'>
+                <span class='close-cmz'>X</span>
+                <img src="/static/img/svg/cmz_desag_infiltracion.svg" class='modal-image-cmz'>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const modals = document.querySelectorAll('.modal-cmz'); // Selecciona todos los modales
+        const triggers = {}; // Objeto para rastrear clics por trigger
+
+        modals.forEach(modal => {
+            const triggerId = modal.dataset.trigger; // Obtiene el ID del trigger desde data-trigger
+            const trigger = document.getElementById(triggerId); // Encuentra el botón correspondiente
+            const closeModal = modal.querySelector('.close-cmz'); // Encuentra el botón de cerrar
+            let clickCount = 0; // Contador de clics para este modal
+
+            if (trigger) {
+                triggers[triggerId] = trigger; // Asocia el trigger al modal
+
+                trigger.addEventListener('click', () => {
+                    clickCount++;
+                    if (clickCount % 2 === 1) { // Mostrar en clic impar
+                        modal.style.display = 'block';
+                    } else {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+
+            // Manejar el cierre del modal al hacer clic en "X"
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Cerrar modal al hacer clic fuera de su contenido
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    });
+    </script>
+
+    <div>
+        <table class="table diag-tabla-flujo" style="width: calc(1750 * 0.052vw); margin-left: calc(46 * 0.052vw); border-bottom: 1px solid #33333399;">
+            <tr>
+                <td style="width: 10%; text-align: center; color: #FFFFFF; background-color: #37A3A3; border-top-left-radius: 20px;">A</td>
+                <td style="width: 30%; text-align: center; color: #FFFFFF; background-color: #37A3A3;">B</td>
+                <td style="width: 30%; text-align: center; color: #FFFFFF; background-color: #37A3A3;">C</td>
+                <td style="width: 16%; text-align: center; color: #FFFFFF; background-color: #37A3A3;">D</td>
+                <td style="width: 20%; text-align: center; color: #FFFFFF; background-color: #37A3A3; border-top-right-radius: 20px;">E</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; color: #FFFFFF; background-color: #1E464B;">FLUJO</td>
+                <td style="text-align: center; color: #FFFFFF; background-color: #1E464B;">DESDE</td>
+                <td style="text-align: center; color: #FFFFFF; background-color: #1E464B;">HASTA</td>
+                <td style="text-align: center; color: #FFFFFF; background-color: #1E464B;">VALOR</td>
+                <td style="text-align: center; color: #FFFFFF; background-color: #1E464B;">PROYECTADO</td>
+            </tr>
+            <!-- FLUJO A -->
+            <tr id="main-row-a-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-a-cmz" class='diag-tabla-flecha'></img>
+                        <span>A</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>SUMINISTRO DE TERCEROS (AGUA DE MAR)</td>
+                <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_negrillar_a_agua_nueva_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_negrillar_a_agua_nueva_proy_cmz'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO A -->
+            <tr id="sub-row-a-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">A.1: Pozo P1</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p1_dga_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p1_dga_proy_cmz'] }}</td>
+            </tr>
+            <tr id="sub-row-a-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">A.2: Pozo P2</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p2_dga_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p2_dga_proy_cmz'] }}</td>
+            </tr>
+            <tr id="sub-row-a-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">A.3: Pozo P3</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p3_dga_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p3_dga_proy_cmz'] }}</td>
+            </tr>
+            <tr id="sub-row-a-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">A.4: Pozo P4</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p4_dga_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p4_dga_proy_cmz'] }}</td>
+            </tr>
+            <tr id="sub-row-a-5-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">A.5: Pozo P5</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p5_dga_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p5_dga_proy_cmz'] }}</td>
+            </tr>
+            <tr id="sub-row-a-6-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">A.6: Pozo P6</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p6_dga_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_extrac_ls_p6_dga_proy_cmz'] }}</td>
+            </tr>
+            <!-- FLUJO B -->
+            <tr id="main-row-b-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-b-cmz" class='diag-tabla-flecha'></img>
+                        <span>B</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>AGUA EN MINERAL</td>
+                <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_mineral_a_area_seca_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_mineral_a_area_seca_proy_cmz'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO B -->
+            <tr id="sub-row-b-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">B.1: Humedad Mineral HL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_humedad_mineral_hl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_humedad_mineral_hl_proy_cmz'] }}</td>
+            </tr>
+            <tr id="sub-row-b-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">B.2: Humedad Mineral DL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-b-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">B.3: Humedad Mineral Chancado Terciario</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_humedad_mineral_dl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_humedad_mineral_dl_proy_cmz'] }}</td>
+            </tr>
+            <!-- FLUJO C -->
+            <tr id="main-row-c-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-c-cmz" class='diag-tabla-flecha'></img>
+                        <span>C</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>AGUAS HALLADAS</td>
+                <td class='diag-tabla-desde-hasta-flujo'>CONTROL DE POLVO</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO C -->
+            <tr id="sub-row-c-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">C.1: PLC Pozo 22</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">C.2: PLC Pozo 25</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">C.3: PLC Pozo 26</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">C.4: PLC Pozo 27</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-5-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">C.5: PLC Pozo 28</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-6-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">C.6: PLC Pozo 29</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-7-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">C.7: PLC Pozo 3{{ datos_cmz['x'] }}</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-8-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">C.8: PLC Pozo 31</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO D -->
+            <tr id="main-row-d-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">D</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
+                <td class='diag-tabla-desde-hasta-flujo'>RETENCIÓN</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO E -->
+            <tr id="main-row-e-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-e-cmz" class='diag-tabla-flecha'></img>
+                        <span>E</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>RETENCIÓN</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO E -->
+            <tr id="sub-row-e-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">E.1: Retencion HL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-e-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">E.2: Retencion DL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-e-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">E.3: Retencion RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-e-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">E.4: Pérdidas en Concentrado</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO F -->
+            <tr id="main-row-f-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">F</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
+                <td class='diag-tabla-desde-hasta-flujo'>EVAPORACIÓN</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO G -->
+            <tr id="main-row-g-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-g-cmz" class='diag-tabla-flecha'></img>
+                        <span>G</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>EVAPORACIÓN</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO G -->
+            <tr id="sub-row-g-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.1: Evaporación desde pilas</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.1.1: Evaporación Pila HL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.1.2: Evaporación Pila DL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.1.3: Evaporación Pila RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-5-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2: Evaporación Piscinas de Proceso</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-6-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2.1: Evaporación Piscina PLS</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-7-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2.2: Evaporación Piscina ILS</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-8-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2.3: Evaporación Refino Superior</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-9-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2.4: Evaporación Refino Inferior</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-10-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2.5: Evaporación Piscina CH III</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-11-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2.6: Evaporación  Piscina DL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-12-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2.7: Evaporación  Piscina Auxiliar</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-13-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">G.2.8: Evaporación Piscina RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO H -->
+            <tr id="main-row-h-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">H</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>CONTROL DE POLVO</td>
+                <td class='diag-tabla-desde-hasta-flujo'>EVAPORACIÓN</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO I -->
+            <tr id="main-row-i-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">I</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>EVAPORACIÓN</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO J -->
+            <tr id="main-row-j-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">J</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
+                <td class='diag-tabla-desde-hasta-flujo'>INFILTRACIÓN</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO a -->
+            <tr id="main-row-a-min-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-a-min-cmz" class='diag-tabla-flecha'></img>
+                        <span>a</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO a -->
+            <tr id="sub-row-a-min-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">a.1: Piscina Zaldívar a TK Agua Fresca</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-a-min-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">a.2: Rechazo a TK Agua Fresca</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-a-min-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">a.3: Piscina Neurara a Refino</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO b -->
+            <tr id="main-row-b-min-cmz">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">b</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>SX/EW</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO c -->
+            <tr id="main-row-c-min-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-c-min-cmz" class='diag-tabla-flecha'></img>
+                        <span>c</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>CONTROL DE POLVO</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO c -->
+            <tr id="sub-row-c-min-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">c.1: Rechazo a CH I</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-min-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">c.2: Reservorio Zaldívar a Cerro Antena</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-c-min-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">c.3: Reservorio Zaldívar a Cachimba Mina</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO d -->
+            <tr id="main-row-d-min-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-d-min-cmz" class='diag-tabla-flecha'></img>
+                        <span>d</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>SERVICIOS</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO d -->
+            <tr id="sub-row-d-min-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">d.1: Agua Gerencia</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-d-min-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">d.2: Agua Potable a Flotación</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-d-min-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">d.3: Potable a Operación</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-d-min-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">d.4: Agua Incendio</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO e -->
+            <tr id="main-row-e-min-cmz">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">e</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
+                <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO f -->
+            <tr id="main-row-f-min-cmz">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">f</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO g -->
+            <tr id="main-row-g-min-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-g-min-cmz" class='diag-tabla-flecha'></img>
+                        <span>g</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>SX/EW</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO g -->
+            <tr id="sub-row-g-min-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">g.1: Tren A</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-min-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">g.2: Tren B</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-min-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">g.3: Tren C</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-g-min-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">g.4: Tren D</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO h -->
+            <tr id="main-row-h-min-cmz">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-h-min-cmz" class='diag-tabla-flecha'></img>
+                        <span>h</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>SX/EW</td>
+                <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO h -->
+            <tr id="sub-row-h-min-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">h.1: Tren A a Refino Inferior</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-h-min-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">h.2: Tren B a Refino Inferior</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-h-min-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">h.3: Tren C a Refino Inferior</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-h-min-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">h.4: Tren D a Refino Inferior</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO i -->
+            <tr id="main-row-i-min-cmz">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">i</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>SERVICIOS</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PTAS</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO j -->
+            <tr id="main-row-j-min-cmz">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">j</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>PTAS</td>
+                <td class='diag-tabla-desde-hasta-flujo'>CONTROL DE POLVO</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!--################################### style="display: none;" ###################################-->
+            <!-- FLUJO k -->
+            <tr id="main-row-k-min-cmz" style="display: none;">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">k</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA NEURARA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>RO</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO m -->
+            <tr id="main-row-m-min-cmz" style="display: none;">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">m</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>TK AGUA FRESCA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA CH III</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO n -->
+            <tr id="main-row-n-min-cmz" style="display: none;">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">n</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>TK AGUA FRESCA</td>
+                <td class='diag-tabla-desde-hasta-flujo'>REFINO SUPERIOR</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO o -->
+            <tr id="main-row-o-min-cmz" style="display: none;">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-o-min-cmz" class='diag-tabla-flecha'></img>
+                        <span>o</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA PROCESOS</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PILAS</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO o -->
+            <tr id="sub-row-o-min-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">o.1: Piscina Refino a Pilas</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-o-min-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">o.1.1: Refino Superior a Pila HL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-o-min-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">o.1.2: Refino Inferior a Pila RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-o-min-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">o.2: Piscina IPLS a Pila HL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-o-min-5-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">o.3: Piscina DL a Pila DL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO p -->
+            <tr id="main-row-p-min-cmz" style="display: none;">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">p</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>REFINO INFERIOR</td>
+                <td class='diag-tabla-desde-hasta-flujo'>REFINO SUPERIOR</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO q -->
+            <tr id="main-row-q-min-cmz" style="display: none;">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-q-min-cmz" class='diag-tabla-flecha'></img>
+                        <span>q</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>PILAS</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA DE PROCESOS</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO q -->
+            <tr id="sub-row-q-min-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">q.1: Flujo PLS/IPLS</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-q-min-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">q.2: Flujo PLS/IPLS</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-q-min-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">q.3: Pila RAL a Piscina RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO r -->
+            <tr id="main-row-r-min-cmz" style="display: none;">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">r</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA AUXILIAR</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA PROCESOS</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO s -->
+            <tr id="main-row-s-min-cmz" style="display: none;">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">s</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>REFINO SUPERIOR</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA DL</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO t -->
+            <tr id="main-row-t-min-cmz" style="display: none;">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">t</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA RAL</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA AUXILIAR</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO u -->
+            <tr id="main-row-u-min-cmz" style="display: none;">
+                <td class='diag-tabla-letras-flujo'>
+                    <div>
+                        <img src='/static/img/logos/diag_flecha.png' id="img-u-min-cmz" class='diag-tabla-flecha'></img>
+                        <span>u</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>BARRERAS HIDRÁULICAS</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PISCINA RAL</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- SUBFILAS FLUJO u -->
+            <tr id="sub-row-u-min-1-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">u.1: BH - 1 a Piscina RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-u-min-2-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">u.2: BH - 2 a Piscina RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-u-min-3-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">u.3: BH - 3 a Piscina RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <tr id="sub-row-u-min-4-cmz" style="display: none;">
+                <td class='diag-tabla-subfila-col1'></td>
+                <td colSpan="2" class="diag-tabla-subfila-col2">
+                    <div class="contenido-ajustado">u.4: BH - 4 a Piscina RAL</div>
+                </td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+            </tr>
+            <!-- FLUJO v -->
+            <tr id="main-row-v-min-cmz" style="display: none;">
+                <td style="border-bottom: 1px solid #33333399;" class='diag-tabla-letras-flujo'>
+                    <div>
+                        <span style="margin-left:calc(73 * 0.052vw)">v</span>
+                    </div>
+                </td>
+                <td class='diag-tabla-desde-hasta-flujo'>PILA HL</td>
+                <td class='diag-tabla-desde-hasta-flujo'>PILA RIPIOS</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Almacenar clics
+            let n_clicks_negr = 0;
+            let n_clicks_mar = 0;
+            let n_clicks_halladas = 0;
+            let n_clicks_mineral = 0;
+            let n_clicks_servicios = 0;
+            let n_clicks_cont_polvo = 0;
+            let n_clicks_sx_ew = 0;
+            let n_clicks_area_seca = 0;
+            let n_clicks_ptas = 0;
+            let n_clicks_tsf = 0;
+            let n_clicks_evaporacion = 0;
+            let n_clicks_retencion = 0;
+            let n_clicks_infiltracion = 0;
+
+            let n_clicks_main_a = 0;
+            let n_clicks_main_b = 0;
+            let n_clicks_main_c = 0;
+            let n_clicks_main_d = 0;
+            let n_clicks_main_e = 0;
+            let n_clicks_main_f = 0;
+            let n_clicks_main_g = 0;
+            let n_clicks_main_h = 0;
+            let n_clicks_main_i = 0;
+            let n_clicks_main_j = 0;
+            let n_clicks_main_a_min = 0;
+            let n_clicks_main_b_min = 0;
+            let n_clicks_main_c_min = 0;
+            let n_clicks_main_d_min = 0;
+            let n_clicks_main_e_min = 0;
+            let n_clicks_main_f_min = 0;
+            let n_clicks_main_g_min = 0;
+            let n_clicks_main_h_min = 0;
+            let n_clicks_main_i_min = 0;
+            let n_clicks_main_j_min = 0;
+            let n_clicks_main_k_min = 0;
+            let n_clicks_main_m_min = 0;
+            let n_clicks_main_n_min = 0;
+            let n_clicks_main_o_min = 0;
+            let n_clicks_main_p_min = 0;
+            let n_clicks_main_q_min = 0;
+            let n_clicks_main_r_min = 0;
+            let n_clicks_main_s_min = 0;
+            let n_clicks_main_t_min = 0;
+            let n_clicks_main_u_min = 0;
+            let n_clicks_main_v_min = 0;
+    
+            // Función para manejar el toggle y enviar la solicitud al servidor
+            async function toggleRowData() {
+                const response = await fetch('/toggle_rows_cmz', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        n_clicks_negr,
+                        n_clicks_mar,
+                        n_clicks_halladas,
+                        n_clicks_mineral,
+                        n_clicks_servicios,
+                        n_clicks_cont_polvo,
+                        n_clicks_sx_ew,
+                        n_clicks_area_seca,
+                        n_clicks_ptas,
+                        n_clicks_tsf,
+                        n_clicks_evaporacion,
+                        n_clicks_retencion,
+                        n_clicks_infiltracion,
+
+                        n_clicks_main_a,
+                        n_clicks_main_b,
+                        n_clicks_main_c,
+                        n_clicks_main_d,
+                        n_clicks_main_e,
+                        n_clicks_main_f,
+                        n_clicks_main_g,
+                        n_clicks_main_h,
+                        n_clicks_main_i,
+                        n_clicks_main_j,
+                        n_clicks_main_a_min,
+                        n_clicks_main_b_min,
+                        n_clicks_main_c_min,
+                        n_clicks_main_d_min,
+                        n_clicks_main_e_min,
+                        n_clicks_main_f_min,
+                        n_clicks_main_g_min,
+                        n_clicks_main_h_min,
+                        n_clicks_main_i_min,
+                        n_clicks_main_j_min,
+                        n_clicks_main_k_min,
+                        n_clicks_main_m_min,
+                        n_clicks_main_n_min,
+                        n_clicks_main_o_min,
+                        n_clicks_main_p_min,
+                        n_clicks_main_q_min,
+                        n_clicks_main_r_min,
+                        n_clicks_main_s_min,
+                        n_clicks_main_t_min,
+                        n_clicks_main_u_min,
+                        n_clicks_main_v_min,
+                    }),
+                });
+    
+                const data = await response.json();
+                updateStyles(data);
+            }
+    
+            // Función para actualizar los estilos
+            function updateStyles(data) {
+                const elements = [
+                    { id: 'main-row-a-cmz', style: data.new_style_a },
+                    { id: 'main-row-b-cmz', style: data.new_style_b },
+                    { id: 'main-row-c-cmz', style: data.new_style_c },
+                    { id: 'main-row-d-cmz', style: data.new_style_d },
+                    { id: 'main-row-e-cmz', style: data.new_style_e },
+                    { id: 'main-row-f-cmz', style: data.new_style_f },
+                    { id: 'main-row-g-cmz', style: data.new_style_g },
+                    { id: 'main-row-h-cmz', style: data.new_style_h },
+                    { id: 'main-row-i-cmz', style: data.new_style_i },
+                    { id: 'main-row-j-cmz', style: data.new_style_j },
+                    { id: 'main-row-a-min-cmz', style: data.new_style_a_min },
+                    { id: 'main-row-b-min-cmz', style: data.new_style_b_min },
+                    { id: 'main-row-c-min-cmz', style: data.new_style_c_min },
+                    { id: 'main-row-d-min-cmz', style: data.new_style_d_min },
+                    { id: 'main-row-e-min-cmz', style: data.new_style_e_min },
+                    { id: 'main-row-f-min-cmz', style: data.new_style_f_min },
+                    { id: 'main-row-g-min-cmz', style: data.new_style_g_min },
+                    { id: 'main-row-h-min-cmz', style: data.new_style_h_min },
+                    { id: 'main-row-i-min-cmz', style: data.new_style_i_min },
+                    { id: 'main-row-j-min-cmz', style: data.new_style_j_min },
+                    { id: 'main-row-k-min-cmz', style: data.new_style_k_min },
+                    { id: 'main-row-m-min-cmz', style: data.new_style_m_min },
+                    { id: 'main-row-n-min-cmz', style: data.new_style_n_min },
+                    { id: 'main-row-o-min-cmz', style: data.new_style_o_min },
+                    { id: 'main-row-p-min-cmz', style: data.new_style_p_min },
+                    { id: 'main-row-q-min-cmz', style: data.new_style_q_min },
+                    { id: 'main-row-r-min-cmz', style: data.new_style_r_min },
+                    { id: 'main-row-s-min-cmz', style: data.new_style_s_min },
+                    { id: 'main-row-t-min-cmz', style: data.new_style_t_min },
+                    { id: 'main-row-u-min-cmz', style: data.new_style_u_min },
+                    { id: 'main-row-v-min-cmz', style: data.new_style_v_min },
+
+                    { id: 'sub-row-a-1-cmz', style: data.new_style_sub_a[0] },
+                    { id: 'sub-row-a-2-cmz', style: data.new_style_sub_a[1] },
+                    { id: 'sub-row-a-3-cmz', style: data.new_style_sub_a[2] },
+                    { id: 'sub-row-a-4-cmz', style: data.new_style_sub_a[3] },
+                    { id: 'sub-row-a-5-cmz', style: data.new_style_sub_a[4] },
+                    { id: 'sub-row-a-6-cmz', style: data.new_style_sub_a[5] },
+                    { id: 'sub-row-b-1-cmz', style: data.new_style_sub_b[0] },
+                    { id: 'sub-row-b-2-cmz', style: data.new_style_sub_b[1] },
+                    { id: 'sub-row-b-3-cmz', style: data.new_style_sub_b[2] },
+                    { id: 'sub-row-c-1-cmz', style: data.new_style_sub_c[0] },
+                    { id: 'sub-row-c-2-cmz', style: data.new_style_sub_c[1] },
+                    { id: 'sub-row-c-3-cmz', style: data.new_style_sub_c[2] },
+                    { id: 'sub-row-c-4-cmz', style: data.new_style_sub_c[3] },
+                    { id: 'sub-row-c-5-cmz', style: data.new_style_sub_c[4] },
+                    { id: 'sub-row-c-6-cmz', style: data.new_style_sub_c[5] },
+                    { id: 'sub-row-c-7-cmz', style: data.new_style_sub_c[6] },
+                    { id: 'sub-row-c-8-cmz', style: data.new_style_sub_c[7] },
+                    { id: 'sub-row-e-1-cmz', style: data.new_style_sub_e[0] },
+                    { id: 'sub-row-e-2-cmz', style: data.new_style_sub_e[1] },
+                    { id: 'sub-row-e-3-cmz', style: data.new_style_sub_e[2] },
+                    { id: 'sub-row-e-4-cmz', style: data.new_style_sub_e[3] },
+                    { id: 'sub-row-g-1-cmz', style: data.new_style_sub_g[0] },
+                    { id: 'sub-row-g-2-cmz', style: data.new_style_sub_g[1] },
+                    { id: 'sub-row-g-3-cmz', style: data.new_style_sub_g[2] },
+                    { id: 'sub-row-g-4-cmz', style: data.new_style_sub_g[3] },
+                    { id: 'sub-row-g-5-cmz', style: data.new_style_sub_g[4] },
+                    { id: 'sub-row-g-6-cmz', style: data.new_style_sub_g[5] },
+                    { id: 'sub-row-g-7-cmz', style: data.new_style_sub_g[6] },
+                    { id: 'sub-row-g-8-cmz', style: data.new_style_sub_g[7] },
+                    { id: 'sub-row-g-9-cmz', style: data.new_style_sub_g[8] },
+                    { id: 'sub-row-g-10-cmz', style: data.new_style_sub_g[9] },
+                    { id: 'sub-row-g-11-cmz', style: data.new_style_sub_g[10] },
+                    { id: 'sub-row-g-12-cmz', style: data.new_style_sub_g[11] },
+                    { id: 'sub-row-g-13-cmz', style: data.new_style_sub_g[12] },
+                    { id: 'sub-row-a-min-1-cmz', style: data.new_style_sub_a_min[0] },
+                    { id: 'sub-row-a-min-2-cmz', style: data.new_style_sub_a_min[1] },
+                    { id: 'sub-row-a-min-3-cmz', style: data.new_style_sub_a_min[2] },
+                    { id: 'sub-row-c-min-1-cmz', style: data.new_style_sub_c_min[0] },
+                    { id: 'sub-row-c-min-2-cmz', style: data.new_style_sub_c_min[1] },
+                    { id: 'sub-row-c-min-3-cmz', style: data.new_style_sub_c_min[2] },
+                    { id: 'sub-row-d-min-1-cmz', style: data.new_style_sub_d_min[0] },
+                    { id: 'sub-row-d-min-2-cmz', style: data.new_style_sub_d_min[1] },
+                    { id: 'sub-row-d-min-3-cmz', style: data.new_style_sub_d_min[2] },
+                    { id: 'sub-row-d-min-4-cmz', style: data.new_style_sub_d_min[3] },
+                    { id: 'sub-row-g-min-1-cmz', style: data.new_style_sub_g_min[0] },
+                    { id: 'sub-row-g-min-2-cmz', style: data.new_style_sub_g_min[1] },
+                    { id: 'sub-row-g-min-3-cmz', style: data.new_style_sub_g_min[2] },
+                    { id: 'sub-row-g-min-4-cmz', style: data.new_style_sub_g_min[3] },
+                    { id: 'sub-row-h-min-1-cmz', style: data.new_style_sub_h_min[0] },
+                    { id: 'sub-row-h-min-2-cmz', style: data.new_style_sub_h_min[1] },
+                    { id: 'sub-row-h-min-3-cmz', style: data.new_style_sub_h_min[2] },
+                    { id: 'sub-row-h-min-4-cmz', style: data.new_style_sub_h_min[3] },
+                    { id: 'sub-row-o-min-1-cmz', style: data.new_style_sub_o_min[0] },
+                    { id: 'sub-row-o-min-2-cmz', style: data.new_style_sub_o_min[1] },
+                    { id: 'sub-row-o-min-3-cmz', style: data.new_style_sub_o_min[2] },
+                    { id: 'sub-row-o-min-4-cmz', style: data.new_style_sub_o_min[3] },
+                    { id: 'sub-row-o-min-5-cmz', style: data.new_style_sub_o_min[4] },
+                    { id: 'sub-row-q-min-1-cmz', style: data.new_style_sub_q_min[0] },
+                    { id: 'sub-row-q-min-2-cmz', style: data.new_style_sub_q_min[1] },
+                    { id: 'sub-row-q-min-3-cmz', style: data.new_style_sub_q_min[2] },
+                    { id: 'sub-row-u-min-1-cmz', style: data.new_style_sub_u_min[0] },
+                    { id: 'sub-row-u-min-2-cmz', style: data.new_style_sub_u_min[1] },
+                    { id: 'sub-row-u-min-3-cmz', style: data.new_style_sub_u_min[2] },
+                    { id: 'sub-row-u-min-4-cmz', style: data.new_style_sub_u_min[3] },
+
+                    { id: 'cmz-sumin-agua-negr', style: { backgroundColor: data.new_style_cmz_sumin_agua_negr_style["background-color"] } },
+                    { id: 'cmz-agua-nueva', style: { backgroundColor: data.new_style_cmz_pisc_agua_mar_style["background-color"] } },
+                    { id: 'cmz-aguas-halladas', style: { backgroundColor: data.new_style_cmz_aguas_halladas_style["background-color"] } },
+                    { id: 'cmz-agua-mineral', style: { backgroundColor: data.new_style_cmz_agua_mineral_style["background-color"] } },
+                    { id: 'cmz-servicios', style: { backgroundColor: data.new_style_cmz_servicios_style["background-color"] } },
+                    { id: 'cmz-cont-polvo', style: { backgroundColor: data.new_style_cmz_cont_polvo_style["background-color"] } },
+                    { id: 'cmz-sx-ew', style: { backgroundColor: data.new_style_cmz_sx_ew_style["background-color"] } },
+                    { id: 'cmz-area-seca', style: { backgroundColor: data.new_style_cmz_area_seca_style["background-color"] } },
+                    { id: 'cmz-ptas', style: { backgroundColor: data.new_style_cmz_ptas_style["background-color"] } },
+                    { id: 'cmz-tsf', style: { backgroundColor: data.new_style_cmz_tsf_style["background-color"] } },
+                    { id: 'cmz-evaporacion', style: { backgroundColor: data.new_style_cmz_evaporacion_style["background-color"] } },
+                    { id: 'cmz-retencion', style: { backgroundColor: data.new_style_cmz_retencion_style["background-color"] } },
+                    { id: 'cmz-infiltracion', style: { backgroundColor: data.new_style_cmz_infiltracion_style["background-color"] } },
+                    
+                    { id: 'img-a-cmz', style: { src: data.new_img_a_src } },
+                    { id: 'img-b-cmz', style: { src: data.new_img_b_src } },
+                    { id: 'img-c-cmz', style: { src: data.new_img_c_src } },
+                    { id: 'img-e-cmz', style: { src: data.new_img_e_src } },
+                    { id: 'img-g-cmz', style: { src: data.new_img_g_src } },
+                    { id: 'img-a-min-cmz', style: { src: data.new_img_a_min_src } },
+                    { id: 'img-c-min-cmz', style: { src: data.new_img_c_min_src } },
+                    { id: 'img-d-min-cmz', style: { src: data.new_img_d_min_src } },
+                    { id: 'img-g-min-cmz', style: { src: data.new_img_g_min_src } },
+                    { id: 'img-h-min-cmz', style: { src: data.new_img_h_min_src } },
+                    { id: 'img-o-min-cmz', style: { src: data.new_img_o_min_src } },
+                    { id: 'img-q-min-cmz', style: { src: data.new_img_q_min_src } },
+                    { id: 'img-u-min-cmz', style: { src: data.new_img_u_min_src } },
+                ];
+    
+                elements.forEach(element => {
+                    const el = document.getElementById(element.id);
+                    if (el) {
+                        for (const [key, value] of Object.entries(element.style)) {
+                            if (key === 'src') {
+                                el.src = value;
+                            } else {
+                                el.style[key] = value;
+                            }
+                        }
+                    }
+                });
+            }
+    
+            // Función para manejar los clics
+            function handleClick(type) {
+                if (type === 'negrillar') {
+                    n_clicks_negr++;
+                } else if (type === 'agua_mar') {
+                    n_clicks_mar++;
+                } else if (type === 'aguas_halladas') {
+                    n_clicks_halladas++;
+                } else if (type === 'agua_mineral') {
+                    n_clicks_mineral++;
+                } else if (type === 'servicios') {
+                    n_clicks_servicios++;
+                } else if (type === 'control_polvo') {
+                    n_clicks_cont_polvo++;
+                } else if (type === 'sx_ew') {
+                    n_clicks_sx_ew++;
+                } else if (type === 'area_seca') {
+                    n_clicks_area_seca++;
+                } else if (type === 'ptas') {
+                    n_clicks_ptas++;
+                } else if (type === 'tsf') {
+                    n_clicks_tsf++;
+                } else if (type === 'evaporacion') {
+                    n_clicks_evaporacion++;
+                } else if (type === 'retencion') {
+                    n_clicks_retencion++;
+                } else if (type === 'infiltracion') {
+                    n_clicks_infiltracion++;
+                } else if (type === 'main_a') {
+                    n_clicks_main_a++;
+                } else if (type === 'main_b') {
+                    n_clicks_main_b++;
+                } else if (type === 'main_c') {
+                    n_clicks_main_c++;
+                } else if (type === 'main_d') {
+                    n_clicks_main_d++;
+                } else if (type === 'main_e') {
+                    n_clicks_main_e++;
+                } else if (type === 'main_f') {
+                    n_clicks_main_f++;
+                } else if (type === 'main_g') {
+                    n_clicks_main_g++;
+                } else if (type === 'main_h') {
+                    n_clicks_main_h++;
+                } else if (type === 'main_i') {
+                    n_clicks_main_i++;
+                } else if (type === 'main_j') {
+                    n_clicks_main_j++;
+                } else if (type === 'main_a_min') {
+                    n_clicks_main_a_min++;
+                } else if (type === 'main_b_min') {
+                    n_clicks_main_b_min++;
+                } else if (type === 'main_c_min') {
+                    n_clicks_main_c_min++;
+                } else if (type === 'main_d_min') {
+                    n_clicks_main_d_min++;
+                } else if (type === 'main_e_min') {
+                    n_clicks_main_e_min++;
+                } else if (type === 'main_f_min') {
+                    n_clicks_main_f_min++;
+                } else if (type === 'main_g_min') {
+                    n_clicks_main_g_min++;
+                } else if (type === 'main_h_min') {
+                    n_clicks_main_h_min++;
+                } else if (type === 'main_i_min') {
+                    n_clicks_main_i_min++;
+                } else if (type === 'main_j_min') {
+                    n_clicks_main_j_min++;
+                } else if (type === 'main_k_min') {
+                    n_clicks_main_k_min++;
+                } else if (type === 'main_m_min') {
+                    n_clicks_main_m_min++;
+                } else if (type === 'main_n_min') {
+                    n_clicks_main_n_min++;
+                } else if (type === 'main_o_min') {
+                    n_clicks_main_o_min++;
+                } else if (type === 'main_p_min') {
+                    n_clicks_main_p_min++;
+                } else if (type === 'main_q_min') {
+                    n_clicks_main_q_min++;
+                } else if (type === 'main_r_min') {
+                    n_clicks_main_r_min++;
+                } else if (type === 'main_s_min') {
+                    n_clicks_main_s_min++;
+                } else if (type === 'main_t_min') {
+                    n_clicks_main_t_min++;
+                } else if (type === 'main_u_min') {
+                    n_clicks_main_u_min++;
+                } else if (type === 'main_v_min') {
+                    n_clicks_main_v_min++;
+                }
+                
+                toggleRowData();  // Llamada para procesar los datos después del clic
+            }
+    
+            // Función para agregar event listeners solo si los elementos existen
+            function addClickListener(id, type) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('click', function () {
+                        handleClick(type);
+                    });
+                }
+            }
+    
+            // Asociar eventos de clic solo si el elemento existe. VALIDAR QUIZAS PUEDO QUITAR LOS QUE NO POSEEN SUBFILAS
+            addClickListener('cmz-sumin-agua-negr', 'negrillar');
+            addClickListener('cmz-agua-nueva', 'agua_mar');
+            addClickListener('cmz-aguas-halladas', 'aguas_halladas');
+            addClickListener('cmz-agua-mineral', 'agua_mineral');
+            addClickListener('cmz-servicios', 'servicios');
+            addClickListener('cmz-cont-polvo', 'control_polvo');
+            addClickListener('cmz-sx-ew', 'sx_ew');
+            addClickListener('cmz-area-seca', 'area_seca');
+            addClickListener('cmz-ptas', 'ptas');
+            addClickListener('cmz-tsf', 'tsf');
+            addClickListener('cmz-evaporacion', 'evaporacion');
+            addClickListener('cmz-retencion', 'retencion');
+            addClickListener('cmz-infiltracion', 'infiltracion');
+
+            addClickListener('main-row-a-cmz', 'main_a');
+            addClickListener('main-row-b-cmz', 'main_b');
+            addClickListener('main-row-c-cmz', 'main_c');
+            addClickListener('main-row-d-cmz', 'main_d');
+            addClickListener('main-row-e-cmz', 'main_e');
+            addClickListener('main-row-f-cmz', 'main_f');
+            addClickListener('main-row-g-cmz', 'main_g');
+            addClickListener('main-row-h-cmz', 'main_h');
+            addClickListener('main-row-i-cmz', 'main_i');
+            addClickListener('main-row-j-cmz', 'main_j');
+            addClickListener('main-row-a-min-cmz', 'main_a_min');
+            addClickListener('main-row-b-min-cmz', 'main_b_min');
+            addClickListener('main-row-c-min-cmz', 'main_c_min');
+            addClickListener('main-row-d-min-cmz', 'main_d_min');
+            addClickListener('main-row-e-min-cmz', 'main_e_min');
+            addClickListener('main-row-f-min-cmz', 'main_f_min');
+            addClickListener('main-row-g-min-cmz', 'main_g_min');
+            addClickListener('main-row-h-min-cmz', 'main_h_min');
+            addClickListener('main-row-i-min-cmz', 'main_i_min');
+            addClickListener('main-row-j-min-cmz', 'main_j_min');
+            addClickListener('main-row-k-min-cmz', 'main_k_min');
+            addClickListener('main-row-m-min-cmz', 'main_m_min');
+            addClickListener('main-row-n-min-cmz', 'main_n_min');
+            addClickListener('main-row-o-min-cmz', 'main_o_min');
+            addClickListener('main-row-p-min-cmz', 'main_p_min');
+            addClickListener('main-row-q-min-cmz', 'main_q_min');
+            addClickListener('main-row-r-min-cmz', 'main_r_min');
+            addClickListener('main-row-s-min-cmz', 'main_s_min');
+            addClickListener('main-row-t-min-cmz', 'main_t_min');
+            addClickListener('main-row-u-min-cmz', 'main_u_min');
+            addClickListener('main-row-v-min-cmz', 'main_v_min');
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('dropdown-options-cmz').addEventListener('change', async function(event) {
+            const selectedValue = event.target.value;
+    
+            if (selectedValue === 'png') {
+                const tableContainer = document.getElementById('component-to-save-cmz');
+    
+                try {
+                    // Capturar el contenedor de la tabla con html2canvas
+                    const canvas = await html2canvas(tableContainer, {
+                        backgroundColor: '#FFFFFF', // Fondo blanco
+                        scale: 2, // Mayor resolución
+                    });
+    
+                    // Convertir el canvas a datos PNG
+                    const imgData = canvas.toDataURL('image/png');
+    
+                    // Crear un enlace temporal para la descarga
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = imgData;
+                    downloadLink.download = 'diagcmz.png';
+                    downloadLink.click();
+                } catch (error) {
+                    console.error('Error al generar el PNG:', error);
+                    alert('Ocurrió un error al intentar descargar la tabla en PNG.');
+                }
+            // } else if (selectedValue === 'excel') {
+            //     // Redirigir para descargar el archivo Excel (ruta del servidor Flask)
+            //     window.location.href = '/download/excel';
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const zoomButton = document.getElementById('zoom_button_cmz');
+            const tableDiv = document.querySelector('.diag-flujo-cmz');
+            const zoomImage = zoomButton.querySelector('img');
+    
+            zoomButton.addEventListener('click', () => {
+                // Alternar la clase del div
+                if (tableDiv.classList.contains('zoom-diag-cmz')) {
+                    tableDiv.classList.remove('zoom-diag-cmz');
+                    zoomImage.src = '/static/img/svg/zoom_min.svg'; // Cambiar la imagen a zoom mínimo
+                } else {
+                    tableDiv.classList.add('zoom-diag-cmz');
+                    zoomImage.src = '/static/img/svg/zoom_max.svg'; // Cambiar la imagen a zoom máximo
+                }
+            });
+        });
+    </script>
+</div>
+{% endblock %}

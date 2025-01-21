@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/barra_lateral.css">
+    <link rel="stylesheet" href="/static/css/general_page.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-gird-barra-lateral-base">
+        <a href="/">
+            <img src="/static/img/svg/logo-amsa-bl.svg" class="logo-amsa-bl" alt="Logo AMSA">
+        </a>
+
+        <div class="nombre-reporte-bl-expanded">
+            <p class="bl-texto-titulo">PGH</p>
+            <p class="bl-texto-subtitulo">Plataforma de Gestión Hídrica</p>
+        </div>
+        
+        <form id="layout-filtro-compania" method="POST">
+            <div class="bl-filtro-reporte-bl-expanded">
+                <img src="/static/img/logos/filtrocompania.png" class="logo-filtro-bl">
+                <select name="persisted-compania" id="layout-select-compania">
+                    <option value="Antucoya" {% if session.get('persisted-compania') == 'Antucoya' %}selected{% endif %}>Antucoya</option>
+                    <option value="Centinela Oxido" {% if session.get('persisted-compania') == 'Centinela Oxido' %}selected{% endif %}>Centinela Oxido</option>
+                    <option value="Centinela Sulfuro" {% if session.get('persisted-compania') == 'Centinela Sulfuro' %}selected{% endif %}>Centinela Sulfuro</option>
+                    <option value="Los Pelambres" {% if session.get('persisted-compania') == 'Los Pelambres' %}selected{% endif %}>Los Pelambres</option>
+                    <option value="Zaldivar" {% if session.get('persisted-compania') == 'Zaldivar' %}selected{% endif %}>Zaldivar</option>
+                </select>
+            </div>
+        </form>
+        <script>
+            document.getElementById('layout-select-compania').addEventListener('change', function () {
+                const selectedCompany = this.value;
+
+                // Actualizar el campo oculto de compañía
+                document.getElementById('persisted-compania-hidden').value = selectedCompany;
+
+                // Enviar el formulario después de actualizar la compañía
+                document.getElementById('filter-form').submit();
+            });
+        </script>
+    
+        <div class="botones">
+            <!-- Botón Opción 1 -->
+            <div class="m13b-3">
+                <a class="btn-lateral" style="text-decoration: none;">
+                    <div>
+                        <img src="/static/img/logos/principal_menu.png" class="logo-reporte2">
+                        <span class="texto-botones-proximamente">Resumen Ejecutivo</span>
+                        <div class="tag-proximamente-resumen-barra">
+                            <span>Pronto</span>
+                            <img src="/static/img/logos/cohete.png" alt="Cohete">
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Botón Opción 2 -->
+            <div class="m13b-3">
+                <a class="btn-lateral" style="text-decoration: none;">
+                    <div>
+                        <img src="/static/img/logos/dashboards_menu.png" class="logo-reporte2" alt="Dashboards">
+                        <span class="texto-botones-proximamente">Dashboards</span>
+                        <div class="tag-proximamente-dash-barra">
+                            <span>Pronto</span>
+                            <img src="/static/img/logos/cohete.png" alt="Cohete">
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Botón Opción 3 -->
+            <div class="m13b-3">
+                <a href="{{ href_layout }}" class="btn-lateral" style="text-decoration: none;">
+                    <div>
+                        <img src="/static/img/logos/diagrama_flujo_menu.png" class="logo-reporte2" alt="Balance de Agua">
+                        <span class="texto-botones-principal2">Balance de Agua</span>
+                        <div class="tag-desarr-bal-barra">
+                            <span>En Construcción</span>
+                            <img src="/static/img/logos/martillo.png" alt="Martillo">
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- <div class="m13b-3">
+                <button class="btn-lateral">
+                    <div>
+                        <img src="/static/img/logos/diagrama_flujo_menu.png" class="logo-reporte2" alt="Balance de Agua">
+                        <span class="texto-botones-principal2">Balance de Agua</span>
+                        <div class="tag-desarr-bal-barra">
+                            <span>En Construcción</span>
+                            <img src="/static/img/logos/martillo.png" alt="Martillo">
+                        </div>
+                    </div>
+                </button>
+            </div> -->
+    
+            <!-- Botón Opción 4 -->
+            <div class="m13b-3">
+                <a href="/balanceicmm" class="btn-lateral" style="text-decoration: none;">
+                    <div>
+                        <img src="/static/img/logos/balance_menu.png" class="logo-reporte2" alt="Balance ICMM">
+                        <span class="texto-botones-principal2">Balance ICMM</span>
+                        <div class="tag-desarr-icmm-barra">
+                            <span>En Construcción</span>
+                            <img src="/static/img/logos/martillo.png" alt="Martillo">
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Botón Opción 5 -->
+            <div class="m13b-3">
+                <a class="btn-lateral" style="text-decoration: none;">
+                    <div>
+                        <img src="/static/img/logos/estandar_gestion_menu.png" class="logo-reporte2" alt="Estándar de Gestión Hídrica">
+                        <span class="texto-botones-proximamente">Est. de G. Hídrica</span>
+                        <div class="tag-proximamente-gest-barra">
+                            <span>Pronto</span>
+                            <img src="/static/img/logos/cohete.png" alt="Cohete">
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Botón Opción 6 -->
+            <div class="m13b-3" style="margin-top: calc(80 * 0.052vw);">
+                <a href="/" class="btn-lateral" style="text-decoration: none;">
+                    <div class="distribucion-coton-lateral">
+                        <img src="/static/img/logos/portal_principal_menu.png" class="logo-reporte2" alt="Portal Principal">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="blt-cabecera-base">
+        <div class="titulo-menu-2">
+            <span class="gp-cabecera-titulo-principal">PLATAFORMA DE GESTIÓN HÍDRICA</span>
+            <span class="gp-cabecera-usuario">{{ saludo }}</span>
+        </div>
+        <br>
+    </div>
+
+    {% block content %}{% endblock %}
+</body>
+</html>

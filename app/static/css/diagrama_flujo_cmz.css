@@ -1,0 +1,1360 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.diag-flujo-cmz{
+    position: relative;
+    height: calc(975 * 0.052vw); 
+    margin-top: calc(70 * 0.052vw);
+    /* background-color: black; */
+    margin-left: calc(-14 * 0.052vw);
+}
+
+.zoom-diag-cmz {
+    
+    transform: scale(0.6);
+    /* transition: transform 0.3s ease-in-out; */
+    margin-top: calc(-164 * 0.052vw);
+}
+
+.ddl-cmz-div-agua-nueva {
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(471* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(387* 0.052vw);
+    left: calc(397* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(32, 144, 163);
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+
+.ddl-cmz-div-sumin-agua-negr{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(381* 0.052vw);
+    left: calc(125* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-aguas-halladas{
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(700* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(164* 0.052vw);
+    left: calc(320* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-agua-mineral{
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(700* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(781* 0.052vw);
+    left: calc(309* 0.052vw);
+    border: calc(3 * 0.052vw) solid #6CA036;
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-servicios{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(46* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-cont-polvo{
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(700* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(270* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-sx-ew{
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(700* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(491* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-area-seca{
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(700* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(726* 0.052vw);
+    left: calc(750* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-ptas{
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(700* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(108* 0.052vw);
+    left: calc(1085* 0.052vw);
+    border: calc(3 * 0.052vw) solid #913088;
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-tsf{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(726* 0.052vw);
+    left: calc(1114* 0.052vw);
+    border: calc(3 * 0.052vw) solid rgb(144 158 161);
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-evaporacion{
+    width: calc(168 * 0.052vw);
+    border-radius: calc(8 * 0.052vw);
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(130* 0.052vw);
+    left: calc(1460* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-retencion{
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(700* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(422* 0.052vw);
+    left: calc(1460* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-div-infiltracion{
+    width: calc(168 * 0.052vw);
+    /* height: calc(148 * 0.052vw); */
+    border-radius: calc(8 * 0.052vw);
+    /* margin-left: calc(700* 0.052vw); */
+    /* margin-top: calc(-257* 0.052vw); */
+    background-color: #FFFFFF;
+    padding: calc(10* 0.052vw);
+    font-family: Montserrat; 
+    position: absolute;
+    top: calc(743* 0.052vw);
+    left: calc(1460* 0.052vw);
+    border: calc(3 * 0.052vw) solid #DC2C35;
+    /* box-shadow: calc(2 * 0.052vw) calc(2 * 0.052vw) calc(5 * 0.052vw) rgba(0, 0, 0, 0.2); */
+}
+
+.ddl-cmz-val-a-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(421* 0.052vw);
+    left: calc(304* 0.052vw);
+}
+
+.ddl-cmz-val-b-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(817* 0.052vw);
+    left: calc(535* 0.052vw);
+}
+
+.ddl-cmz-val-c-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(194* 0.052vw);
+    left: calc(557* 0.052vw);
+}
+
+.ddl-cmz-val-d-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(680* 0.052vw);
+    left: calc(1207* 0.052vw);
+}
+
+.ddl-cmz-val-e-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(411* 0.052vw);
+    left: calc(1386* 0.052vw);
+}
+
+.ddl-cmz-val-f-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(167* 0.052vw);
+    left: calc(1635* 0.052vw);
+}
+
+.ddl-cmz-val-g-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(259* 0.052vw);
+    left: calc(1386* 0.052vw);
+}
+
+.ddl-cmz-val-h-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(116* 0.052vw);
+    left: calc(1355* 0.052vw);
+}
+
+.ddl-cmz-val-i-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(85* 0.052vw);
+    left: calc(1471* 0.052vw);
+}
+
+.ddl-cmz-val-j-may{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(778* 0.052vw);
+    left: calc(1343* 0.052vw);
+}
+
+.ddl-cmz-val-a-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(770* 0.052vw);
+    left: calc(676* 0.052vw);
+}
+
+.ddl-cmz-val-b-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(527* 0.052vw);
+    left: calc(676* 0.052vw);
+}
+
+.ddl-cmz-val-c-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(327* 0.052vw);
+    left: calc(676* 0.052vw);
+}
+
+.ddl-cmz-val-d-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(101* 0.052vw);
+    left: calc(676* 0.052vw);
+}
+
+.ddl-cmz-val-e-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(735* 0.052vw);
+    left: calc(986* 0.052vw);
+}
+
+.ddl-cmz-val-f-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(865* 0.052vw);
+    left: calc(986* 0.052vw);
+}
+
+.ddl-cmz-val-g-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(683* 0.052vw);
+    left: calc(887* 0.052vw);
+}
+
+.ddl-cmz-val-h-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(683* 0.052vw);
+    left: calc(724* 0.052vw);
+}
+
+.ddl-cmz-val-i-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(77* 0.052vw);
+    left: calc(936* 0.052vw);
+}
+
+.ddl-cmz-val-j-min{
+    width: calc(67 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(12 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(330* 0.052vw);
+    left: calc(936* 0.052vw);
+}
+
+
+
+
+.ddl-cmz-letra-a-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(480* 0.052vw);
+    left: calc(320* 0.052vw);
+}
+
+.ddl-cmz-letra-b-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(865* 0.052vw);
+    left: calc(556* 0.052vw);
+}
+
+.ddl-cmz-letra-c-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(245* 0.052vw);
+    left: calc(574* 0.052vw);
+}
+
+.ddl-cmz-letra-d-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(692* 0.052vw);
+    left: calc(1178* 0.052vw);
+}
+
+.ddl-cmz-letra-e-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(453* 0.052vw);
+    left: calc(1406* 0.052vw);
+}
+
+.ddl-cmz-letra-f-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(213* 0.052vw);
+    left: calc(1656* 0.052vw);
+}
+
+.ddl-cmz-letra-g-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(239* 0.052vw);
+    left: calc(1404* 0.052vw);
+}
+
+.ddl-cmz-letra-h-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(159* 0.052vw);
+    left: calc(1378* 0.052vw);
+}
+
+.ddl-cmz-letra-i-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(100* 0.052vw);
+    left: calc(1556* 0.052vw);
+}
+
+.ddl-cmz-letra-j-may{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(823* 0.052vw);
+    left: calc(1366* 0.052vw);
+}
+
+.ddl-cmz-letra-a-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(821* 0.052vw);
+    left: calc(697* 0.052vw);
+}
+
+.ddl-cmz-letra-b-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(580* 0.052vw);
+    left: calc(697* 0.052vw);
+}
+
+.ddl-cmz-letra-c-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(379* 0.052vw);
+    left: calc(697* 0.052vw);
+}
+
+.ddl-cmz-letra-d-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(155* 0.052vw);
+    left: calc(697* 0.052vw);
+}
+
+.ddl-cmz-letra-e-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(781* 0.052vw);
+    left: calc(1006* 0.052vw);
+}
+
+.ddl-cmz-letra-f-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(842* 0.052vw);
+    left: calc(1006* 0.052vw);
+}
+
+.ddl-cmz-letra-g-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(692* 0.052vw);
+    left: calc(855* 0.052vw);
+}
+
+.ddl-cmz-letra-h-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(692* 0.052vw);
+    left: calc(806* 0.052vw);
+}
+
+.ddl-cmz-letra-i-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(51* 0.052vw);
+    left: calc(956* 0.052vw);
+}
+
+.ddl-cmz-letra-j-min{
+    width: calc(60 * 0.052vw);
+    background-color: transparent;
+    font-family: Montserrat; 
+    font-size: calc(10 * 0.052vw); 
+    font-weight: 700;
+    position: absolute;
+    top: calc(382* 0.052vw);
+    left: calc(956* 0.052vw);
+}
+
+.cmz-linea-flecha-a-may {
+    position: absolute;
+    /* height: calc(2 * 0.052vw); */
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(100 * 0.052vw);
+    top: calc(468* 0.052vw);
+    left: calc(293* 0.052vw);
+}
+
+.cmz-linea-flecha-a-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    /*border-color: transparent transparent #00768A transparent;*/ /*FLECHA APUNTA HACIA ARRIBA*/
+    /*border-color: #00768A transparent transparent transparent;*/ /*FLECHA APUNTA HACIA ABAJO*/
+    border-color: transparent transparent transparent #6CA036; /*FLECHA APUNTA HACIA LA DERECHA*/ 
+    /*border-color: transparent #00768A transparent transparent;*/ /*FLECHA APUNTA HACIA LA IZQUIERDA*/
+}
+
+.cmz-linea-flecha-b-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(269 * 0.052vw);
+    top: calc(858* 0.052vw);
+    left: calc(477* 0.052vw)
+}
+
+.cmz-linea-flecha-b-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    /*border-color: transparent transparent #00768A transparent;*/ /*FLECHA APUNTA HACIA ARRIBA*/
+    /*border-color: #00768A transparent transparent transparent;*/ /*FLECHA APUNTA HACIA ABAJO*/
+    border-color: transparent transparent transparent #6CA036; /*FLECHA APUNTA HACIA LA DERECHA*/ 
+    /*border-color: transparent #00768A transparent transparent;*/ /*FLECHA APUNTA HACIA LA IZQUIERDA*/
+}
+
+.cmz-linea-flecha-c1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(139 * 0.052vw);
+    top: calc(235* 0.052vw);
+    left: calc(488* 0.052vw)
+}
+
+.cmz-linea-flecha-c2-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #6CA036;
+    height: calc(79 * 0.052vw);
+    top: calc(235 * 0.052vw);
+    left: calc(626 * 0.052vw);
+}
+
+.cmz-linea-flecha-c3-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #6CA036;
+    width: calc(120 * 0.052vw);
+    top: calc(314* 0.052vw);
+    left: calc(626* 0.052vw)
+}
+
+.cmz-linea-flecha-c3-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #6CA036;
+}
+
+.cmz-linea-flecha-d1-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35; 
+    height: calc(191 * 0.052vw);
+    top: calc(535 * 0.052vw);
+    left: calc(1197 * 0.052vw);
+}
+
+.cmz-linea-flecha-d2-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(257 * 0.052vw);
+    top: calc(535* 0.052vw);
+    left: calc(1198* 0.052vw);
+}
+
+.cmz-linea-flecha-d2-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.cmz-linea-flecha-e1-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35; 
+    height: calc(36 * 0.052vw);
+    top: calc(909 * 0.052vw);
+    left: calc(843 * 0.052vw);
+} 
+
+.cmz-linea-flecha-e2-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(233 * 0.052vw);
+    top: calc(945* 0.052vw);
+    left: calc(843* 0.052vw);
+}
+
+.cmz-linea-flecha-e3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35; 
+    height: calc(498 * 0.052vw);
+    top: calc(448 * 0.052vw);
+    left: calc(1074 * 0.052vw);
+}
+
+.cmz-linea-flecha-e4-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(380 * 0.052vw);
+    top: calc(448* 0.052vw);
+    left: calc(1075* 0.052vw);
+}
+
+.cmz-linea-flecha-e4-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.cmz-linea-flecha-f1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(68 * 0.052vw);
+    top: calc(209* 0.052vw);
+    left: calc(1632* 0.052vw);
+}
+
+.cmz-linea-flecha-f1-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent #DC2C35 transparent transparent;
+}
+
+.cmz-linea-flecha-f2-may { 
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35; 
+    height: calc(725 * 0.052vw);
+    top: calc(209 * 0.052vw);
+    left: calc(1700 * 0.052vw);
+}
+
+.cmz-linea-flecha-f3-may { 
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(499 * 0.052vw);
+    top: calc(934* 0.052vw);
+    left: calc(1202* 0.052vw);
+}
+
+.cmz-linea-flecha-f4-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(26 * 0.052vw);
+    top: calc(910 * 0.052vw);
+    left: calc(1201 * 0.052vw);
+}
+
+.cmz-linea-flecha-g1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(79 * 0.052vw);
+    top: calc(255* 0.052vw);
+    left: calc(1376* 0.052vw);
+}
+
+.cmz-linea-flecha-g1-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.cmz-linea-flecha-g2-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(192 * 0.052vw);
+    top: calc(256 * 0.052vw);
+    left: calc(1376 * 0.052vw);
+}
+
+.cmz-linea-flecha-h1-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(164 * 0.052vw);
+    top: calc(155* 0.052vw);
+    left: calc(1291* 0.052vw);
+}
+
+.cmz-linea-flecha-h1-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.cmz-linea-flecha-h2-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(153 * 0.052vw);
+    top: calc(156 * 0.052vw);
+    left: calc(1291 * 0.052vw);
+}
+
+.cmz-linea-flecha-h3-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(374 * 0.052vw);
+    top: calc(309* 0.052vw);
+    left: calc(918* 0.052vw);
+}
+
+.cmz-linea-flecha-i1-may {
+    position: absolute;
+    /* width: calc(2 * 0.052vw);  */
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;  /* Cambia el grosor según sea necesario */
+    height: calc(367 * 0.052vw);
+    top: calc(20 * 0.052vw);
+    left: calc(523 * 0.052vw);
+}
+
+.cmz-linea-flecha-i2-may {
+    position: absolute;
+    /* height: calc(2 * 0.052vw); */
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(1021 * 0.052vw);
+    top: calc(20* 0.052vw);
+    left: calc(523* 0.052vw)
+}
+
+.cmz-linea-flecha-i3-may {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed #DC2C35;
+    height: calc(104 * 0.052vw);
+    top: calc(21 * 0.052vw);
+    left: calc(1543 * 0.052vw);
+}
+
+.cmz-linea-flecha-i3-may::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(104 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: #DC2C35 transparent transparent transparent;
+}
+
+.cmz-linea-flecha-j-may {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed #DC2C35;
+    width: calc(173 * 0.052vw);
+    top: calc(818* 0.052vw);
+    left: calc(1282* 0.052vw);
+}
+
+.cmz-linea-flecha-j-may::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent #DC2C35;
+}
+
+.cmz-linea-flecha-a1-min { /*Horizontal*/
+    position: absolute;
+    /* height: calc(2 * 0.052vw); */
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(91 * 0.052vw);
+    top: calc(814* 0.052vw);
+    left: calc(655* 0.052vw)
+}
+
+.cmz-linea-flecha-a1-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    /*border-color: transparent transparent #00768A transparent;*/ /*FLECHA APUNTA HACIA ARRIBA*/
+    /*border-color: #00768A transparent transparent transparent;*/ /*FLECHA APUNTA HACIA ABAJO*/
+    border-color: transparent transparent transparent rgb(32, 144, 163); /*FLECHA APUNTA HACIA LA DERECHA*/ 
+    /*border-color: transparent #00768A transparent transparent;*/ /*FLECHA APUNTA HACIA LA IZQUIERDA*/
+}
+
+.cmz-linea-flecha-a2-min { /*Vertical*/
+    position: absolute;
+    /* width: calc(2 * 0.052vw);  */
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(32, 144, 163);  /* Cambia el grosor según sea necesario */
+    height: calc(670 * 0.052vw);
+    top: calc(145 * 0.052vw);
+    left: calc(655 * 0.052vw);
+}
+
+.cmz-linea-flecha-a3-min { /*Horizontal*/
+    position: absolute;
+    /* height: calc(2 * 0.052vw); */
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(91 * 0.052vw);
+    top: calc(468* 0.052vw);
+    left: calc(565* 0.052vw)
+}
+
+.cmz-linea-flecha-b-min { /*Horizontal*/
+    position: absolute;
+    /* height: calc(2 * 0.052vw); */
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(91 * 0.052vw);
+    top: calc(570* 0.052vw);
+    left: calc(655* 0.052vw)
+}
+
+.cmz-linea-flecha-b-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    /*border-color: transparent transparent #00768A transparent;*/ /*FLECHA APUNTA HACIA ARRIBA*/
+    /*border-color: #00768A transparent transparent transparent;*/ /*FLECHA APUNTA HACIA ABAJO*/
+    border-color: transparent transparent transparent rgb(32, 144, 163); /*FLECHA APUNTA HACIA LA DERECHA*/ 
+    /*border-color: transparent #00768A transparent transparent;*/ /*FLECHA APUNTA HACIA LA IZQUIERDA*/
+}
+
+.cmz-linea-flecha-c-min { /*Horizontal*/
+    position: absolute;
+    /* height: calc(2 * 0.052vw); */
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(91 * 0.052vw);
+    top: calc(371* 0.052vw);
+    left: calc(655* 0.052vw)
+}
+
+.cmz-linea-flecha-c-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    /*border-color: transparent transparent #00768A transparent;*/ /*FLECHA APUNTA HACIA ARRIBA*/
+    /*border-color: #00768A transparent transparent transparent;*/ /*FLECHA APUNTA HACIA ABAJO*/
+    border-color: transparent transparent transparent rgb(32, 144, 163); /*FLECHA APUNTA HACIA LA DERECHA*/ 
+    /*border-color: transparent #00768A transparent transparent;*/ /*FLECHA APUNTA HACIA LA IZQUIERDA*/
+}
+
+.cmz-linea-flecha-d-min { /*Horizontal*/
+    position: absolute;
+    /* height: calc(2 * 0.052vw); */
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(32, 144, 163);
+    width: calc(91 * 0.052vw);
+    top: calc(145* 0.052vw);
+    left: calc(655* 0.052vw)
+}
+
+.cmz-linea-flecha-d-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    /*border-color: transparent transparent #00768A transparent;*/ /*FLECHA APUNTA HACIA ARRIBA*/
+    /*border-color: #00768A transparent transparent transparent;*/ /*FLECHA APUNTA HACIA ABAJO*/
+    border-color: transparent transparent transparent rgb(32, 144, 163); /*FLECHA APUNTA HACIA LA DERECHA*/ 
+    /*border-color: transparent #00768A transparent transparent;*/ /*FLECHA APUNTA HACIA LA IZQUIERDA*/
+}
+
+.cmz-linea-flecha-e-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(191 * 0.052vw);
+    top: calc(775* 0.052vw);
+    left: calc(922* 0.052vw);
+}
+
+.cmz-linea-flecha-e-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent rgb(144 158 161) transparent transparent;
+}
+
+.cmz-linea-flecha-f-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(191 * 0.052vw);
+    top: calc(859* 0.052vw);
+    left: calc(919* 0.052vw);
+}
+
+.cmz-linea-flecha-f-min::after {
+    content: '';
+    position: absolute;
+    right: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(144 158 161);
+}
+
+.cmz-linea-flecha-g-min { /*Vertical*/
+    position: absolute;
+    /* width: calc(2 * 0.052vw);  */
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(49 * 0.052vw);
+    top: calc(678 * 0.052vw);
+    left: calc(847 * 0.052vw);
+}
+
+.cmz-linea-flecha-g-min::after {
+    content: '';
+    position: absolute;
+    /* right: calc(-8 * 0.052vw); */
+    left: calc(-5 * 0.052vw);
+    top: calc(-6 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent transparent rgb(144 158 161) transparent; /*FLECHA APUNTA HACIA ARRIBA*/
+}
+
+.cmz-linea-flecha-h-min { /*Vertical*/
+    position: absolute;
+    /* width: calc(2 * 0.052vw);  */
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(50 * 0.052vw);
+    top: calc(674 * 0.052vw);
+    left: calc(818 * 0.052vw);
+}
+
+.cmz-linea-flecha-h-min::after {
+    content: '';
+    position: absolute;
+    /* right: calc(-8 * 0.052vw); */
+    left: calc(-5 * 0.052vw);
+    top: calc(48 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: rgb(144 158 161) transparent transparent transparent; /*FLECHA APUNTA HACIA ABAJO*/
+}
+
+.cmz-linea-flecha-i1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(249 * 0.052vw);
+    top: calc(69* 0.052vw);
+    left: calc(918* 0.052vw)
+}
+
+.cmz-linea-flecha-i2-min {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(37 * 0.052vw);
+    top: calc(69 * 0.052vw);
+    left: calc(1167 * 0.052vw);
+}
+
+.cmz-linea-flecha-i2-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-5 * 0.052vw);
+    top: calc(34 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: rgb(144 158 161) transparent transparent transparent;
+}
+
+.cmz-linea-flecha-j1-min {
+    position: absolute;
+    background-color: transparent;
+    border-top: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    width: calc(246 * 0.052vw);
+    top: calc(374* 0.052vw);
+    left: calc(922* 0.052vw);
+}
+
+.cmz-linea-flecha-j1-min::after {
+    content: '';
+    position: absolute;
+    left: calc(-8 * 0.052vw);
+    top: calc(-5 * 0.052vw);
+    border-width: calc(5 * 0.052vw);
+    border-style: solid;
+    border-color: transparent rgb(144 158 161) transparent transparent;
+}
+
+.cmz-linea-flecha-j2-min {
+    position: absolute;
+    background-color: transparent;
+    border-left: calc(3 * 0.052vw) dashed rgb(144 158 161);
+    height: calc(113 * 0.052vw);
+    top: calc(263 * 0.052vw);
+    left: calc(1167 * 0.052vw);
+}
+
+.diag-tabla-flujo{
+    margin-bottom: calc(100 * 0.052vw);
+    margin-top: calc(25 * 0.052vw);
+    margin-left: calc(115 * 0.052vw);
+    width: calc(1750 * 0.052vw);
+    font-family: Montserrat;
+    font-size: calc(13* 0.052vw);
+    background-color : white;
+    border-bottom: 1px solid #33333399;
+}
+
+.diag-titulo-flujo{
+    font-size: calc(12 * 0.052vw);
+    font-weight: 600;
+    text-align: center;
+}
+
+.diag-valores-flujo-1{
+    font-size: calc(10 * 0.052vw);
+    font-weight: 600;
+    text-align: left;
+    color: #858585;
+    margin-top: calc(20 * 0.052vw);
+}
+
+.diag-valores-flujo-2{
+    font-size: calc(10 * 0.052vw);
+    font-weight: 600;
+    text-align: left;
+    color: #858585;
+}
+
+.diag-tabla-letras-flujo{
+    cursor: pointer;
+    /* text-align: center; */
+    font-weight: 600;
+    border-top: 1px solid #33333399;
+    border-bottom: none;
+    border-right: 1px solid #33333399;
+    border-left: 1px solid #33333399;
+}
+
+.diag-tabla-desde-hasta-flujo{
+    font-weight: 600;
+    border: 1px solid #33333399;
+    /* position: relative;
+    left: calc(10 * 0.052vw); */
+}
+
+.diag-tabla-valor-flujo{
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid #33333399;
+}
+
+.diag-tabla-flecha {
+    width: calc(15 * 0.052vw);
+    height: calc(15 * 0.052vw);
+    margin-right: calc(55 * 0.052vw); /*10*/
+    vertical-align: middle;
+}
+
+.diag-tabla-col-nombres{
+    text-align: center; 
+    color: #FFFFFF;
+    background-color: #1E464B;
+}
+
+/* Modal */
+.modal-cmz {
+    /* display: none; */
+    position: relative;
+    z-index: 1;
+    left: calc(123 * 0.052vw); /*left: calc(313 * 0.052vw);*/
+    top: calc(9 * 0.052vw); /*top: calc(210 * 0.052vw);*/
+    width: calc(1600 * 0.052vw); /* width: calc(1200 * 0.052vw); */
+    height: calc(952 * 0.052vw); /* height: calc(737 * 0.052vw); */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Modal content */
+.modal-content-cmz {
+    background-color: #fefefe;
+    /* margin: 10% auto; */
+    padding: calc(113 * 0.052vw); /* padding: calc(20 * 0.052vw); */
+    border: calc(1 * 0.052vw) solid #888;
+    height: calc(941 * 0.052vw);
+    z-index: 2;  
+    position: relative;
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+/* Imagen dentro del modal */
+.modal-image-cmz {
+    position: relative;
+    width: calc(1373 * 0.052vw); /* width: calc(1136 * 0.052vw);  1194*/
+    height: calc(800 * 0.052vw); /* height: calc(693 * 0.052vw); 716*/
+    left: calc(0 * 0.052vw); /*69*/
+    bottom: calc(51 * 0.052vw);
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+/* Botón de cerrar */
+.close-cmz {
+    position: absolute;
+    top: calc(10 * 0.052vw);
+    right: calc(15 * 0.052vw);
+    color: #aaa;
+    font-size: calc(28 * 0.052vw);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Flecha de siguiente imagen */
+/* .next {
+    position: absolute;
+    top: 50%;
+    right: calc(15 * 0.052vw);
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: calc(40 * 0.052vw);
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+} */
