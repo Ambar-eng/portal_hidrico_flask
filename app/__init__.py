@@ -13,6 +13,7 @@ from app.blueprints.balance_icmm import balance_icmm_bp
 from app.blueprints.diagrama_flujo_ant import diagflujo_ant_bp
 from app.blueprints.diagrama_flujo_cmz import diagflujo_cmz_bp
 from app.blueprints.diagrama_flujo_mlp import diagflujo_mlp_bp
+from app.blueprints.resumen_ejecutivo import resumen_ej_bp
 
 # Cargar variables de entorno desde el archivo .env
 env_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -90,6 +91,7 @@ def create_flask_app():
         app.register_blueprint(diagflujo_ant_bp)
         app.register_blueprint(diagflujo_cmz_bp)
         app.register_blueprint(diagflujo_mlp_bp)
+        app.register_blueprint(resumen_ej_bp)
 
         @app.context_processor
         def inject_href():

@@ -65,7 +65,7 @@ class CosmosClientWrapper:
     def get_items_from_container(self, container_name: str, table: str, start_date: str = None, end_date: str = None):
         # If no date range is provided, default to the last 31 days
         if not start_date:
-            start_date = (datetime.utcnow() - timedelta(days=90)).strftime('%Y-%m-%d')
+            start_date = (datetime.utcnow() - timedelta(days=31)).strftime('%Y-%m-%d')
         if not end_date:
             end_date = datetime.utcnow().strftime('%Y-%m-%d')
 

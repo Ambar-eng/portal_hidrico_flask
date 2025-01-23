@@ -98,291 +98,372 @@
         </form>
     </div>
 
-    <div id='component-to-save-mlp' class='diag-flujo-mlp'>
+    <div class='diag-flujo-mlp'>
+        <div class='content-wrapper' id='component-to-save-mlp' >
 
-        <div id='mlp-agua-conc-embarc' class='ddl-mlp-div-agua-conc-embarc'>
-            <p class='diag-titulo-flujo-mlp'>AGUA CONCENTRADO EMBARCADO</p>
-            <img src='/static/img/logos/diag_agua_concentrado_embarc.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-        </div>
-
-        <div id='ant-servicios' class='ddl-ant-div-servicios'>
-            <p class='diag-titulo-flujo-mlp'>SERVICIOS</p>
-            <img src='/static/img/logos/diag_servicios.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
-        </div>
-
-        <div id='ant-sumin-terceros' class='ddl-ant-div-sumin-terceros'>
-            <p class='diag-titulo-flujo-mlp'>SUMINISTRO DE TERCEROS (AGUA DE MAR)</p>
-            <img src='/static/img/logos/diag_sumin_terceros.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-        </div>
-
-        <div id='ant-agua-mineral' class='ddl-ant-div-agua-mineral'>
-            <p class='diag-titulo-flujo-mlp'>AGUA EN MINERAL</p>
-            <img src='/static/img/logos/diag_agua_en_mineral.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-        </div>
-
-        <div id='ant-cont-polvo' class='ddl-ant-div-cont-polvo'>
-            <p class='diag-titulo-flujo-mlp'>CONTROL DE POLVO</p>
-            <img src='/static/img/logos/diag_control_polvo.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
-        </div>
-
-        <div id='ant-sx-ew' class='ddl-ant-div-sx-ew'>
-            <p class='diag-titulo-flujo-mlp'>SX/EW</p>
-            <img src='/static/img/logos/diag_sx_ew.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
-        </div>
-
-        <div id='ant-area-seca' class='ddl-ant-div-area-seca'>
-            <p class='diag-titulo-flujo-mlp'>ÁREA SECA/HÚMEDA</p>
-            <img src='/static/img/logos/diag_area_seca.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
-        </div>
-
-        <div id='ant-ptas' class='ddl-ant-div-ptas'>
-            <p class='diag-titulo-flujo-mlp'>PTAS</p>
-            <img src='/static/img/logos/diag_sx_ew.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
-        </div>
-
-        <div id='ant-evaporacion' class='ddl-ant-div-evaporacion'>
-            <p class='diag-titulo-flujo-mlp'>EVAPORACIÓN</p>
-            <img src='/static/img/logos/diag_evaporacion.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-        </div>
-
-        <div id='ant-retencion' class='ddl-ant-div-retencion'>
-            <p class='diag-titulo-flujo-mlp'>RETENCIÓN</p>
-            <img src='/static/img/logos/diag_agua_en_mineral.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-        </div>
-
-        <div class='ddl-ant-val-a-may'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_mar_a_agua_nueva_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-b-may'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_mineral_a_area_seca_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-c-may'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_evaporacion_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-d-may'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_control_polvo_a_evaporacion_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-e-may'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_area_seca_a_evaporacion_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-f-may'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_area_seca_a_retencion_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-a-min'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_area_seca_humeda_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-b-min'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_sx_ew_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-c-min'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_control_polvo_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-d-min'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_servicios_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-e-min'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_area_seca_a_sx_ew_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-f-min'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_sx_ew_a_area_seca_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-g-min'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_servicios_a_ptas_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-val-h-min'>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
-            <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_ptas_a_control_polvo_ant }}</p>
-        </div>
-
-        <div class='ddl-ant-letra-a-may'>
-            <p>A</p>
-        </div>
-        <div class='ddl-ant-letra-b-may'>
-            <p>B</p>
-        </div>
-        <div class='ddl-ant-letra-c-may'>
-            <p>C</p>
-        </div>
-        <div class='ddl-ant-letra-d-may'>
-            <p>D</p>
-        </div>
-        <div class='ddl-ant-letra-e-may'>
-            <p>E</p>
-        </div>
-        <div class='ddl-ant-letra-f-may'>
-            <p>F</p>
-        </div>
-        <div class='ddl-ant-letra-a-min'>
-            <p>a</p>
-        </div>
-        <div class='ddl-ant-letra-b-min'>
-            <p>b</p>
-        </div>
-        <div class='ddl-ant-letra-c-min'>
-            <p>c</p>
-        </div>
-        <div class='ddl-ant-letra-d-min'>
-            <p>d</p>
-        </div>
-        <div class='ddl-ant-letra-e-min'>
-            <p>e</p>
-        </div>
-        <div class='ddl-ant-letra-f-min'>
-            <p>f</p>
-        </div>
-        <div class='ddl-ant-letra-g-min'>
-            <p>g</p>
-        </div>
-        <div class='ddl-ant-letra-h-min'>
-            <p>h</p>
-        </div>
-
-        <p class='ant-linea-flecha-a-may'></p>
-        <p class='ant-linea-flecha-b-may'></p>
-        <p class='ant-linea-flecha-c1-may'></p>
-        <p class='ant-linea-flecha-c2-may'></p>
-        <p class='ant-linea-flecha-c3-may'></p>
-        <p class='ant-linea-flecha-d1-may'></p>
-        <p class='ant-linea-flecha-d2-may'></p>
-        <p class='ant-linea-flecha-d3-may'></p>
-        <p class='ant-linea-flecha-e-may'></p>
-        <p class='ant-linea-flecha-f1-may'></p>
-        <p class='ant-linea-flecha-f2-may'></p>
-        <p class='ant-linea-flecha-f3-may'></p>
-        <p class='ant-linea-flecha-a1-min'></p>
-        <p class='ant-linea-flecha-a2-min'></p>
-        <p class='ant-linea-flecha-a3-min'></p>
-        <p class='ant-linea-flecha-b-min'></p>
-        <p class='ant-linea-flecha-c-min'></p>
-        <p class='ant-linea-flecha-d-min'></p>
-        <p class='ant-linea-flecha-e-min'></p>
-        <p class='ant-linea-flecha-f-min'></p>
-        <p class='ant-linea-flecha-g1-min'></p>
-        <p class='ant-linea-flecha-g2-min'></p>
-        <p class='ant-linea-flecha-h1-min'></p>
-        <p class='ant-linea-flecha-h2-min'></p>
-
-        <div id='modal-ant-agua-nueva' class='modal-ant' style="display: none;" data-trigger="ant-agua-nueva">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-agua-conc-embarc' class='ddl-mlp-div-agua-conc-embarc'>
+                <p class='diag-titulo-flujo-mlp'>AGUA CONCENTRADO EMBARCADO</p>
+                <img src='/static/img/logos/diag_agua_concentrado_embarc.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-servicios' class='modal-ant' style="display: none;" data-trigger="ant-servicios">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-evaporacion-evotransp' class='ddl-mlp-div-evaporacion-evotransp'>
+                <p class='diag-titulo-flujo-mlp'>EVAPORACIÓN Y EVOTRANSPIRACIÓN</p>
+                <img src='/static/img/logos/diag_evaporacion.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-sumin-terceros' class='modal-ant' style="display: none;" data-trigger="ant-sumin-terceros">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-agua-retenida' class='ddl-mlp-div-agua-retenida'>
+                <p class='diag-titulo-flujo-mlp'>AGUA RETENIDA EN RELAVES</p>
+                <img src='/static/img/logos/diag_infiltracion.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-agua-mineral' class='modal-ant' style="display: none;" data-trigger="ant-agua-mineral">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-agua-perdida-tareas' class='ddl-mlp-div-agua-perdida-tareas'>
+                <p class='diag-titulo-flujo-mlp'>AGUA PERDIDA EN TAREAS</p>
+                <img src='/static/img/logos/diag_agua_perdida_tareas.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-cont-polvo' class='modal-ant' style="display: none;" data-trigger="ant-cont-polvo">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-descarga-mar' class='ddl-mlp-div-descarga-mar'>
+                <p class='diag-titulo-flujo-mlp'>DESCARGA AL MAR</p>
+                <img src='/static/img/logos/diag_pisc_agua_mar_2.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-sx-ew' class='modal-ant' style="display: none;" data-trigger="ant-sx-ew">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-descarga-aguas-subt' class='ddl-mlp-div-descarga-aguas-subt'>
+                <p class='diag-titulo-flujo-mlp'>DESCARGA A AGUAS SUBTERRÁNEAS</p>
+                <img src='/static/img/logos/diag_sumin_agua_negr.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-area-seca' class='modal-ant' style="display: none;" data-trigger="ant-area-seca">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-descarga-terceros' class='ddl-mlp-div-descarga-terceros'>
+                <p class='diag-titulo-flujo-mlp'>DESCARGA A TERCEROS</p>
+                <img src='/static/img/logos/diag_agua_en_mineral.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-ptas' class='modal-ant' style="display: none;" data-trigger="ant-ptas">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-captacion-superf' class='ddl-mlp-div-captacion-superf'>
+                <p class='diag-titulo-flujo-mlp'>CAPTACIÓN SUPERFICIAL</p>
+                <img src='/static/img/logos/diag_rio.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-evaporacion' class='modal-ant' style="display: none;" data-trigger="ant-evaporacion">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-captacion-subt' class='ddl-mlp-div-captacion-subt'>
+                <p class='diag-titulo-flujo-mlp'>CAPTACIÓN SUBTERRÁNEA</p>
+                <img src='/static/img/logos/diag_sumin_agua_negr.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
             </div>
-        </div>
 
-        <div id='modal-ant-retencion' class='modal-ant' style="display: none;" data-trigger="ant-retencion">
-            <div class='modal-content-ant'>
-                <span class='close-ant'>X</span>
-                <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+            <div id='mlp-agua-mineral' class='ddl-mlp-div-agua-mineral'>
+                <p class='diag-titulo-flujo-mlp'>AGUA EN MINERAL</p>
+                <img src='/static/img/logos/diag_agua_en_mineral.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            </div>
+            
+            <div id='mlp-fracc-agua-fresca' class='ddl-mlp-div-fracc-agua-fresca'>
+                <p class='diag-titulo-flujo-mlp'>FRACCIÓN AGUA FRESCA BARRERAS HIDRÁULICAS</p>
+                <img src='/static/img/logos/diag_fracc_agua_fresca.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            </div>
+
+            <div id='mlp-aguas-mina' class='ddl-mlp-div-aguas-mina'>
+                <p class='diag-titulo-flujo-mlp'>AGUAS MINA</p>
+                <img src='/static/img/logos/diag_aguas_mina.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            </div>
+
+            <div id='mlp-precip-escorrentia' class='ddl-mlp-div-precip-escorrentia'>
+                <p class='diag-titulo-flujo-mlp'>PRECIPITACIÓN Y ESCORRENTÍA SUPERFICIAL</p>
+                <img src='/static/img/logos/diag_precip_escorrentia.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            </div>
+
+            <div id='mlp-aguas-valle' class='ddl-mlp-div-aguas-valle'>
+                <p class='diag-titulo-flujo-mlp'>AGUAS DEL VALLE</p>
+                <img src='/static/img/logos/diag_aguas_valle.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            </div>
+
+            <div id='mlp-aguas-mar' class='ddl-mlp-div-aguas-mar'>
+                <p class='diag-titulo-flujo-mlp'>AGUA DE MAR</p>
+                <img src='/static/img/logos/diag_pisc_agua_mar_2.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            </div>
+
+            <div id='mlp-pisc-reserv-chacay' class='ddl-mlp-div-pisc-reserv-chacay'>
+                <p class='diag-titulo-flujo-mlp'>PISCINA Y RESERVORIOS CHACAY (AGUAS MIXTAS)'</p>
+                <img src='/static/img/logos/diag_reservorio.png' class='diag-imagen-flujo'></img>
+                <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+                <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            </div>
+
+
+            
+            <!-- Valores Flujo de Diagrama -->
+            <div class='ddl-ant-val-a-may'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_mar_a_agua_nueva_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-b-may'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_mineral_a_area_seca_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-c-may'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_evaporacion_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-d-may'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_control_polvo_a_evaporacion_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-e-may'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_area_seca_a_evaporacion_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-f-may'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_area_seca_a_retencion_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-a-min'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_area_seca_humeda_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-b-min'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_sx_ew_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-c-min'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_control_polvo_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-d-min'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_agua_nueva_a_servicios_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-e-min'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_area_seca_a_sx_ew_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-f-min'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_sx_ew_a_area_seca_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-g-min'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_servicios_a_ptas_ant }}</p>
+            </div>
+
+            <div class='ddl-ant-val-h-min'>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">FLUJO:</p>
+                <p style="margin-top: calc(0 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">{{ tb_ptas_a_control_polvo_ant }}</p>
+            </div>
+            
+            <!-- Letras Diagrama -->
+            <div class='ddl-mlp-letra-a-may'>
+                <p>A</p>
+            </div>
+            <div class='ddl-mlp-letra-b-may'>
+                <p>B</p>
+            </div>
+            <div class='ddl-mlp-letra-c-may'>
+                <p>C</p>
+            </div>
+            <div class='ddl-mlp-letra-d-may'>
+                <p>D</p>
+            </div>
+            <div class='ddl-mlp-letra-e-may'>
+                <p>E</p>
+            </div>
+            <div class='ddl-mlp-letra-f-may'>
+                <p>F</p>
+            </div>
+            <div class='ddl-mlp-letra-g-may'>
+                <p>G</p>
+            </div>
+            <div class='ddl-mlp-letra-h-may'>
+                <p>H</p>
+            </div>
+            <div class='ddl-mlp-letra-i-may'>
+                <p>I</p>
+            </div>
+            <div class='ddl-mlp-letra-j-may'>
+                <p>J</p>
+            </div>
+            <div class='ddl-mlp-letra-k-may'>
+                <p>K</p>
+            </div>
+            <div class='ddl-mlp-letra-l-may'>
+                <p>L</p>
+            </div>
+            <div class='ddl-mlp-letra-m-may'>
+                <p>M</p>
+            </div>
+            <div class='ddl-mlp-letra-n-may'>
+                <p>N</p>
+            </div>
+            <div class='ddl-mlp-letra-o-may'>
+                <p>O</p>
+            </div>
+            <div class='ddl-mlp-letra-a-min'>
+                <p>a</p>
+            </div>
+            <div class='ddl-mlp-letra-b-min'>
+                <p>b</p>
+            </div>
+            <div class='ddl-mlp-letra-c-min'>
+                <p>c</p>
+            </div>
+            <div class='ddl-mlp-letra-d-min'>
+                <p>d</p>
+            </div>
+            <div class='ddl-mlp-letra-e-min'>
+                <p>e</p>
+            </div>
+            <div class='ddl-mlp-letra-f-min'>
+                <p>f</p>
+            </div>
+            <div class='ddl-mlp-letra-g-min'>
+                <p>g</p>
+            </div>
+            <div class='ddl-mlp-letra-h-min'>
+                <p>h</p>
+            </div>
+            <div class='ddl-mlp-letra-i-min'>
+                <p>i</p>
+            </div>
+            <div class='ddl-mlp-letra-j-min'>
+                <p>j</p>
+            </div>
+            <div class='ddl-mlp-letra-invisible-vert'>
+                <p>Y</p>
+            </div>
+            <div class='ddl-mlp-letra-invisible-hori'>
+                <p>Z</p>
+            </div>
+
+            <p class='ant-linea-flecha-a-may'></p>
+            <p class='ant-linea-flecha-b-may'></p>
+            <p class='ant-linea-flecha-c1-may'></p>
+            <p class='ant-linea-flecha-c2-may'></p>
+            <p class='ant-linea-flecha-c3-may'></p>
+            <p class='ant-linea-flecha-d1-may'></p>
+            <p class='ant-linea-flecha-d2-may'></p>
+            <p class='ant-linea-flecha-d3-may'></p>
+            <p class='ant-linea-flecha-e-may'></p>
+            <p class='ant-linea-flecha-f1-may'></p>
+            <p class='ant-linea-flecha-f2-may'></p>
+            <p class='ant-linea-flecha-f3-may'></p>
+            <p class='ant-linea-flecha-a1-min'></p>
+            <p class='ant-linea-flecha-a2-min'></p>
+            <p class='ant-linea-flecha-a3-min'></p>
+            <p class='ant-linea-flecha-b-min'></p>
+            <p class='ant-linea-flecha-c-min'></p>
+            <p class='ant-linea-flecha-d-min'></p>
+            <p class='ant-linea-flecha-e-min'></p>
+            <p class='ant-linea-flecha-f-min'></p>
+            <p class='ant-linea-flecha-g1-min'></p>
+            <p class='ant-linea-flecha-g2-min'></p>
+            <p class='ant-linea-flecha-h1-min'></p>
+            <p class='ant-linea-flecha-h2-min'></p>
+
+            <div id='modal-ant-agua-nueva' class='modal-ant' style="display: none;" data-trigger="ant-agua-nueva">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-servicios' class='modal-ant' style="display: none;" data-trigger="ant-servicios">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-sumin-terceros' class='modal-ant' style="display: none;" data-trigger="ant-sumin-terceros">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-agua-mineral' class='modal-ant' style="display: none;" data-trigger="ant-agua-mineral">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-cont-polvo' class='modal-ant' style="display: none;" data-trigger="ant-cont-polvo">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-sx-ew' class='modal-ant' style="display: none;" data-trigger="ant-sx-ew">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-area-seca' class='modal-ant' style="display: none;" data-trigger="ant-area-seca">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-ptas' class='modal-ant' style="display: none;" data-trigger="ant-ptas">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-evaporacion' class='modal-ant' style="display: none;" data-trigger="ant-evaporacion">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
+            </div>
+
+            <div id='modal-ant-retencion' class='modal-ant' style="display: none;" data-trigger="ant-retencion">
+                <div class='modal-content-ant'>
+                    <span class='close-ant'>X</span>
+                    <img src="/static/img/svg/cmz_desag_agua_nueva.svg" class='modal-image-ant'>
+                </div>
             </div>
         </div>
     </div>
