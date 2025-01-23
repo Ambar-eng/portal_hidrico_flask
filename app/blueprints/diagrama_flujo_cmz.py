@@ -1,9 +1,50 @@
-from flask import request, jsonify
-from datetime import datetime
-from app.blueprints.auth import get_microsoft_user_info
+from datetime import datetime, timedelta
+from flask import Blueprint, render_template, request, session, jsonify, current_app
+from app.utils.utils import generar_saludo
+
+diagflujo_cmz_bp = Blueprint('diagrama_flujo_cmz', __name__)
 
 
-def obtener_datos_cosmos_diag_cmz(app):
+@diagflujo_cmz_bp.route('/diagramaflujocmz', methods=['GET', 'POST'])
+def balance_agua_cmz():
+    df_ph_cmz = obtener_datos_cosmos_diag_cmz()
+    fecha_maxima_cmz = obtener_fecha_maxima_diag_cmz(df_ph_cmz)
+    mensaje_fecha_cmz = obtener_mensaje_fecha_diag_cmz(fecha_maxima_cmz)
+
+    # Obtener valores seleccionados desde el formulario
+    fecha = request.form.get('filtro_fecha_cmz', None)
+
+    # Si la fecha no está seleccionada, permanece como None
+    if fecha:
+        try:
+            # Validar el formato de la fecha
+            fecha = datetime.strptime(fecha, '%Y-%m-%d').strftime('%Y-%m-%d')
+        except ValueError:
+            # Si la fecha no tiene el formato correcto, manejar el error (opcional)
+            fecha = None
+
+    cmz_temp_switch = request.form.get('filtro_temp_cmz', '')  # "on" si está activado, "" si no
+    cmz_temporalidad = 'Mes' if cmz_temp_switch == "on" else 'Dia'
+    cmz_medida_switch = request.form.get('filtro_medida_cmz', '')
+    cmz_medida= 'l/s' if cmz_medida_switch == "on" else 'm3/h'
+
+    datos_cmz = procesar_datos_diag_cmz(fecha, cmz_temporalidad, cmz_medida)
+
+    return render_template('diagrama_flujo_cmz.html', mensaje_fecha_cmz=mensaje_fecha_cmz, fecha=fecha, cmz_temporalidad=cmz_temporalidad, cmz_medida=cmz_medida,
+                            datos_cmz=datos_cmz)
+
+
+@diagflujo_cmz_bp.route('/toggle_rows_cmz', methods=['POST'])
+def toggle_rows_cmz():
+    data = request.json
+    return toggle_rows_logic_cmz(data)
+
+
+def obtener_datos_cosmos_diag_cmz():
+
+    print(f"Momento Inicial 1: {datetime.now().strftime('%H:%M:%S.%f')[:-3]}")
+
+    app = current_app._get_current_object()
     cache = app.cache
 
     #Obtener los datos de la caché para Antucoya
@@ -14,7 +55,9 @@ def obtener_datos_cosmos_diag_cmz(app):
             'PH_CMZ', 
             'amsa_datos_hidricos_web.dmt_cmz_reporte_hidrico_flujo'
         )
+        print(f"Momento Inicial cache 1: {datetime.now().strftime('%H:%M:%S.%f')[:-3]}")
         cache.set('ph_cmz_data', df_ph_cmz, timeout=3600)
+        print(f"Momento Inicial cache 2: {datetime.now().strftime('%H:%M:%S.%f')[:-3]}")
 
     # Intentar obtener los datos actuales de la caché para combinarlos
     cached_data = cache.get('ph_cmz_data')
@@ -29,8 +72,11 @@ def obtener_datos_cosmos_diag_cmz(app):
 
     # Guardar los datos combinados (actualizados) en la caché, sin duplicados
     cache.set('ph_cmz_data', cached_data + df_ph_cmz, timeout=3600)
+    
+    print(f"Momento Inicial 2: {datetime.now().strftime('%H:%M:%S.%f')[:-3]}")
 
     return cached_data + df_ph_cmz
+
 
 #Función para obtener la fecha máxima
 def obtener_fecha_maxima_diag_cmz(datos):
@@ -53,12 +99,13 @@ def obtener_mensaje_fecha_diag_cmz(fecha_maxima):
         return "No se encontraron datos para mostrar"
     
 
+def procesar_datos_diag_cmz(fecha, cmz_temporalidad, cmz_medida):
+    app = current_app._get_current_object()
 
-def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     # Validar que fecha no sea nula o vacía
     if not fecha:
         # Retornar valores predeterminados si los valores son nulos
-        return tuple("0" for _ in range(190)) 
+        return tuple("0" for _ in range(210)) 
 
     # Consultar la caché
     df_ph_cmz = app.cache.get('ph_cmz_data')
@@ -109,6 +156,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo A 
     tb_agua_negrillar_a_agua_nueva_cmz = filtrar_valor(datos_filtrados, "A", "Real")
     tb_agua_negrillar_a_agua_nueva_proy_cmz = filtrar_valor(datos_filtrados, "A", "Proyectado")
+    agua_negrillar_a_agua_nueva_cmz = tb_agua_negrillar_a_agua_nueva_cmz #Flujo
 
     #Tabla Flujo A.1
     tb_extrac_ls_p1_dga_cmz = filtrar_valor(datos_filtrados, "A.1", "Real")
@@ -137,6 +185,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo B
     tb_agua_mineral_a_area_seca_cmz = filtrar_valor(datos_filtrados, "B", "Real")
     tb_agua_mineral_a_area_seca_proy_cmz = filtrar_valor(datos_filtrados, "B", "Proyectado")
+    agua_mineral_a_area_seca_cmz = tb_agua_mineral_a_area_seca_cmz #Flujo
 
     #Tabla Flujo B.1
     tb_humedad_mineral_hl_cmz = filtrar_valor(datos_filtrados, "B.1", "Real")
@@ -153,6 +202,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo C
     tb_aguas_halladas_a_control_polvo_cmz = filtrar_valor(datos_filtrados, "C", "Real")
     tb_aguas_halladas_a_control_polvo_proy_cmz = filtrar_valor(datos_filtrados, "C", "Proyectado")
+    aguas_halladas_a_control_polvo_cmz = tb_aguas_halladas_a_control_polvo_cmz
 
     #Tabla Flujo C.1
     tb_pozo22_cmz = filtrar_valor(datos_filtrados, "C.1", "Real")
@@ -189,10 +239,12 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo D
     tb_tsf_a_retencion_cmz = filtrar_valor(datos_filtrados, "D", "Real")
     tb_tsf_a_retencion_proy_cmz = filtrar_valor(datos_filtrados, "D", "Proyectado")
+    tsf_a_retencion_cmz = tb_tsf_a_retencion_cmz
 
     #Tabla Flujo E
     tb_area_seca_a_retencion_cmz = filtrar_valor(datos_filtrados, "E", "Real")
     tb_area_seca_a_retencion_proy_cmz = filtrar_valor(datos_filtrados, "E", "Proyectado")
+    area_seca_a_retencion_cmz = tb_area_seca_a_retencion_cmz
 
     #Tabla Flujo E.1
     tb_retencion_hl_cmz = filtrar_valor(datos_filtrados, "E.1", "Real")
@@ -213,10 +265,12 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo F
     tb_tsf_a_evaporacion_cmz = filtrar_valor(datos_filtrados, "F", "Real")
     tb_tsf_a_evaporacion_proy_cmz = filtrar_valor(datos_filtrados, "F", "Proyectado")
+    tsf_a_evaporacion_cmz = tb_tsf_a_evaporacion_cmz
 
     #Tabla Flujo G
     tb_area_seca_a_evaporacion_cmz = filtrar_valor(datos_filtrados, "G", "Real")
     tb_area_seca_a_evaporacion_proy_cmz = filtrar_valor(datos_filtrados, "G", "Proyectado")
+    area_seca_a_evaporacion_cmz = tb_area_seca_a_evaporacion_cmz
 
     #Tabla Flujo G.1
     tb_evap_pilas_cmz = filtrar_valor(datos_filtrados, "G.1", "Real")
@@ -273,18 +327,22 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo H
     tb_control_polvo_a_evaporacion_cmz = filtrar_valor(datos_filtrados, "H", "Real")
     tb_control_polvo_a_evaporacion_proy_cmz = filtrar_valor(datos_filtrados, "H", "Proyectado")
+    control_polvo_a_evaporacion_cmz = tb_control_polvo_a_evaporacion_cmz
 
     #Tabla Flujo I
     tb_agua_nueva_a_evaporacion_cmz = filtrar_valor(datos_filtrados, "I", "Real")
     tb_agua_nueva_a_evaporacion_proy_cmz = filtrar_valor(datos_filtrados, "I", "Proyectado")
+    agua_nueva_a_evaporacion_cmz = tb_agua_nueva_a_evaporacion_cmz
     
     #Tabla Flujo J
     tb_tsf_a_infiltracion_cmz = filtrar_valor(datos_filtrados, "J", "Real")
     tb_tsf_a_infiltracion_proy_cmz = filtrar_valor(datos_filtrados, "J", "Proyectado")
+    tsf_a_infiltracion_cmz = tb_tsf_a_infiltracion_cmz
     
     #Tabla Flujo a
     tb_agua_nueva_a_area_seca_cmz = filtrar_valor(datos_filtrados, "a", "Real")
     tb_agua_nueva_a_area_seca_proy_cmz = filtrar_valor(datos_filtrados, "a", "Proyectado")
+    agua_nueva_a_area_seca_cmz = tb_agua_nueva_a_area_seca_cmz
     
     #Tabla Flujo a.1
     tb_piscina_zaldivar_tk_agua_fresca_cmz = filtrar_valor(datos_filtrados, "a.1", "Real")
@@ -301,10 +359,12 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo b
     tb_agua_nueva_a_sxew_cmz = filtrar_valor(datos_filtrados, "b", "Real")
     tb_agua_nueva_a_sxew_proy_cmz = filtrar_valor(datos_filtrados, "b", "Proyectado")
+    agua_nueva_a_sxew_cmz = tb_agua_nueva_a_sxew_cmz
 
     #Tabla Flujo c
     tb_agua_nueva_a_control_polvo_cmz = filtrar_valor(datos_filtrados, "c", "Real")
     tb_agua_nueva_a_control_polvo_proy_cmz = filtrar_valor(datos_filtrados, "c", "Proyectado")
+    agua_nueva_a_control_polvo_cmz = tb_agua_nueva_a_control_polvo_cmz
     
     #Tabla Flujo c.1
     tb_agua_a_chancado_primario_cmz = filtrar_valor(datos_filtrados, "c.1", "Real")
@@ -321,6 +381,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo d
     tb_agua_nueva_a_servicios_cmz = filtrar_valor(datos_filtrados, "d", "Real")
     tb_agua_nueva_a_servicios_proy_cmz = filtrar_valor(datos_filtrados, "d", "Proyectado")
+    agua_nueva_a_servicios_cmz = tb_agua_nueva_a_servicios_cmz
     
     #Tabla Flujo d.1
     tb_agua_gerencia_cmz = filtrar_valor(datos_filtrados, "d.1", "Real")
@@ -341,14 +402,17 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo e
     tb_tsf_a_area_seca_cmz = filtrar_valor(datos_filtrados, "e", "Real")
     tb_tsf_a_area_seca_proy_cmz = filtrar_valor(datos_filtrados, "e", "Proyectado")
+    tsf_a_area_seca_cmz = tb_tsf_a_area_seca_cmz
 
     #Tabla Flujo f
     tb_area_seca_a_tsf_cmz = filtrar_valor(datos_filtrados, "f", "Real")
     tb_area_seca_a_tsf_proy_cmz = filtrar_valor(datos_filtrados, "f", "Proyectado")
+    area_seca_a_tsf_cmz = tb_area_seca_a_tsf_cmz
     
     #Tabla Flujo g
     tb_area_seca_a_sxew_cmz = filtrar_valor(datos_filtrados, "g", "Real")
     tb_area_seca_a_sxew_proy_cmz = filtrar_valor(datos_filtrados, "g", "Proyectado")
+    area_seca_a_sxew_cmz = tb_area_seca_a_sxew_cmz
     
     #Tabla Flujo g.1
     tb_tren_a_a_flujo_pls_cmz = filtrar_valor(datos_filtrados, "g.1", "Real")
@@ -369,6 +433,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo h
     tb_sxew_a_area_seca_cmz = filtrar_valor(datos_filtrados, "h", "Real")
     tb_sxew_a_area_seca_proy_cmz = filtrar_valor(datos_filtrados, "h", "Proyectado")
+    sxew_a_area_seca_cmz = tb_sxew_a_area_seca_cmz
     
     #Tabla Flujo h.1
     tb_tren_a_a_refino_inferior_cmz = filtrar_valor(datos_filtrados, "h.1", "Real")
@@ -389,10 +454,12 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     #Tabla Flujo i
     tb_servicios_a_ptas_cmz = filtrar_valor(datos_filtrados, "i", "Real")
     tb_servicios_a_ptas_proy_cmz = filtrar_valor(datos_filtrados, "i", "Proyectado")
+    servicios_a_ptas_cmz = tb_servicios_a_ptas_cmz
     
     #Tabla Flujo j
     tb_ptas_a_control_polvo_cmz = filtrar_valor(datos_filtrados, "j", "Real")
     tb_ptas_a_control_polvo_proy_cmz = filtrar_valor(datos_filtrados, "j", "Proyectado")
+    ptas_a_control_polvo_cmz = tb_ptas_a_control_polvo_cmz
     
     #Tabla Flujo k
     tb_alimentacion_ro_cmz = filtrar_valor(datos_filtrados, "k", "Real")
@@ -489,6 +556,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
     datos_cmz = {
         'tb_agua_negrillar_a_agua_nueva_cmz': tb_agua_negrillar_a_agua_nueva_cmz,
         'tb_agua_negrillar_a_agua_nueva_proy_cmz': tb_agua_negrillar_a_agua_nueva_proy_cmz,
+        'agua_negrillar_a_agua_nueva_cmz': agua_negrillar_a_agua_nueva_cmz,
         'tb_extrac_ls_p1_dga_cmz': tb_extrac_ls_p1_dga_cmz,
         'tb_extrac_ls_p1_dga_proy_cmz': tb_extrac_ls_p1_dga_proy_cmz,
         'tb_extrac_ls_p2_dga_cmz': tb_extrac_ls_p2_dga_cmz,
@@ -503,6 +571,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_extrac_ls_p6_dga_proy_cmz': tb_extrac_ls_p6_dga_proy_cmz,
         'tb_agua_mineral_a_area_seca_cmz': tb_agua_mineral_a_area_seca_cmz,
         'tb_agua_mineral_a_area_seca_proy_cmz': tb_agua_mineral_a_area_seca_proy_cmz,
+        'agua_mineral_a_area_seca_cmz': agua_mineral_a_area_seca_cmz,
         'tb_humedad_mineral_hl_cmz': tb_humedad_mineral_hl_cmz,
         'tb_humedad_mineral_hl_proy_cmz': tb_humedad_mineral_hl_proy_cmz,
         'tb_humedad_mineral_dl_cmz': tb_humedad_mineral_dl_cmz,
@@ -511,6 +580,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_humedad_chancado_terciario_proy_cmz': tb_humedad_chancado_terciario_proy_cmz,
         'tb_aguas_halladas_a_control_polvo_cmz': tb_aguas_halladas_a_control_polvo_cmz,
         'tb_aguas_halladas_a_control_polvo_proy_cmz': tb_aguas_halladas_a_control_polvo_proy_cmz,
+        'aguas_halladas_a_control_polvo_cmz': aguas_halladas_a_control_polvo_cmz,
         'tb_pozo22_cmz': tb_pozo22_cmz,
         'tb_pozo22_proy_cmz': tb_pozo22_proy_cmz,
         'tb_pozo25_cmz': tb_pozo25_cmz,
@@ -529,8 +599,10 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_pozo31_proy_cmz': tb_pozo31_proy_cmz,
         'tb_tsf_a_retencion_cmz': tb_tsf_a_retencion_cmz,
         'tb_tsf_a_retencion_proy_cmz': tb_tsf_a_retencion_proy_cmz,
+        'tsf_a_retencion_cmz': tsf_a_retencion_cmz,
         'tb_area_seca_a_retencion_cmz': tb_area_seca_a_retencion_cmz,
         'tb_area_seca_a_retencion_proy_cmz': tb_area_seca_a_retencion_proy_cmz,
+        'area_seca_a_retencion_cmz': area_seca_a_retencion_cmz,
         'tb_retencion_hl_cmz': tb_retencion_hl_cmz,
         'tb_retencion_hl_proy_cmz': tb_retencion_hl_proy_cmz,
         'tb_retencion_dl_cmz': tb_retencion_dl_cmz,
@@ -541,8 +613,10 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_perdidas_concentrado_proy_cmz': tb_perdidas_concentrado_proy_cmz,
         'tb_tsf_a_evaporacion_cmz': tb_tsf_a_evaporacion_cmz,
         'tb_tsf_a_evaporacion_proy_cmz': tb_tsf_a_evaporacion_proy_cmz,
+        'tsf_a_evaporacion_cmz': tsf_a_evaporacion_cmz,
         'tb_area_seca_a_evaporacion_cmz': tb_area_seca_a_evaporacion_cmz,
         'tb_area_seca_a_evaporacion_proy_cmz': tb_area_seca_a_evaporacion_proy_cmz,
+        'area_seca_a_evaporacion_cmz': area_seca_a_evaporacion_cmz,
         'tb_evap_pilas_cmz': tb_evap_pilas_cmz,
         'tb_evap_pilas_proy_cmz': tb_evap_pilas_proy_cmz,
         'tb_evap_pila_hl_cmz': tb_evap_pila_hl_cmz,
@@ -571,12 +645,16 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_evap_piscina_ral_proy_cmz': tb_evap_piscina_ral_proy_cmz,
         'tb_control_polvo_a_evaporacion_cmz': tb_control_polvo_a_evaporacion_cmz,
         'tb_control_polvo_a_evaporacion_proy_cmz': tb_control_polvo_a_evaporacion_proy_cmz,
+        'control_polvo_a_evaporacion_cmz': control_polvo_a_evaporacion_cmz,
         'tb_agua_nueva_a_evaporacion_cmz': tb_agua_nueva_a_evaporacion_cmz,
         'tb_agua_nueva_a_evaporacion_proy_cmz': tb_agua_nueva_a_evaporacion_proy_cmz,
+        'agua_nueva_a_evaporacion_cmz': agua_nueva_a_evaporacion_cmz,
         'tb_tsf_a_infiltracion_cmz': tb_tsf_a_infiltracion_cmz,
         'tb_tsf_a_infiltracion_proy_cmz': tb_tsf_a_infiltracion_proy_cmz,
+        'tsf_a_infiltracion_cmz': tsf_a_infiltracion_cmz,
         'tb_agua_nueva_a_area_seca_cmz': tb_agua_nueva_a_area_seca_cmz,
         'tb_agua_nueva_a_area_seca_proy_cmz': tb_agua_nueva_a_area_seca_proy_cmz,
+        'agua_nueva_a_area_seca_cmz': agua_nueva_a_area_seca_cmz,
         'tb_piscina_zaldivar_tk_agua_fresca_cmz': tb_piscina_zaldivar_tk_agua_fresca_cmz,
         'tb_piscina_zaldivar_tk_agua_fresca_proy_cmz': tb_piscina_zaldivar_tk_agua_fresca_proy_cmz,
         'tb_rechazo_tk_agua_fresca_cmz': tb_rechazo_tk_agua_fresca_cmz,
@@ -585,8 +663,10 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_piscina_neurara_a_refino_proy_cmz': tb_piscina_neurara_a_refino_proy_cmz,
         'tb_agua_nueva_a_sxew_cmz': tb_agua_nueva_a_sxew_cmz,
         'tb_agua_nueva_a_sxew_proy_cmz': tb_agua_nueva_a_sxew_proy_cmz,
+        'agua_nueva_a_sxew_cmz': agua_nueva_a_sxew_cmz,
         'tb_agua_nueva_a_control_polvo_cmz': tb_agua_nueva_a_control_polvo_cmz,
         'tb_agua_nueva_a_control_polvo_proy_cmz': tb_agua_nueva_a_control_polvo_proy_cmz,
+        'agua_nueva_a_control_polvo_cmz': agua_nueva_a_control_polvo_cmz,
         'tb_agua_a_chancado_primario_cmz': tb_agua_a_chancado_primario_cmz,
         'tb_agua_a_chancado_primario_proy_cmz': tb_agua_a_chancado_primario_proy_cmz,
         'tb_cerro_las_antena_cmz': tb_cerro_las_antena_cmz,
@@ -595,6 +675,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_cachimba_mina_proy_cmz': tb_cachimba_mina_proy_cmz,
         'tb_agua_nueva_a_servicios_cmz': tb_agua_nueva_a_servicios_cmz,
         'tb_agua_nueva_a_servicios_proy_cmz': tb_agua_nueva_a_servicios_proy_cmz,
+        'agua_nueva_a_servicios_cmz': agua_nueva_a_servicios_cmz,
         'tb_agua_gerencia_cmz': tb_agua_gerencia_cmz,
         'tb_agua_gerencia_proy_cmz': tb_agua_gerencia_proy_cmz,
         'tb_agua_potable_a_flotacion_cmz': tb_agua_potable_a_flotacion_cmz,
@@ -605,10 +686,13 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_agua_incendio_proy_cmz': tb_agua_incendio_proy_cmz,
         'tb_tsf_a_area_seca_cmz': tb_tsf_a_area_seca_cmz,
         'tb_tsf_a_area_seca_proy_cmz': tb_tsf_a_area_seca_proy_cmz,
+        'tsf_a_area_seca_cmz': tsf_a_area_seca_cmz,
         'tb_area_seca_a_tsf_cmz': tb_area_seca_a_tsf_cmz,
         'tb_area_seca_a_tsf_proy_cmz': tb_area_seca_a_tsf_proy_cmz,
+        'area_seca_a_tsf_cmz': area_seca_a_tsf_cmz,
         'tb_area_seca_a_sxew_cmz': tb_area_seca_a_sxew_cmz,
         'tb_area_seca_a_sxew_proy_cmz': tb_area_seca_a_sxew_proy_cmz,
+        'area_seca_a_sxew_cmz': area_seca_a_sxew_cmz,
         'tb_tren_a_a_flujo_pls_cmz': tb_tren_a_a_flujo_pls_cmz,
         'tb_tren_a_a_flujo_pls_proy_cmz': tb_tren_a_a_flujo_pls_proy_cmz,
         'tb_tren_b_a_flujo_pls_cmz': tb_tren_b_a_flujo_pls_cmz,
@@ -619,6 +703,7 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_tren_d_a_flujo_pls_proy_cmz': tb_tren_d_a_flujo_pls_proy_cmz,
         'tb_sxew_a_area_seca_cmz': tb_sxew_a_area_seca_cmz,
         'tb_sxew_a_area_seca_proy_cmz': tb_sxew_a_area_seca_proy_cmz,
+        'sxew_a_area_seca_cmz': sxew_a_area_seca_cmz,
         'tb_tren_a_a_refino_inferior_cmz': tb_tren_a_a_refino_inferior_cmz,
         'tb_tren_a_a_refino_inferior_proy_cmz': tb_tren_a_a_refino_inferior_proy_cmz,
         'tb_tren_b_a_refino_inferior_cmz': tb_tren_b_a_refino_inferior_cmz,
@@ -629,8 +714,10 @@ def procesar_datos_diag_cmz(app, fecha, cmz_temporalidad, cmz_medida):
         'tb_tren_d_a_refino_inferior_proy_cmz': tb_tren_d_a_refino_inferior_proy_cmz,
         'tb_servicios_a_ptas_cmz': tb_servicios_a_ptas_cmz,
         'tb_servicios_a_ptas_proy_cmz': tb_servicios_a_ptas_proy_cmz,
+        'servicios_a_ptas_cmz': servicios_a_ptas_cmz,
         'tb_ptas_a_control_polvo_cmz': tb_ptas_a_control_polvo_cmz,
         'tb_ptas_a_control_polvo_proy_cmz': tb_ptas_a_control_polvo_proy_cmz,
+        'ptas_a_control_polvo_cmz': ptas_a_control_polvo_cmz,
         'tb_alimentacion_ro_cmz': tb_alimentacion_ro_cmz,
         'tb_alimentacion_ro_proy_cmz': tb_alimentacion_ro_proy_cmz,
         'tb_tk_agua_fresca_a_piscina_ch_iii_cmz': tb_tk_agua_fresca_a_piscina_ch_iii_cmz,

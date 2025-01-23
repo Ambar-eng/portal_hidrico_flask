@@ -1,9 +1,11 @@
-from flask import request, jsonify
 from datetime import datetime
-from app.blueprints.auth import get_microsoft_user_info
+from flask import Blueprint, render_template, request, session, jsonify, current_app
+from app.utils.utils import generar_saludo
 
+diagflujo_ant_bp = Blueprint('diagrama_flujo_ant', __name__)
 
-def obtener_datos_cosmos_diag_ant(app):
+def obtener_datos_cosmos_diag_ant():
+    app = current_app._get_current_object()
     cache = app.cache
 
     #Obtener los datos de la caché para Antucoya
@@ -44,6 +46,7 @@ def obtener_fecha_maxima_diag_ant(datos):
             return fecha_maxima
     return None
 
+
 #Función para actualizar la fecha de actualización
 def obtener_mensaje_fecha_diag_ant(fecha_maxima):
     if fecha_maxima:
@@ -54,7 +57,10 @@ def obtener_mensaje_fecha_diag_ant(fecha_maxima):
     
 
 
-def procesar_datos_diag_ant(app, fecha, ant_temporalidad, ant_medida):
+def procesar_datos_diag_ant(fecha, ant_temporalidad, ant_medida):
+
+    app = current_app._get_current_object()
+
     # Validar que fecha no sea nula o vacía
     if not fecha:
         # Retornar valores predeterminados si los valores son nulos
@@ -1069,3 +1075,44 @@ def toggle_rows_logic_ant(data):
     }
 
     return jsonify(response)
+
+
+
+@diagflujo_ant_bp.route('/toggle_rows_ant', methods=['POST'])
+def toggle_rows_ant():
+    data = request.json
+    return toggle_rows_logic_ant(data)
+
+
+
+@diagflujo_ant_bp.route('/diagramaflujoant', methods=['GET', 'POST'])
+def balance_agua_ant():
+    df_ph_ant = obtener_datos_cosmos_diag_ant()
+    fecha_maxima_ant = obtener_fecha_maxima_diag_ant(df_ph_ant)
+    mensaje_fecha_ant = obtener_mensaje_fecha_diag_ant(fecha_maxima_ant)
+
+    # Obtener valores seleccionados desde el formulario
+    fecha = request.form.get('filtro_fecha_ant', None)
+
+    # Si la fecha no está seleccionada, permanece como None
+    if fecha:
+        try:
+            # Validar el formato de la fecha
+            fecha = datetime.strptime(fecha, '%Y-%m-%d').strftime('%Y-%m-%d')
+        except ValueError:
+            # Si la fecha no tiene el formato correcto, manejar el error (opcional)
+            fecha = None
+
+    ant_temp_switch = request.form.get('filtro_temp_ant', '')  # "on" si está activado, "" si no
+    ant_temporalidad = 'Mes' if ant_temp_switch == "on" else 'Dia'
+    ant_medida_switch = request.form.get('filtro_medida_ant', '')
+    ant_medida= 'l/s' if ant_medida_switch == "on" else 'm3/h'
+
+    # print("Fecha:", fecha)
+    # print("Temp:", ant_temporalidad)
+    # print("Medida:", ant_medida)
+
+    datos_ant = procesar_datos_diag_ant(fecha, ant_temporalidad, ant_medida)
+
+    return render_template('diagrama_flujo_ant.html', mensaje_fecha_ant=mensaje_fecha_ant, fecha=fecha, ant_temporalidad=ant_temporalidad, ant_medida=ant_medida,
+                            datos_ant=datos_ant)

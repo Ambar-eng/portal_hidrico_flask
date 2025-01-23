@@ -34,14 +34,6 @@
                 </div>
 
                 <!-- ToggleSwitch Temporalidad -->
-                <!-- <div class="form-check form-switch bi-filtro-mtd_ytd">
-                    <label>
-                        <span class="mtd-text">Dia</span>
-                        <input class="form-check-input" type="checkbox" name="filtro_temp_cmz" id="filtroSwitchTemp" onchange="document.getElementById('filter-form').submit();" 
-                               {% if request.form.get('filtro_temp_cmz') == "on" %}checked{% endif %}>
-                        <span class="ytd-text">Mes</span>
-                    </label>
-                </div> -->
                 <div class="form-check form-switch bi-filtro-mtd_ytd" style="display: flex; align-items: center; gap: 8px; margin-left: calc(-17 * 0.052vw);">
                     <span class="mtd-text">Dia</span>
                     <label style="margin: calc(-4 * 0.052vw); margin-bottom: calc(1 * 0.052vw);">
@@ -60,14 +52,6 @@
                 </script>
 
                 <!-- ToggleSwitch Medida -->
-                <!-- <div class="form-check form-switch bi-filtro-mtd_ytd">
-                    <label>
-                        <span class="mtd-text">m3/h</span>
-                        <input class="form-check-input" type="checkbox" name="filtro_medida_cmz" id="filtroSwitchMed" onchange="document.getElementById('filter-form').submit();" 
-                               {% if request.form.get('filtro_medida_cmz') == "on" %}checked{% endif %}>
-                        <span class="ytd-text">l/s</span>
-                    </label>
-                </div> -->
                 <div class="form-check form-switch bi-filtro-mtd_ytd" style="display: flex; align-items: center; gap: 8px; margin-left: calc(-25 * 0.052vw);">
                     <span class="mtd-text">m3/h</span>
                     <label style="margin: calc(-4 * 0.052vw); margin-bottom: calc(1 * 0.052vw);">
@@ -674,8 +658,8 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">B.2: Humedad Mineral DL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_humedad_mineral_dl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_humedad_mineral_dl_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-b-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
@@ -695,8 +679,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>AGUAS HALLADAS</td>
                 <td class='diag-tabla-desde-hasta-flujo'>CONTROL DE POLVO</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_aguas_halladas_a_control_polvo_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_aguas_halladas_a_control_polvo_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO C -->
             <tr id="sub-row-c-1-cmz" style="display: none;">
@@ -704,64 +688,64 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">C.1: PLC Pozo 22</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo22_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo22_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">C.2: PLC Pozo 25</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo25_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo25_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">C.3: PLC Pozo 26</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo26_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo26_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-4-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">C.4: PLC Pozo 27</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo27_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo27_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-5-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">C.5: PLC Pozo 28</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo28_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo28_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-6-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">C.6: PLC Pozo 29</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo29_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo29_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-7-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">C.7: PLC Pozo 3{{ datos_cmz['x'] }}</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo30_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo30_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-8-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">C.8: PLC Pozo 31</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo31_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pozo31_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO D -->
             <tr id="main-row-d-cmz">
@@ -772,8 +756,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
                 <td class='diag-tabla-desde-hasta-flujo'>RETENCIÓN</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tsf_a_retencion_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tsf_a_retencion_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO E -->
             <tr id="main-row-e-cmz">
@@ -785,8 +769,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>RETENCIÓN</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_area_seca_a_retencion_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_area_seca_a_retencion_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO E -->
             <tr id="sub-row-e-1-cmz" style="display: none;">
@@ -794,32 +778,32 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">E.1: Retencion HL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_retencion_hl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_retencion_hl_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-e-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">E.2: Retencion DL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_retencion_dl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_retencion_dl_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-e-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">E.3: Retencion RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_retencion_ral_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_retencion_ral_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-e-4-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">E.4: Pérdidas en Concentrado</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_perdidas_concentrado_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_perdidas_concentrado_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO F -->
             <tr id="main-row-f-cmz">
@@ -830,8 +814,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
                 <td class='diag-tabla-desde-hasta-flujo'>EVAPORACIÓN</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tsf_a_evaporacion_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tsf_a_evaporacion_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO G -->
             <tr id="main-row-g-cmz">
@@ -843,8 +827,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>EVAPORACIÓN</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_area_seca_a_evaporacion_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_area_seca_a_evaporacion_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO G -->
             <tr id="sub-row-g-1-cmz" style="display: none;">
@@ -852,104 +836,104 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.1: Evaporación desde pilas</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_pilas_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_pilas_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.1.1: Evaporación Pila HL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_pila_hl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_pila_hl_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.1.2: Evaporación Pila DL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_pila_dl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_pila_dl_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-4-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.1.3: Evaporación Pila RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_pila_ral_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_pila_ral_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-5-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2: Evaporación Piscinas de Proceso</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_total_piscinas_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_total_piscinas_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-6-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2.1: Evaporación Piscina PLS</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_pls_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_pls_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-7-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2.2: Evaporación Piscina ILS</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_ils_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_ils_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-8-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2.3: Evaporación Refino Superior</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_ref_superior_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_ref_superior_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-9-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2.4: Evaporación Refino Inferior</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_ref_inferior_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_ref_inferior_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-10-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2.5: Evaporación Piscina CH III</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_chancado_terciario_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_chancado_terciario_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-11-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2.6: Evaporación  Piscina DL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_dl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_dl_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-12-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2.7: Evaporación  Piscina Auxiliar</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_auxiliar_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_auxiliar_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-13-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">G.2.8: Evaporación Piscina RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_ral_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_evap_piscina_ral_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO H -->
             <tr id="main-row-h-cmz">
@@ -960,8 +944,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>CONTROL DE POLVO</td>
                 <td class='diag-tabla-desde-hasta-flujo'>EVAPORACIÓN</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_control_polvo_a_evaporacion_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_control_polvo_a_evaporacion_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO I -->
             <tr id="main-row-i-cmz">
@@ -972,8 +956,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>EVAPORACIÓN</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_evaporacion_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_evaporacion_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO J -->
             <tr id="main-row-j-cmz">
@@ -984,8 +968,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
                 <td class='diag-tabla-desde-hasta-flujo'>INFILTRACIÓN</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tsf_a_infiltracion_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tsf_a_infiltracion_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO a -->
             <tr id="main-row-a-min-cmz">
@@ -997,8 +981,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_area_seca_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_area_seca_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO a -->
             <tr id="sub-row-a-min-1-cmz" style="display: none;">
@@ -1006,24 +990,24 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">a.1: Piscina Zaldívar a TK Agua Fresca</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_zaldivar_tk_agua_fresca_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_zaldivar_tk_agua_fresca_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-a-min-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">a.2: Rechazo a TK Agua Fresca</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_rechazo_tk_agua_fresca_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_rechazo_tk_agua_fresca_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-a-min-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">a.3: Piscina Neurara a Refino</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_neurara_a_refino_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_neurara_a_refino_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO b -->
             <tr id="main-row-b-min-cmz">
@@ -1034,8 +1018,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>SX/EW</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_sxew_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_sxew_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO c -->
             <tr id="main-row-c-min-cmz">
@@ -1047,8 +1031,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>CONTROL DE POLVO</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_control_polvo_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_control_polvo_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO c -->
             <tr id="sub-row-c-min-1-cmz" style="display: none;">
@@ -1056,24 +1040,24 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">c.1: Rechazo a CH I</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_agua_a_chancado_primario_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_agua_a_chancado_primario_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-min-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">c.2: Reservorio Zaldívar a Cerro Antena</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_cerro_las_antena_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_cerro_las_antena_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-c-min-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">c.3: Reservorio Zaldívar a Cachimba Mina</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_cachimba_mina_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_cachimba_mina_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO d -->
             <tr id="main-row-d-min-cmz">
@@ -1085,8 +1069,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>AGUA NUEVA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>SERVICIOS</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_servicios_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_agua_nueva_a_servicios_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO d -->
             <tr id="sub-row-d-min-1-cmz" style="display: none;">
@@ -1094,32 +1078,32 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">d.1: Agua Gerencia</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_agua_gerencia_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_agua_gerencia_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-d-min-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">d.2: Agua Potable a Flotación</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_agua_potable_a_flotacion_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_agua_potable_a_flotacion_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-d-min-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">d.3: Potable a Operación</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_potable_a_operacion_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_potable_a_operacion_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-d-min-4-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">d.4: Agua Incendio</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_agua_incendio_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_agua_incendio_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO e -->
             <tr id="main-row-e-min-cmz">
@@ -1130,8 +1114,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
                 <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tsf_a_area_seca_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tsf_a_area_seca_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO f -->
             <tr id="main-row-f-min-cmz">
@@ -1142,8 +1126,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>TSF</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_area_seca_a_tsf_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_area_seca_a_tsf_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO g -->
             <tr id="main-row-g-min-cmz">
@@ -1155,8 +1139,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>SX/EW</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_area_seca_a_sxew_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_area_seca_a_sxew_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO g -->
             <tr id="sub-row-g-min-1-cmz" style="display: none;">
@@ -1164,32 +1148,32 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">g.1: Tren A</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_a_a_flujo_pls_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_a_a_flujo_pls_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-min-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">g.2: Tren B</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_b_a_flujo_pls_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_b_a_flujo_pls_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-min-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">g.3: Tren C</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_c_a_flujo_pls_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_c_a_flujo_pls_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-g-min-4-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">g.4: Tren D</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_d_a_flujo_pls_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_d_a_flujo_pls_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO h -->
             <tr id="main-row-h-min-cmz">
@@ -1201,8 +1185,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>SX/EW</td>
                 <td class='diag-tabla-desde-hasta-flujo'>ÁREA SECA/HÚMEDA</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_sxew_a_area_seca_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_sxew_a_area_seca_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO h -->
             <tr id="sub-row-h-min-1-cmz" style="display: none;">
@@ -1210,32 +1194,32 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">h.1: Tren A a Refino Inferior</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_a_a_refino_inferior_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_a_a_refino_inferior_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-h-min-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">h.2: Tren B a Refino Inferior</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_b_a_refino_inferior_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_b_a_refino_inferior_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-h-min-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">h.3: Tren C a Refino Inferior</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_c_a_refino_inferior_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_c_a_refino_inferior_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-h-min-4-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">h.4: Tren D a Refino Inferior</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_d_a_refino_inferior_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_tren_d_a_refino_inferior_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO i -->
             <tr id="main-row-i-min-cmz">
@@ -1246,8 +1230,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>SERVICIOS</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PTAS</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_servicios_a_ptas_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_servicios_a_ptas_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO j -->
             <tr id="main-row-j-min-cmz">
@@ -1258,8 +1242,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>PTAS</td>
                 <td class='diag-tabla-desde-hasta-flujo'>CONTROL DE POLVO</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_ptas_a_control_polvo_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_ptas_a_control_polvo_proy_cmz'] }}</td>
             </tr>
             <!--################################### style="display: none;" ###################################-->
             <!-- FLUJO k -->
@@ -1271,8 +1255,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA NEURARA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>RO</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_alimentacion_ro_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_alimentacion_ro_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO m -->
             <tr id="main-row-m-min-cmz" style="display: none;">
@@ -1283,8 +1267,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>TK AGUA FRESCA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA CH III</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tk_agua_fresca_a_piscina_ch_iii_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tk_agua_fresca_a_piscina_ch_iii_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO n -->
             <tr id="main-row-n-min-cmz" style="display: none;">
@@ -1295,8 +1279,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>TK AGUA FRESCA</td>
                 <td class='diag-tabla-desde-hasta-flujo'>REFINO SUPERIOR</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tk_agua_fresca_a_refino_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_tk_agua_fresca_a_refino_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO o -->
             <tr id="main-row-o-min-cmz" style="display: none;">
@@ -1308,8 +1292,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA PROCESOS</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PILAS</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_piscina_procesos_a_pilas_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_piscina_procesos_a_pilas_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO o -->
             <tr id="sub-row-o-min-1-cmz" style="display: none;">
@@ -1317,40 +1301,40 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">o.1: Piscina Refino a Pilas</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_refinos_a_pilas_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_refinos_a_pilas_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-o-min-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">o.1.1: Refino Superior a Pila HL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_refino_superior_a_pila_hl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_refino_superior_a_pila_hl_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-o-min-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">o.1.2: Refino Inferior a Pila RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_refino_inferior_a_pila_ral_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_refino_inferior_a_pila_ral_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-o-min-4-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">o.2: Piscina IPLS a Pila HL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_ipls_a_pila_hl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_ipls_a_pila_hl_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-o-min-5-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">o.3: Piscina DL a Pila DL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_dl_a_pila_dl_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_piscina_dl_a_pila_dl_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO p -->
             <tr id="main-row-p-min-cmz" style="display: none;">
@@ -1361,8 +1345,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>REFINO INFERIOR</td>
                 <td class='diag-tabla-desde-hasta-flujo'>REFINO SUPERIOR</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_refino_inferior_a_refino_superior_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_refino_inferior_a_refino_superior_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO q -->
             <tr id="main-row-q-min-cmz" style="display: none;">
@@ -1374,8 +1358,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>PILAS</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA DE PROCESOS</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_pilas_a_piscina_procesos_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_pilas_a_piscina_procesos_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO q -->
             <tr id="sub-row-q-min-1-cmz" style="display: none;">
@@ -1383,24 +1367,24 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">q.1: Flujo PLS/IPLS</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pila_hl_a_piscina_pls_ipls_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pila_hl_a_piscina_pls_ipls_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-q-min-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">q.2: Flujo PLS/IPLS</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pila_dl_a_piscina_pls_ipls_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pila_dl_a_piscina_pls_ipls_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-q-min-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">q.3: Pila RAL a Piscina RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pila_ral_a_piscina_ral_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_pila_ral_a_piscina_ral_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO r -->
             <tr id="main-row-r-min-cmz" style="display: none;">
@@ -1411,8 +1395,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA AUXILIAR</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA PROCESOS</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_piscina_auxiliar_a_piscina_pls_ipls_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_piscina_auxiliar_a_piscina_pls_ipls_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO s -->
             <tr id="main-row-s-min-cmz" style="display: none;">
@@ -1423,8 +1407,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>REFINO SUPERIOR</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA DL</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_refino_superior_a_piscina_dl_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_refino_superior_a_piscina_dl_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO t -->
             <tr id="main-row-t-min-cmz" style="display: none;">
@@ -1435,8 +1419,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA RAL</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA AUXILIAR</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_piscina_ral_a_piscina_auxiliar_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_piscina_ral_a_piscina_auxiliar_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO u -->
             <tr id="main-row-u-min-cmz" style="display: none;">
@@ -1448,8 +1432,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>BARRERAS HIDRÁULICAS</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PISCINA RAL</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_barreras_hidraulicas_a_piscina_ral_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_barreras_hidraulicas_a_piscina_ral_proy_cmz'] }}</td>
             </tr>
             <!-- SUBFILAS FLUJO u -->
             <tr id="sub-row-u-min-1-cmz" style="display: none;">
@@ -1457,32 +1441,32 @@
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">u.1: BH - 1 a Piscina RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_caudal_bh_1_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_caudal_bh_1_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-u-min-2-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">u.2: BH - 2 a Piscina RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_caudal_bh_2_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_caudal_bh_2_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-u-min-3-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">u.3: BH - 3 a Piscina RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_caudal_bh_3_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_caudal_bh_3_proy_cmz'] }}</td>
             </tr>
             <tr id="sub-row-u-min-4-cmz" style="display: none;">
                 <td class='diag-tabla-subfila-col1'></td>
                 <td colSpan="2" class="diag-tabla-subfila-col2">
                     <div class="contenido-ajustado">u.4: BH - 4 a Piscina RAL</div>
                 </td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_caudal_bh_4_cmz'] }}</td>
+                <td class='diag-tabla-subfila-col3'>{{ datos_cmz['tb_caudal_bh_4_proy_cmz'] }}</td>
             </tr>
             <!-- FLUJO v -->
             <tr id="main-row-v-min-cmz" style="display: none;">
@@ -1493,8 +1477,8 @@
                 </td>
                 <td class='diag-tabla-desde-hasta-flujo'>PILA HL</td>
                 <td class='diag-tabla-desde-hasta-flujo'>PILA RIPIOS</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
-                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['x'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_consumo_adicional_agua_potable_cmz'] }}</td>
+                <td class='diag-tabla-valor-flujo'>{{ datos_cmz['tb_consumo_adicional_agua_potable_proy_cmz'] }}</td>
             </tr>
         </table>
     </div>

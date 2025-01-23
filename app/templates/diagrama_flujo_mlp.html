@@ -35,14 +35,6 @@
                 </div>
 
                 <!-- ToggleSwitch Temporalidad -->
-                <!-- <div class="form-check form-switch bi-filtro-mtd_ytd">
-                    <label>
-                        <span class="mtd-text">Dia</span>
-                        <input class="form-check-input" type="checkbox" name="filtro_temp_mlp" id="filtroSwitchTemp" onchange="document.getElementById('filter-form').submit();" 
-                               {% if request.form.get('filtro_temp_mlp') == "on" %}checked{% endif %}>
-                        <span class="ytd-text">Mes</span>
-                    </label>
-                </div> -->
                 <div class="form-check form-switch bi-filtro-mtd_ytd" style="display: flex; align-items: center; gap: 8px; margin-left: calc(-17 * 0.052vw);">
                     <span class="mtd-text">Dia</span>
                     <label style="margin: calc(-4 * 0.052vw); margin-bottom: calc(1 * 0.052vw);">
@@ -61,14 +53,6 @@
                 </script>
 
                 <!-- ToggleSwitch Medida -->
-                <!-- <div class="form-check form-switch bi-filtro-mtd_ytd">
-                    <label>
-                        <span class="mtd-text">m3/h</span>
-                        <input class="form-check-input" type="checkbox" name="filtro_medida_mlp" id="filtroSwitchMed" onchange="document.getElementById('filter-form').submit();" 
-                               {% if request.form.get('filtro_medida_mlp') == "on" %}checked{% endif %}>
-                        <span class="ytd-text">l/s</span>
-                    </label>
-                </div> -->
                 <div class="form-check form-switch bi-filtro-mtd_ytd" style="display: flex; align-items: center; gap: 8px; margin-left: calc(-25 * 0.052vw);">
                     <span class="mtd-text">m3/h</span>
                     <label style="margin: calc(-4 * 0.052vw); margin-bottom: calc(1 * 0.052vw);">
@@ -110,107 +94,88 @@
                     <!-- Enlace oculto para disparar la descarga -->
                     <a id="download-link-mlp" style="display: none;"></a>
                 </div>
-                
-                <!-- <script>
-                    document.getElementById('dropdown-options').addEventListener('change', function(event) {
-                        const selectedValue = event.target.value;
-                        const downloadLink = document.getElementById('download-link');
-                
-                        if (selectedValue === 'png') {
-                            downloadLink.href = '/download/png';
-                        } else if (selectedValue === 'excel') {
-                            downloadLink.href = '/download/excel';
-                        }
-                
-                        if (selectedValue) {
-                            downloadLink.click();
-                        }
-                    });
-                </script> -->
             </div>
         </form>
     </div>
 
     <div id='component-to-save-mlp' class='diag-flujo-mlp'>
 
-        <div id='ant-agua-nueva' class='ddl-ant-div-agua-nueva'>
-            <p class='diag-titulo-flujo-ant'>AGUA NUEVA</p>
-            <img src='/static/img/logos/diag_pisc_agua_mar.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+        <div id='mlp-agua-conc-embarc' class='ddl-mlp-div-agua-conc-embarc'>
+            <p class='diag-titulo-flujo-mlp'>AGUA CONCENTRADO EMBARCADO</p>
+            <img src='/static/img/logos/diag_agua_concentrado_embarc.png' class='diag-imagen-flujo'></img>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
         </div>
 
         <div id='ant-servicios' class='ddl-ant-div-servicios'>
-            <p class='diag-titulo-flujo-ant'>SERVICIOS</p>
+            <p class='diag-titulo-flujo-mlp'>SERVICIOS</p>
             <img src='/static/img/logos/diag_servicios.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
         </div>
 
         <div id='ant-sumin-terceros' class='ddl-ant-div-sumin-terceros'>
-            <p class='diag-titulo-flujo-ant'>SUMINISTRO DE TERCEROS (AGUA DE MAR)</p>
+            <p class='diag-titulo-flujo-mlp'>SUMINISTRO DE TERCEROS (AGUA DE MAR)</p>
             <img src='/static/img/logos/diag_sumin_terceros.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
         </div>
 
         <div id='ant-agua-mineral' class='ddl-ant-div-agua-mineral'>
-            <p class='diag-titulo-flujo-ant'>AGUA EN MINERAL</p>
+            <p class='diag-titulo-flujo-mlp'>AGUA EN MINERAL</p>
             <img src='/static/img/logos/diag_agua_en_mineral.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
         </div>
 
         <div id='ant-cont-polvo' class='ddl-ant-div-cont-polvo'>
-            <p class='diag-titulo-flujo-ant'>CONTROL DE POLVO</p>
+            <p class='diag-titulo-flujo-mlp'>CONTROL DE POLVO</p>
             <img src='/static/img/logos/diag_control_polvo.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
         </div>
 
         <div id='ant-sx-ew' class='ddl-ant-div-sx-ew'>
-            <p class='diag-titulo-flujo-ant'>SX/EW</p>
+            <p class='diag-titulo-flujo-mlp'>SX/EW</p>
             <img src='/static/img/logos/diag_sx_ew.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
         </div>
 
         <div id='ant-area-seca' class='ddl-ant-div-area-seca'>
-            <p class='diag-titulo-flujo-ant'>ÁREA SECA/HÚMEDA</p>
+            <p class='diag-titulo-flujo-mlp'>ÁREA SECA/HÚMEDA</p>
             <img src='/static/img/logos/diag_area_seca.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">CONSUMO AF:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
         </div>
 
         <div id='ant-ptas' class='ddl-ant-div-ptas'>
-            <p class='diag-titulo-flujo-ant'>PTAS</p>
+            <p class='diag-titulo-flujo-mlp'>PTAS</p>
             <img src='/static/img/logos/diag_sx_ew.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">DELTA BALANCE:</p>
         </div>
 
         <div id='ant-evaporacion' class='ddl-ant-div-evaporacion'>
-            <p class='diag-titulo-flujo-ant'>EVAPORACIÓN</p>
+            <p class='diag-titulo-flujo-mlp'>EVAPORACIÓN</p>
             <img src='/static/img/logos/diag_evaporacion.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
         </div>
 
         <div id='ant-retencion' class='ddl-ant-div-retencion'>
-            <p class='diag-titulo-flujo-ant'>RETENCIÓN</p>
+            <p class='diag-titulo-flujo-mlp'>RETENCIÓN</p>
             <img src='/static/img/logos/diag_agua_en_mineral.png' class='diag-imagen-flujo'></img>
-            <p class='diag-val-cons-ant' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
-            <p class='diag-val-cons-ant' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
+            <p class='diag-val-cons-mlp' style="margin-top: calc(20 * 0.052vw); margin-bottom: calc(0 * 0.052vw);">CONSUMO TOTAL:</p>
+            <p class='diag-val-cons-mlp' style="margin-bottom: calc(0 * 0.052vw);">PROYECTADO:</p>
         </div>
 
         <div class='ddl-ant-val-a-may'>
